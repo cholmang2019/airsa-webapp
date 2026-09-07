@@ -1,0 +1,8 @@
+{
+  "name": "Remix IRSA SIMORGH | ایرسا سیمرغ",
+  "description": "پرتال جامع ایرسا سیمرغ (IRSA SIMORGH) با هدر و فوتر سراسری - گردشگری سلامت، گردشگری ورودی، خدمات سفر، تشریفات VIP و خدمات بین‌المللی",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
