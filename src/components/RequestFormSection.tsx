@@ -18,7 +18,7 @@ import {
   FileIcon
 } from 'lucide-react';
 import { TREATMENT_OPTIONS, TRUST_POINTS, SUBMISSION_TARGET_EMAIL } from '../data/treatmentRequestData';
-import patientCoordinatorImg from '../assets/images/patient_coordinator_1788731714247.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 interface FormData {
   fullName: string;
@@ -567,8 +567,8 @@ export const RequestFormSection: React.FC = () => {
             <div className="rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-sm relative group">
               <div className="relative h-48 sm:h-56 w-full overflow-hidden">
                 <img
-                  src={patientCoordinatorImg}
-                  alt="مشاور و هماهنگ‌کننده پزشکی ایرسا سیمرغ"
+                  src={ASSETS.team.medicalCoordinator.src}
+                  alt={ASSETS.team.medicalCoordinator.alt}
                   className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />

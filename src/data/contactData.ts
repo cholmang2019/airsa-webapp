@@ -1,8 +1,4 @@
-import contactSupportHeroImg from '../assets/images/contact_support_hero_1788739865372.jpg';
-import supportBgImg from '../assets/images/seamless_travel_exp_1788733930696.jpg';
-import pillarConsultationImg from '../assets/images/svc_consultation_1788732462429.jpg';
-import pillarCoordinationImg from '../assets/images/patient_coordinator_1788731714247.jpg';
-import pillarStandardsImg from '../assets/images/about_focus_intl_corporate.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export type RequestType =
   | 'گردشگری سلامت'
@@ -41,7 +37,7 @@ export const CONTACT_PAGE_DATA = {
   hero: {
     title: 'چطور می‌توانیم به شما کمک کنیم؟',
     subtitle: 'نوع درخواست خود را انتخاب کنید و اطلاعات اولیه را برای ما ارسال کنید.',
-    image: contactSupportHeroImg,
+    image: ASSETS.hero.contactSupport.src,
     badge: 'ارتباط مستقیم با مدیریت و کارشناسان ارشد',
   },
   destinationEmail: 'CEO@medixmaster.com',
@@ -122,7 +118,7 @@ export const CONTACT_PAGE_DATA = {
         number: '۰۱',
         title: 'مشاوره شفاف و برنامه‌ریزی اختصاصی',
         subtitle: 'بررسی دقیق پرونده، تدوین برنامه درمانی یا سفارشی سفر و ارائه برآورد شفاف و دقیق هزینه‌ها پیش از هرگونه اقدام اجرایی.',
-        image: pillarConsultationImg,
+        image: ASSETS.services.consultation.src,
         alt: 'مشاوره تخصصی و تدوین برنامه‌ریزی سفر در ایرسا سیمرغ',
       },
       {
@@ -130,7 +126,7 @@ export const CONTACT_PAGE_DATA = {
         number: '۰۲',
         title: 'همراهی پیوسته و مترجم اختصاصی',
         subtitle: 'پشتیبانی ۲۴ ساعته میدانی با همراهی راهنمای مجرب و مترجم هم‌زبان از بدو ورود، پذیرش در مراکز تا اتمام دوره و بدرقه رسمی.',
-        image: pillarCoordinationImg,
+        image: ASSETS.team.medicalCoordinator.src,
         alt: 'همراهی و هماهنگی پرونده‌های سلامت و گردشگری',
       },
       {
@@ -138,14 +134,14 @@ export const CONTACT_PAGE_DATA = {
         number: '۰۳',
         title: 'محرمانگی اطلاعات و استانداردهای رسمی',
         subtitle: 'رعایت کامل پروتکل‌های بین‌المللی حفظ حریم خصوصی سوابق پزشکی و تجاری با تنظیم قراردادهای رسمی، شفاف و معتبر حقوقی.',
-        image: pillarStandardsImg,
+        image: ASSETS.about.focusIntlCorporate.src,
         alt: 'استانداردهای بین‌المللی و تعهدات حقوقی ایرسا سیمرغ',
       },
     ],
   },
   supportMessage: {
     statement: 'از اولین سؤال تا آخرین مرحله سفر، تیم ایرسا سیمرغ در کنار شماست.',
-    backgroundImage: supportBgImg,
+    backgroundImage: ASSETS.services.seamlessTravel.src,
     lead: 'همراهی متعهدانه، امن و یکپارچه در تمام ابعاد سفر، درمان و خدمات بین‌المللی',
   },
   finalCta: {

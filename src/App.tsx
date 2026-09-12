@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { GlobalHeader } from './components/GlobalHeader';
 import { GlobalFooter } from './components/GlobalFooter';
+import { OfflineIndicator } from './components/OfflineIndicator';
+import { PWAInstallButton } from './components/PWAInstallButton';
 import { HomePage } from './pages/HomePage';
 import { MedicalTourismPage } from './pages/MedicalTourismPage';
 import { TreatmentRequestPage } from './pages/TreatmentRequestPage';
@@ -151,6 +153,12 @@ export default function App() {
 
       {/* 3. Global Footer */}
       <GlobalFooter currentPath={currentPath} onNavigate={navigateTo} />
+
+      {/* 4. PWA In-App Mobile Install Banner */}
+      <PWAInstallButton variant="banner" />
+
+      {/* 5. Offline Connectivity Indicator */}
+      <OfflineIndicator />
     </div>
   );
 }

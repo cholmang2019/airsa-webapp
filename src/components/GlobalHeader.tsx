@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ArrowLeft, Menu, X, Sparkles } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
+import { PWAInstallButton } from './PWAInstallButton';
 import {
   MAIN_NAV_ITEMS,
   SERVICES_DROPDOWN_ITEMS,
@@ -239,7 +240,10 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
           </nav>
 
           {/* LEFT: Primary CTA on Desktop / Tablet + Mobile Hamburger */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Install PWA Button */}
+            <PWAInstallButton variant="header" />
+
             {/* Primary CTA Button (Visible on Desktop and Tablet) */}
             <a
               id="header-primary-cta"
@@ -342,6 +346,8 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
 
                 {/* Mobile Drawer Footer with CTA */}
                 <div className="pt-5 space-y-3">
+                  <PWAInstallButton variant="header" className="w-full justify-center py-2.5" />
+
                   <a
                     href={PRIMARY_CTA.href}
                     target="_blank"

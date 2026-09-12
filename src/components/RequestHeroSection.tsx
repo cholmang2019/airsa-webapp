@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, ChevronDown, Sparkles } from 'lucide-react';
-import calmHeroImg from '../assets/images/request_hero_calm_1788732664259.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export const RequestHeroSection: React.FC = () => {
   const scrollToForm = () => {
@@ -20,8 +20,8 @@ export const RequestHeroSection: React.FC = () => {
       {/* Calm Medical Tourism Photography Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src={calmHeroImg}
-          alt="گردشگری سلامت ایرسا سیمرغ - شروع مسیر درمان در ایران"
+          src={ASSETS.hero.requestTreatment.src}
+          alt={ASSETS.hero.requestTreatment.alt}
           className="w-full h-full object-cover object-center filter brightness-[0.55] contrast-[1.05]"
           loading="eager"
         />

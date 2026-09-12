@@ -1,20 +1,4 @@
-import heroEditorialImg from '../assets/images/hero_iran_cinematic_1788733519875.jpg';
-import featuredHealthImg from '../assets/images/healthcare_hospitality_1788731009329.jpg';
-import isfahanImg from '../assets/images/naghshe_jahan_isfahan_1788730682237.jpg';
-import persepolisImg from '../assets/images/history_persepolis_1788733559024.jpg';
-import cipAirportImg from '../assets/images/svc_airport_cip_1788733656641.jpg';
-import visaImg from '../assets/images/svc_visa_1788732496579.jpg';
-import bizFormationImg from '../assets/images/company_formation_biz_1788735659476.jpg';
-import kishBeachImg from '../assets/images/kish_island_beach_1788731248367.jpg';
-import doctorConsultImg from '../assets/images/svc_doctor_1788732474613.jpg';
-import lutDesertImg from '../assets/images/nature_lut_desert_1788733582646.jpg';
-import intlAdvisoryImg from '../assets/images/intl_advisory_meet_1788735680477.jpg';
-import cosmeticSurgeryImg from '../assets/images/about_focus_health_doctor.jpg';
-import ivfFertilityImg from '../assets/images/about_focus_health_modern.jpg';
-import hospitalOrthoImg from '../assets/images/svc_hospital_1788732485452.jpg';
-import dentalRecoveryImg from '../assets/images/vip_patient_serene_1788731726403.jpg';
-import visaFaqTerminalImg from '../assets/images/about_hero_terminal_gateway.jpg';
-import visaExtensionBoardImg from '../assets/images/formal_approach_boardroom_1788737998156.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export interface Article {
   id: string;
@@ -52,7 +36,7 @@ export const JOURNAL_HERO_DATA = {
   title: '«مجله ایرسا سیمرغ»',
   subtitle: '«راهنمای سفر، گردشگری سلامت و خدمات بین‌المللی»',
   description: 'مجموعه‌ای از مقالات تحلیلی، راهنماهای کاربردی و تجارب میزبانی اختصاصی در مسیر سفر، سلامت و فعالیت‌های بین‌المللی در ایران.',
-  image: heroEditorialImg,
+  image: ASSETS.hero.iranTourism.src,
 };
 
 export const FEATURED_ARTICLE_DATA: Article = {
@@ -60,7 +44,7 @@ export const FEATURED_ARTICLE_DATA: Article = {
   category: 'گردشگری سلامت',
   title: 'راهنمای جامع گردشگری سلامت در ایران؛ استانداردهای بیمارستانی، پزشکان متخصص و دوران نقاهت',
   excerpt: 'ایران با بهره‌مندی از مجرب‌ترین جراحان بین‌المللی، بیمارستان‌های مجهز به دپارتمان بیماران بین‌الملل (IPD) و هزینه‌های بهینه‌سازی‌شده، به یکی از مقاصد اصلی درمان در منطقه تبدیل شده است. در این مقاله کلیه مراحل از مشاوره آنلاین تا ترخیص و مراقبت پس از درمان را بررسی می‌کنیم.',
-  image: featuredHealthImg,
+  image: ASSETS.blog.healthHospitalityStandards.src,
   readTime: '۷ دقیقه مطالعه',
   date: '۱۵ اسفند ۱۴۰۳',
   author: 'دپارتمان سلامت ایرسا سیمرغ',
@@ -91,7 +75,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'سفر به ایران',
     title: 'اصفهان؛ نصف جهان و بازخوانی شکوه معماری در میدان نقش جهان',
     excerpt: 'روایتی از هندسه بی‌نظیر مسجد شیخ لطف‌الله، کاخ عالی‌قاپو و بازار سنتی قیصریه؛ چرا اصفهان قلب تپنده گردشگری فرهنگی ایران است.',
-    image: isfahanImg,
+    image: ASSETS.blog.isfahanTravelItinerary.src,
     readTime: '۵ دقیقه مطالعه',
     date: '۱۲ اسفند ۱۴۰۳',
     author: 'تحریریه فرهنگ و هنر',
@@ -115,7 +99,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'راهنمای سفر',
     title: 'تشریفات اختصاصی فرودگاهی (CIP)؛ راهنمای ورود بی‌دغدغه به ایران',
     excerpt: 'از استقبال پای پلکان پرواز تا پذیرایی در سالن اختصاصی و تحویل بار؛ خدمات CIP چگونه تجربه سفر هوایی شما را ارتقا می‌دهد.',
-    image: cipAirportImg,
+    image: ASSETS.blog.cipAirportGuide.src,
     readTime: '۴ دقیقه مطالعه',
     date: '۱۰ اسفند ۱۴۰۳',
     author: 'دپارتمان تشریفات ایرسا سیمرغ',
@@ -139,7 +123,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'ویزا',
     title: 'راهنمای انواع ویزای ایران؛ از روادید گردشگری تا ویزای درمان (T-Visa)',
     excerpt: 'بررسی مدارک لازم، زمان‌بندی صدور روادید الکترونیک و تفاوت ویزای درمانی با سایر مجوزهای ورود قانونی به جمهوری اسلامی ایران.',
-    image: visaImg,
+    image: ASSETS.blog.iranTreatmentVisa.src,
     readTime: '۶ دقیقه مطالعه',
     date: '۸ اسفند ۱۴۰۳',
     author: 'واحد امور کنسولی و روادید',
@@ -163,7 +147,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'سفر به ایران',
     title: 'تخت جمشید؛ نماد جاودان ۲۵۰۰ سال تمدن، تساهل و مهندسی کهن',
     excerpt: 'سفری در امتداد پلکان سنگی ورودی کاخ آپادانا؛ چطور پایتخت تشریفاتی هخامنشیان جهان را به تحسین واداشته است.',
-    image: persepolisImg,
+    image: ASSETS.blog.shirazPersepolisHistory.src,
     readTime: '۶ دقیقه مطالعه',
     date: '۵ اسفند ۱۴۰۳',
     author: 'تحریریه تاریخ و باستان‌شناسی',
@@ -187,7 +171,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'خدمات بین‌المللی',
     title: 'راهنمای ثبت شرکت و سرمایه‌گذاری خارجی در ایران؛ قوانین و مناطق آزاد',
     excerpt: 'چارچوب‌های قانونی جذب سرمایه خارجی (FIPPA)، ثبت نمایندگی و مزایای اقتصادی مناطق آزاد نظیر کیش و چابهار.',
-    image: bizFormationImg,
+    image: ASSETS.blog.businessFormationIran.src,
     readTime: '۸ دقیقه مطالعه',
     date: '۳ اسفند ۱۴۰۳',
     author: 'مشاوران حقوقی و اقتصادی',
@@ -211,7 +195,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'گردشگری سلامت',
     title: 'چشم‌پزشکی و جراحی‌های لیزیک در مراکز پیشرفته تهران و شیراز',
     excerpt: 'دسترسی به تجهیزات روز دنیا، چشم‌پزشکان حاذق و دوران بازپروری کوتاه با استانداردهای بین‌المللی و هزینه‌های شگفت‌انگیز.',
-    image: doctorConsultImg,
+    image: ASSETS.blog.doctorConsultationGuide.src,
     readTime: '۵ دقیقه مطالعه',
     date: '۱ اسفند ۱۴۰۳',
     author: 'دپارتمان سلامت ایرسا سیمرغ',
@@ -235,7 +219,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'سفر به ایران',
     title: 'جزیره کیش؛ نگین آرامش و گردشگری لوکس در کرانه‌های خلیج فارس',
     excerpt: 'آب‌های کریستالی، هتل‌های ۵ ستاره ساحلی، مراکز خرید معاف از گمرک و تفریحات آبی هیجان‌انگیز بدون نیاز به روادید ورودی.',
-    image: kishBeachImg,
+    image: ASSETS.blog.kishRecreationTourism.src,
     readTime: '۴ دقیقه مطالعه',
     date: '۲۸ بهمن ۱۴۰۳',
     author: 'تحریریه گردشگری ساحلی',
@@ -259,7 +243,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'راهنمای سفر',
     title: 'کویر لوت و کلوت‌های شهداد؛ ماجراجویی در کهن‌ترین سرزمین افسانه‌ای',
     excerpt: 'نکات ضروری سفر به گرم‌ترین نقطه زمین، تماشای غروب جادویی و آسمان پرستاره در قلب اثر طبیعی ثبت‌شده در یونسکو.',
-    image: lutDesertImg,
+    image: ASSETS.blog.lutDesertUnesco.src,
     readTime: '۵ دقیقه مطالعه',
     date: '۲۵ بهمن ۱۴۰۳',
     author: 'راهنمای طبیعت‌گردی اختصاصی',
@@ -283,7 +267,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'خدمات بین‌المللی',
     title: 'نکات کلیدی قراردادهای تجاری و اقامت بازرگانان خارجی در ایران',
     excerpt: 'مشاوره‌های حقوقی اختصاصی برای شرکت‌های چندملیتی، امور ارزی و نحوه دریافت اقامت بلندمدت برای مدیران و کارآفرینان.',
-    image: intlAdvisoryImg,
+    image: ASSETS.blog.corporateAdvisoryMiddleEast.src,
     readTime: '۶ دقیقه مطالعه',
     date: '۲۰ بهمن ۱۴۰۳',
     author: 'دپارتمان خدمات بین‌المللی',
@@ -307,7 +291,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'گردشگری سلامت',
     title: 'جراحی بینی و زیبایی در ایران؛ چرا تهران پایتخت رینوپلاستی جهان نامیده می‌شود؟',
     excerpt: 'تسلط جراحان فوق‌تخصص پلاستیک و گوش و حلق و بینی بر آناتومی‌های متنوع چهره، تکنیک‌های بسته‌بندی طبیعی (Preservation) و شبیه‌سازی سه‌بعدی پیش از عمل.',
-    image: cosmeticSurgeryImg,
+    image: ASSETS.blog.cosmeticSurgeryIran.src,
     readTime: '۶ دقیقه مطالعه',
     date: '۲۸ اسفند ۱۴۰۳',
     author: 'کلینیک جراحی پلاستیک و زیبایی ایرسا سیمرغ',
@@ -335,7 +319,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'گردشگری سلامت',
     title: 'درمان‌های پیشرفته ناباروری و IVF در پژوهشگاه رویان و مراکز مرجع ایران',
     excerpt: 'نرخ موفقیت بالای ۴۵ درصد در روش‌های میکرواینجکشن (ICSI)، غربالگری ژنتیکی جنین (PGD/PGS) و پروتکل‌های محرمانه و اخلاق‌مدار درمان ناباروری.',
-    image: ivfFertilityImg,
+    image: ASSETS.blog.ivfFertilityCenters.src,
     readTime: '۷ دقیقه مطالعه',
     date: '۲۶ اسفند ۱۴۰۳',
     author: 'دپارتمان طب باروری و ژنتیک ایرسا سیمرغ',
@@ -363,7 +347,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'گردشگری سلامت',
     title: 'جراحی‌های ارتوپدی و تعویض مفصل؛ زانو و لگن با ایمپلنت‌های استاندارد جهانی',
     excerpt: 'جراحی‌های کم‌تهاجمی تعویض مفصل با پروتزهای آمریکایی و اروپایی، ناوبری دیجیتال حین عمل و توانبخشی فیزیوتراپی در بیمارستان‌های تراز اول.',
-    image: hospitalOrthoImg,
+    image: ASSETS.blog.orthopedicSurgeries.src,
     readTime: '۵ دقیقه مطالعه',
     date: '۲۴ اسفند ۱۴۰۳',
     author: 'واحد ارتوپدی و توانبخشی ایرسا سیمرغ',
@@ -391,7 +375,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'گردشگری سلامت',
     title: 'دندانپزشکی دیجیتال و ایمپلنت‌های فوری؛ طراحی لبخند با اسکنرهای سه‌بعدی',
     excerpt: 'کاشت ایمپلنت فوری با راهنمای جراحی کامپیوتری، لمینت‌های سرامیکی با فناوری CAD/CAM و اصلاح طرح لبخند ظرف کوتاه‌ترین زمان اقامت.',
-    image: dentalRecoveryImg,
+    image: ASSETS.blog.dentalImplantPackages.src,
     readTime: '۵ دقیقه مطالعه',
     date: '۲۲ اسفند ۱۴۰۳',
     author: 'کلینیک تخصصی دندانپزشکی و ایمپلنتولوژی',
@@ -419,7 +403,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'ویزا',
     title: 'راهنمای گام‌به‌گام اخذ ویزای الکترونیکی ایران (E-Visa) و روادید بدو ورود فرودگاهی',
     excerpt: 'مراحل ثبت‌نام در سامانه ای‌ویزا، الزامات فایل گذرنامه و عکس پرسنلی، صدور برگه گرنت بدون درج برچسب روی پاسپورت و شرایط ویزای فرودگاهی.',
-    image: visaFaqTerminalImg,
+    image: ASSETS.blog.iranVisaRequirementsFaq.src,
     readTime: '۶ دقیقه مطالعه',
     date: '۲۰ اسفند ۱۴۰۳',
     author: 'اداره خدمات روادید الکترونیک ایرسا سیمرغ',
@@ -447,7 +431,7 @@ export const ARTICLES_DATA: Article[] = [
     category: 'ویزا',
     title: 'نحوه تمدید ویزا و تبدیل روادید در ایران؛ قوانین پلیس مهاجرت و اقامت قانونی',
     excerpt: 'شرایط تمدید ۳۰ تا ۶۰ روزه اقامت در مراکز پلیس مهاجرت، مدارک تمدید برای دوره‌های درمان پزشکی طولانی و تبدیل قانونی ویزای توریستی.',
-    image: visaExtensionBoardImg,
+    image: ASSETS.blog.medicalVisaExtensionRules.src,
     readTime: '۵ دقیقه مطالعه',
     date: '۱۸ اسفند ۱۴۰۳',
     author: 'واحد حقوقی و امور اقامت بین‌المللی ایرسا سیمرغ',

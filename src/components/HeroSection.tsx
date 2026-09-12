@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowLeft, Sparkles, ChevronDown } from 'lucide-react';
 import { HERO_DATA } from '../data/content';
-import heroPatientCareImg from '../assets/images/hero_patient_care_1788731701211.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export const HeroSection: React.FC = () => {
   const scrollToServices = () => {
@@ -21,8 +21,8 @@ export const HeroSection: React.FC = () => {
       {/* Background Image: International patient receiving professional high-end care */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroPatientCareImg}
-          alt="مراقبت تخصصی و گردشگری سلامت بیماران بین‌المللی - ایرسا سیمرغ"
+          src={ASSETS.hero.patientCare.src}
+          alt={ASSETS.hero.patientCare.alt}
           className="w-full h-full object-cover object-center filter brightness-[0.65] contrast-[1.05]"
           loading="eager"
         />

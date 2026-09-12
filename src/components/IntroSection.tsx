@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2, ShieldCheck, HeartHandshake } from 'lucide-react';
 import { INTRO_DATA, CONSULTATION_URL } from '../data/content';
-import patientCoordinatorImg from '../assets/images/patient_coordinator_1788731714247.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export const IntroSection: React.FC = () => {
   return (
@@ -78,8 +78,8 @@ export const IntroSection: React.FC = () => {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-100 group">
               <img
-                src={patientCoordinatorImg}
-                alt="بیمار بین‌المللی همراه با هماهنگ‌کننده پزشکی و درمانی - ایرسا سیمرغ"
+                src={ASSETS.team.medicalCoordinator.src}
+                alt={ASSETS.team.medicalCoordinator.alt}
                 className="w-full h-[450px] sm:h-[520px] object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />

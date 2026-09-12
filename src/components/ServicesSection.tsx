@@ -11,15 +11,7 @@ import {
   HeartHandshake 
 } from 'lucide-react';
 import { MEDICAL_SERVICES } from '../data/content';
-
-import svcConsultationImg from '../assets/images/svc_consultation_1788732462429.jpg';
-import svcDoctorImg from '../assets/images/svc_doctor_1788732474613.jpg';
-import svcHospitalImg from '../assets/images/svc_hospital_1788732485452.jpg';
-import svcVisaImg from '../assets/images/svc_visa_1788732496579.jpg';
-import svcFlightImg from '../assets/images/svc_flight_1788732507797.jpg';
-import svcHotelImg from '../assets/images/svc_hotel_1788732516592.jpg';
-import svcTransferImg from '../assets/images/svc_transfer_1788732528571.jpg';
-import svcRecoveryImg from '../assets/images/svc_recovery_1788732539999.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 const MINIMAL_ICONS: Record<string, React.ReactNode> = {
   consultation: <Stethoscope className="w-4 h-4 text-slate-800" />,
@@ -33,14 +25,14 @@ const MINIMAL_ICONS: Record<string, React.ReactNode> = {
 };
 
 const SERVICE_IMAGES: Record<string, string> = {
-  consultation: svcConsultationImg,
-  doctor: svcDoctorImg,
-  hospital: svcHospitalImg,
-  visa: svcVisaImg,
-  flight: svcFlightImg,
-  accommodation: svcHotelImg,
-  transfer: svcTransferImg,
-  recovery: svcRecoveryImg,
+  consultation: ASSETS.services.consultation.src,
+  doctor: ASSETS.services.doctorSelection.src,
+  hospital: ASSETS.services.hospitalBooking.src,
+  visa: ASSETS.services.visaAssistance.src,
+  flight: ASSETS.services.flightBooking.src,
+  accommodation: ASSETS.services.hotelAccommodation.src,
+  transfer: ASSETS.services.privateTransfer.src,
+  recovery: ASSETS.services.postOpRecovery.src,
 };
 
 export const ServicesSection: React.FC = () => {

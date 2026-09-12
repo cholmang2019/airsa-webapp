@@ -1,12 +1,4 @@
-import heroTravelImg from '../assets/images/about_hero_luminous_gateway_1788738390786.jpg';
-import whoWeAreImg from '../assets/images/about_who_we_are_reception.jpg';
-import missionImg from '../assets/images/about_mission_care_support.jpg';
-
-import tourismImg from '../assets/images/about_focus_tourism_isfahan.jpg';
-import healthTourismImg from '../assets/images/about_focus_health_doctor.jpg';
-import vipServicesImg from '../assets/images/about_focus_vip_chauffeur.jpg';
-import internationalServicesImg from '../assets/images/about_focus_intl_corporate.jpg';
-import approachImg from '../assets/images/formal_approach_boardroom_1788737998156.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export const OFFICIAL_CONTACT_URL = 'https://medixmaster.com/contact-us/';
 
@@ -14,14 +6,16 @@ export const ABOUT_HERO_DATA = {
   badge: 'IRSA SIMORGH | هویت سازمانی',
   title: '«درباره ایرسا سیمرغ»',
   subtitle: '«همراه شما در تمام مسیر سفر، درمان و تجربه ایران»',
-  image: heroTravelImg,
+  image: ASSETS.hero.aboutGateway.src,
+  alt: ASSETS.hero.aboutGateway.alt,
 };
 
 export const ABOUT_WHO_WE_ARE_DATA = {
   badge: 'معرفی مجموعه',
   statement: '«ایرسا سیمرغ مجموعه‌ای تخصصی در حوزه گردشگری، خدمات هوایی، گردشگری سلامت، گردشگری ورودی و خدمات بین‌المللی است.»',
   elaboration: 'هدف بنیادین این مجموعه، ارائه تجربه‌ای یکپارچه، آرام و با استانداردهای جهانی برای مسافران، گردشگران و بیماران بین‌المللی است. ما تمامی نیازهای پیش از سفر، تشریفات فرودگاهی، اقامتگاهی، ترانسفر، هماهنگی‌های تخصصی پزشکی و امور حقوقی و تجاری را در قالب یک سامانه هماهنگ مدیریت می‌کنیم تا میهمانان ما بدون دغدغه، بالاترین سطح مراقبت و میزبانی را در ایران تجربه نمایند.',
-  image: whoWeAreImg,
+  image: ASSETS.about.whoWeAreReception.src,
+  alt: ASSETS.about.whoWeAreReception.alt,
   highlights: [
     { title: 'رویکرد یکپارچه (Integrated Care)', desc: 'مدیریت پیوسته کلیه مراحل سفر، اسکان و سلامت' },
     { title: 'استانداردهای بین‌المللی', desc: 'تعهد به کیفیت، زمان‌بندی دقیق و پروتکل‌های محرمانگی' },
@@ -35,6 +29,7 @@ export interface FocusArea {
   title: string;
   description: string;
   image: string;
+  alt: string;
 }
 
 export const ABOUT_OUR_FOCUS_DATA: FocusArea[] = [
@@ -43,28 +38,32 @@ export const ABOUT_OUR_FOCUS_DATA: FocusArea[] = [
     number: '۰۱',
     title: 'گردشگری',
     description: 'برنامه‌ریزی سفرهای اختصاصی، معرفی جاذبه‌های کهن ایران و میزبانی با بالاترین کیفیت.',
-    image: tourismImg,
+    image: ASSETS.about.focusTourismIsfahan.src,
+    alt: ASSETS.about.focusTourismIsfahan.alt,
   },
   {
     id: 'health-tourism',
     number: '۰۲',
     title: 'گردشگری سلامت',
     description: 'هماهنگی خدمات پزشکی برتر، پیگیری دوره نقاهت و مراقبت همه‌جانبه از بیماران بین‌المللی.',
-    image: healthTourismImg,
+    image: ASSETS.about.focusHealthDoctor.src,
+    alt: ASSETS.about.focusHealthDoctor.alt,
   },
   {
     id: 'vip-services',
     number: '۰۳',
     title: 'خدمات VIP',
     description: 'تشریفات اختصاصی فرودگاهی CIP، ترانسفر لوکس، اقامتگاه‌های ویژه و همراهی ۲۴ ساعته.',
-    image: vipServicesImg,
+    image: ASSETS.about.focusVipChauffeur.src,
+    alt: ASSETS.about.focusVipChauffeur.alt,
   },
   {
     id: 'international-services',
     number: '۰۴',
     title: 'خدمات بین‌المللی',
     description: 'تسهیل ثبت شرکت، خدمات اقامت قانونی، مشاوره سرمایه‌گذاری و ارتباطات راهبردی در ایران.',
-    image: internationalServicesImg,
+    image: ASSETS.about.focusIntlCorporate.src,
+    alt: ASSETS.about.focusIntlCorporate.alt,
   },
 ];
 
@@ -73,7 +72,8 @@ export const ABOUT_MISSION_DATA = {
   title: '«ماموریت ما»',
   text: '«ایجاد تجربه‌ای حرفه‌ای، یکپارچه و قابل اعتماد برای مسافران و بیماران بین‌المللی.»',
   supportingText: 'تعهد ما فراتر از ارائه خدمات صرف است؛ ما پلی معتمد میان خواسته‌های شما و بالاترین ظرفیت‌های گردشگری و درمانی ایران هستیم.',
-  image: missionImg,
+  image: ASSETS.about.missionCareSupport.src,
+  alt: ASSETS.about.missionCareSupport.alt,
 };
 
 export const ABOUT_VISION_DATA = {
@@ -86,7 +86,8 @@ export const ABOUT_VISION_DATA = {
 export const ABOUT_APPROACH_DATA = {
   badge: 'رویکرد یکپارچه ایرسا سیمرغ',
   title: 'تعهد به همراهی پیوسته و کیفیت بی‌نقص',
-  image: approachImg,
+  image: ASSETS.about.approachBoardroom.src,
+  alt: ASSETS.about.approachBoardroom.alt,
   paragraphs: [
     'در ایرسا سیمرغ، ما به خلق سفرهایی باور داریم که با آرامش کامل، شفافیت همه‌جانبه و احساس امنیت رقم می‌خورند. ساختار خدمات ما فراتر از یک آژانس مسافرتی یا مرکز هماهنگی مقطعی طراحی شده است؛ ما زنجیره‌ای پیوسته از کارشناسان تشریفات، مترجمان زبده و تیم‌های مراقبت بالینی را گرد هم آورده‌ایم تا در تمامی لحظات، همراهی مطمئن و پاسخگو در کنار میهمانان باشیم.',
     'از نخستین مشاوره پیش از ورود و اخذ روادید، تا استقبال اختصاصی در فرودگاه، هماهنگی اقامتگاه‌های منتخب، تنظیم برنامه‌های درمانی در بیمارستان‌های تراز اول و برنامه‌ریزی گشت‌های فرهنگی، تمام امور با دقت و نظارت مستمر مدیریت می‌شوند تا مراجعان کمترین دغدغه اجرایی را احساس نکنند.',

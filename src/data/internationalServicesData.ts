@@ -1,9 +1,4 @@
-import heroBusinessImg from '../assets/images/travel_services_hero_1788733916402.jpg';
-import businessMeetingImg from '../assets/images/svc_consultation_1788732462429.jpg';
-import companyFormationImg from '../assets/images/company_formation_biz_1788735659476.jpg';
-import residencyLegalImg from '../assets/images/svc_visa_1788732496579.jpg';
-import investmentImg from '../assets/images/oman_luxury_tourism_1788730560569.jpg';
-import advisoryImg from '../assets/images/intl_advisory_meet_1788735680477.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export const OFFICIAL_CONSULTATION_URL = 'https://medixmaster.com/contact-us/';
 
@@ -12,7 +7,7 @@ export const INTERNATIONAL_HERO_DATA = {
   title: '«دروازه‌ای برای ورود به ایران»',
   subtitle: '«خدمات بین‌المللی برای افرادی که به دنبال راه‌اندازی کسب‌وکار، اقامت یا سرمایه‌گذاری در ایران هستند.»',
   ctaText: 'مشاوره تخصصی',
-  image: heroBusinessImg,
+  image: ASSETS.hero.travelServices.src,
 };
 
 export interface ServiceCardItem {
@@ -32,7 +27,7 @@ export const INTERNATIONAL_SERVICES_DATA: ServiceCardItem[] = [
     title: 'ثبت شرکت',
     description: 'راهکارهای ثبت شرکت و شروع فعالیت اقتصادی.',
     tag: 'Corporate & Legal Formation',
-    image: companyFormationImg,
+    image: ASSETS.services.companyFormation.src,
     highlights: [
       'تدوین اساسنامه و انتخاب ساختار حقوقی بهینه',
       'افتتاح حساب‌های شرکتی و امور مالیاتی قانونی',
@@ -45,7 +40,7 @@ export const INTERNATIONAL_SERVICES_DATA: ServiceCardItem[] = [
     title: 'خدمات اقامت',
     description: 'مشاوره درباره راهکارهای قانونی اقامت.',
     tag: 'Residency & Visa Solutions',
-    image: residencyLegalImg,
+    image: ASSETS.services.visaAssistance.src,
     highlights: [
       'بررسی پرونده و گزینه‌های اقامت تجاری و سرمایه‌گذاری',
       'تسهیل دریافت ویزاهای بلندمدت و تمدید مدارک',
@@ -58,7 +53,7 @@ export const INTERNATIONAL_SERVICES_DATA: ServiceCardItem[] = [
     title: 'سرمایه‌گذاری خارجی',
     description: 'مشاوره و خدمات مرتبط با سرمایه‌گذاری خارجی.',
     tag: 'Foreign Direct Investment (FDI)',
-    image: investmentImg,
+    image: ASSETS.services.luxuryTourism.src,
     highlights: [
       'مشاوره فرصت‌های راهبردی و تحلیل بازارهای هدف',
       'رعایت چارچوب‌های تشویق و حمایت از سرمایه‌گذاری (FIPPA)',
@@ -71,7 +66,7 @@ export const INTERNATIONAL_SERVICES_DATA: ServiceCardItem[] = [
     title: 'مشاوره بین‌المللی',
     description: 'بررسی نیاز و ارائه مسیر مناسب.',
     tag: 'Strategic Advisory & Roadmapping',
-    image: advisoryImg,
+    image: ASSETS.services.intlAdvisory.src,
     highlights: [
       'تحلیل جامع نیازمندی‌ها و اهداف شخصی یا سازمانی',
       'طراحی نقشه راه اجرایی گام‌به‌گام با پیش‌بینی ریسک‌ها',
@@ -85,7 +80,7 @@ export const INTERNATIONAL_SUPPORT_DATA = {
   title: '«یک نقطه تماس برای مسیر شما»',
   lead: 'آرامش، اطمینان و سرعت عمل در تعامل با یک تیم اختصاصی و متعهد.',
   description: 'در ایرسا سیمرغ، تمامی هماهنگی‌های حقوقی، تجاری، اقامتی و اجرایی از طریق یک مدیر پرونده ارشد و اختصاصی ساماندهی می‌شود. به جای درگیر شدن با سازمان‌های متعدد، تشریفات پیچیده اداری و پیگیری‌های پراکنده، شما از یک نقطه تماس مطمئن و مسلط به پروتکل‌های بین‌المللی بهره‌مند می‌شوید که مسیر ورود و استقرار شما را با بالاترین دقت، شفافیت و محرمانگی مدیریت می‌کند.',
-  image: businessMeetingImg,
+  image: ASSETS.services.consultation.src,
   pillars: [
     {
       title: 'مدیر پرونده اختصاصی (Single Point of Contact)',

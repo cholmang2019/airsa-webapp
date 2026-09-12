@@ -1,9 +1,4 @@
-import heroTravelImg from '../assets/images/travel_services_hero_1788733916402.jpg';
-import flightImg from '../assets/images/svc_flight_1788732507797.jpg';
-import visaImg from '../assets/images/svc_visa_1788732496579.jpg';
-import hotelImg from '../assets/images/svc_hotel_1788732516592.jpg';
-import transferImg from '../assets/images/svc_transfer_1788732528571.jpg';
-import seamlessTravelImg from '../assets/images/seamless_travel_exp_1788733930696.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export const CONSULTATION_URL = "https://medixmaster.com/contact-us/";
 
@@ -22,7 +17,7 @@ export const HERO_CONTENT = {
   subtitle: '«خدمات سفر ایرسا سیمرغ از بلیت و ویزا تا اقامت و ترانسفر.»',
   ctaText: 'مشاهده خدمات سفر',
   consultationText: 'درخواست مشاوره',
-  image: heroTravelImg,
+  image: ASSETS.hero.travelServices.src,
 };
 
 export const CORE_SERVICES: CoreServiceItem[] = [
@@ -32,7 +27,7 @@ export const CORE_SERVICES: CoreServiceItem[] = [
     blurb: 'رزرو و صدور بلیت سفرهای داخلی و بین‌المللی.',
     description: 'دسترسی سریع به معتبرترین خطوط هوایی بین‌المللی و داخلی، بهترین نرخ‌ها و امکان برنامه‌ریزی پروازهای اتصالی با آرامش کامل.',
     tag: 'پروازهای مستقیم و بین‌المللی',
-    image: flightImg,
+    image: ASSETS.services.flightBooking.src,
     highlights: [
       'صدور آنی پروازهای معتبر داخلی و بین‌المللی',
       'پشتیبانی تغییر زمان و جابه‌جایی بلیت',
@@ -45,7 +40,7 @@ export const CORE_SERVICES: CoreServiceItem[] = [
     blurb: 'مشاوره و پیگیری امور مرتبط با ویزا.',
     description: 'تسهیل و پشتیبانی کامل مراحل اداری، بررسی مدارک و دریافت روادید بدون دغدغه و اتلاف وقت مسافر.',
     tag: 'تسهیل امور کنسولی',
-    image: visaImg,
+    image: ASSETS.services.visaAssistance.src,
     highlights: [
       'بررسی و اعتبارسنجی دقیق مدارک پیش از ارسال',
       'پیگیری مستقیم امور ویزای گردشگری و تجاری',
@@ -58,7 +53,7 @@ export const CORE_SERVICES: CoreServiceItem[] = [
     blurb: 'هماهنگی هتل و محل اقامت متناسب با سفر.',
     description: 'انتخاب از میان برترین هتل‌های پنج ستاره، اقامتگاه‌های بوتیک لوکس سنتی یا مجموعه‌های مجهز تجاری با تایید کیفیت.',
     tag: 'هتل‌ها و اقامتگاه‌های برگزیده',
-    image: hotelImg,
+    image: ASSETS.services.hotelAccommodation.src,
     highlights: [
       'رزرو تاییدشده هتل‌های ۵ ستاره و بوتیک‌های اصیل',
       'ضمانت بهترین قیمت و شفافیت کامل خدمات',
@@ -71,7 +66,7 @@ export const CORE_SERVICES: CoreServiceItem[] = [
     blurb: 'انتقال فرودگاهی و حمل‌ونقل اختصاصی.',
     description: 'ناوگان خودروهای VIP لوکس و مجهز، رانندگان مجرب و وقت‌شناس، و هماهنگی دقیق سفرهای درون‌شهری و بین‌شهری.',
     tag: 'ناوگان VIP تشریفاتی',
-    image: transferImg,
+    image: ASSETS.services.privateTransfer.src,
     highlights: [
       'ترانسفر اختصاصی فرودگاهی بدون معطلی',
       'خودروهای مدرن VIP با رانندگان حرفه‌ای و مسلط',
@@ -84,7 +79,7 @@ export const SEAMLESS_TRAVEL = {
   title: '«سفر بدون دغدغه»',
   lead: 'هماهنگی یکپارچه و هوشمندانه تمام ارکان سفر، کلید تجربه‌ای آرام و به‌یادماندنی است.',
   description: 'در ایرسا سیمرغ، ما تک‌تک اجزای سفر شما را به عنوان زنجیره‌ای به هم‌پیوسته می‌بینیم. از لحظه‌ای که به فکر رزرو بلیت و اخذ ویزا می‌افتید، تا زمان تحویل بار، ترانسفر فرودگاهی و استقرار در هتل، کارشناسان ما همه‌چیز را با دقت ساعت هماهنگ می‌کنند تا هیچ دغدغه یا وقفه‌ای در سفر شما پیش نیاید.',
-  image: seamlessTravelImg,
+  image: ASSETS.services.seamlessTravel.src,
   badges: [
     { title: 'یکپارچگی خدمات', desc: 'مدیریت متمرکز پرواز، اقامت و جابه‌جایی در یک پرونده' },
     { title: 'کانسی‌یژ اختصاصی', desc: 'پشتیبانی بی‌وقفه مسافر در کلیه ساعات شبانه‌روز' },

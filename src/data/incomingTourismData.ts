@@ -1,21 +1,4 @@
-import heroIranImg from '../assets/images/hero_iran_cinematic_1788733519875.jpg';
-import touristIranImg from '../assets/images/tourist_in_iran_1788733531977.jpg';
-
-// Services images
-import cipReceptionImg from '../assets/images/svc_airport_cip_1788733656641.jpg';
-import hotelAccommodationImg from '../assets/images/svc_hotel_1788732516592.jpg';
-import privateTransferImg from '../assets/images/svc_transfer_1788732528571.jpg';
-import itineraryMapImg from '../assets/images/svc_itinerary_map_1788733622001.jpg';
-import localExpImg from '../assets/images/iranian_life_bazaar_1788733596085.jpg';
-import supportImg from '../assets/images/patient_coordinator_1788731714247.jpg';
-
-// Masonry gallery images
-import cultureImg from '../assets/images/culture_carpet_art_1788733608823.jpg';
-import historyImg from '../assets/images/history_persepolis_1788733559024.jpg';
-import foodImg from '../assets/images/persian_food_feast_1788733545465.jpg';
-import natureImg from '../assets/images/nature_lut_desert_1788733582646.jpg';
-import architectureImg from '../assets/images/architecture_stained_glass_1788733570786.jpg';
-import iranianLifeImg from '../assets/images/yazd_historic_windcatchers_1788731231623.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export const CONSULTATION_URL = "https://medixmaster.com/contact-us/";
 
@@ -49,7 +32,7 @@ export const HERO_DATA = {
   title: '«ایران را به شیوه خود تجربه کنید»',
   subtitle: '«خدمات تخصصی گردشگری ورودی برای مسافرانی که میخواهند ایران را متفاوت تجربه کنند.»',
   ctaText: '«برنامه سفر من را طراحی کنید»',
-  image: heroIranImg,
+  image: ASSETS.hero.iranTourism.src,
 };
 
 export const INTRO_DATA = {
@@ -77,7 +60,7 @@ export const INTRO_DATA = {
       desc: 'کانسی‌یژ اختصاصی در تمام طول اقامت برای اطمینان خاطر کامل',
     },
   ],
-  image: touristIranImg,
+  image: ASSETS.services.inboundTouristExperience.src,
 };
 
 export const SERVICES_DATA: TourismService[] = [
@@ -86,7 +69,7 @@ export const SERVICES_DATA: TourismService[] = [
     title: 'استقبال فرودگاهی',
     subtitle: 'تشریفات اختصاصی CIP و ترانسفر مستقیم',
     description: 'استقبال بدون معطلی در سالن تشریفات اختصاصی فرودگاه، انجام امور گذرنامه و بار، و هدایت به ترانسفر VIP.',
-    image: cipReceptionImg,
+    image: ASSETS.services.cipAirportLounge.src,
     tag: 'ورود بدون دغدغه',
   },
   {
@@ -94,7 +77,7 @@ export const SERVICES_DATA: TourismService[] = [
     title: 'اقامت',
     subtitle: 'هتل‌های لوکس و بوتیک‌های تاریخی اصیل',
     description: 'رزرو اقامتگاه‌های دست‌چین‌شده سنتی با حیاط‌های دلنشین فیروزه‌ای یا هتل‌های مدرن ۵ ستاره با بالاترین استانداردهای رفاهی.',
-    image: hotelAccommodationImg,
+    image: ASSETS.services.hotelAccommodation.src,
     tag: 'آرامش و شکوه',
   },
   {
@@ -102,7 +85,7 @@ export const SERVICES_DATA: TourismService[] = [
     title: 'ترانسفر اختصاصی',
     subtitle: 'ناوگان VIP بین‌شهری و درون‌شهری',
     description: 'جابه‌جایی ایمن و آسوده در سراسر ایران با خودروهای لوکس مجهز، رانندگان مجرب و سیستم ره‌گیری دقیق مسیر.',
-    image: privateTransferImg,
+    image: ASSETS.services.privateTransfer.src,
     tag: 'سفری ایمن و راحت',
   },
   {
@@ -110,7 +93,7 @@ export const SERVICES_DATA: TourismService[] = [
     title: 'برنامه‌ریزی سفر',
     subtitle: 'طراحی گشت‌ها متناسب با ریتم و سلیقه شما',
     description: 'مسیرهای ویژه فراتر از تورهای کلیشه‌ای، متمرکز بر علایق باستان‌شناسی، عکاسی، طبیعت، معماری یا خوراک‌شناسی.',
-    image: itineraryMapImg,
+    image: ASSETS.services.itineraryPlanning.src,
     tag: 'اختصاصی و منعطف',
   },
   {
@@ -118,7 +101,7 @@ export const SERVICES_DATA: TourismService[] = [
     title: 'تجربه‌های محلی',
     subtitle: 'ملاقات با قلب تپنده فرهنگ و هنر ایرانی',
     description: 'از ضیافت شام در خانه‌های سنتی و بافتن گره‌های فرش تا پیمایش کویرهای پرستاره و هم‌صحبتی با استادکاران بازار.',
-    image: localExpImg,
+    image: ASSETS.services.traditionalBazaarLife.src,
     tag: 'اصیل و لمس‌کردنی',
   },
   {
@@ -126,7 +109,7 @@ export const SERVICES_DATA: TourismService[] = [
     title: 'پشتیبانی در طول سفر',
     subtitle: 'همراهی شبانه‌روزی و کانسی‌یژ اختصاصی',
     description: 'پشتیبانی چندزبانه ۲۴/۷ از آغاز تا خروج از ایران؛ پاسخگویی فوری به نیازها، تغییرات برنامه و راهنمایی لحظه‌ای.',
-    image: supportImg,
+    image: ASSETS.team.medicalCoordinator.src,
     tag: 'آسودگی خاطر کامل',
   },
 ];
@@ -137,7 +120,7 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     title: 'معماری و نور',
     subtitle: 'رقص نور از پشت شیشه‌های رنگی و کاشی‌کاری‌های زرین‌فام',
     category: 'معماری',
-    image: architectureImg,
+    image: ASSETS.services.nasirAlMulkArchitecture.src,
     aspectClass: 'sm:col-span-2 lg:col-span-2 row-span-2 aspect-[4/3] sm:aspect-auto sm:min-h-[420px]',
   },
   {
@@ -145,7 +128,7 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     title: 'هزاره‌های تاریخ',
     subtitle: 'شکوه هخامنشیان در تخت‌جمشید و پایتخت‌های باستانی پارس',
     category: 'تاریخ',
-    image: historyImg,
+    image: ASSETS.services.persepolisHeritage.src,
     aspectClass: 'col-span-1 aspect-[3/4] sm:min-h-[300px]',
   },
   {
@@ -153,7 +136,7 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     title: 'سفره اصیل ایرانی',
     subtitle: 'طعم زعفران، انار، زرشک و عطر ادویه‌های باستانی',
     category: 'غذا',
-    image: foodImg,
+    image: ASSETS.services.persianCuisineFeast.src,
     aspectClass: 'col-span-1 sm:col-span-1 aspect-square sm:min-h-[300px]',
   },
   {
@@ -161,7 +144,7 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     title: 'هنر و فرهنگ',
     subtitle: 'ظرافت گره‌های فرش ابریشم و میراث جاودانه استادکاران',
     category: 'فرهنگ',
-    image: cultureImg,
+    image: ASSETS.services.persianCarpetCulture.src,
     aspectClass: 'col-span-1 aspect-square sm:min-h-[290px]',
   },
   {
@@ -169,7 +152,7 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     title: 'زندگی و اصالت',
     subtitle: 'نبض گرم بازارهای تاریخی، بادگیرهای کویری و عطر چای دارچین',
     category: 'زندگی ایرانی',
-    image: iranianLifeImg,
+    image: ASSETS.services.yazdWindcatchers.src,
     aspectClass: 'col-span-1 sm:col-span-1 aspect-[4/3] sm:min-h-[290px]',
   },
   {
@@ -177,7 +160,7 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     title: 'طبیعت سحرانگیز',
     subtitle: 'سکوت رمل‌های کویر لوت تا سپیدی قله‌های البرز',
     category: 'طبیعت',
-    image: natureImg,
+    image: ASSETS.services.lutDesertSafari.src,
     aspectClass: 'col-span-1 sm:col-span-2 lg:col-span-1 aspect-[3/4] sm:min-h-[290px]',
   },
 ];

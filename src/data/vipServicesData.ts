@@ -1,16 +1,4 @@
-import airportCipImg from '../assets/images/svc_airport_cip_1788733656641.jpg';
-import transferImg from '../assets/images/svc_transfer_1788732528571.jpg';
-import hotelImg from '../assets/images/svc_hotel_1788732516592.jpg';
-import conciergeImg from '../assets/images/seamless_travel_exp_1788733930696.jpg';
-import personalCompanionImg from '../assets/images/patient_coordinator_1788731714247.jpg';
-import medicalCoordImg from '../assets/images/healthcare_hospitality_1788731009329.jpg';
-import departureImg from '../assets/images/travel_services_hero_1788733916402.jpg';
-
-// Masonry curated visual assets for luxury brand statement
-import archStainedGlass from '../assets/images/architecture_stained_glass_1788733570786.jpg';
-import serenePatientCare from '../assets/images/vip_patient_serene_1788731726403.jpg';
-import carpetArtistry from '../assets/images/culture_carpet_art_1788733608823.jpg';
-import historicOmanSerenity from '../assets/images/oman_luxury_tourism_1788730560569.jpg';
+import { ASSETS } from '../assets/assetManager';
 
 export const VIP_CONSULTATION_URL = 'https://medixmaster.com/contact-us/';
 
@@ -37,14 +25,14 @@ export const VIP_HERO_DATA = {
   title: '«سفر، فراتر از انتظار»',
   subtitle: '«خدمات VIP اختصاصی برای تجربه‌ای آرام، شخصی‌سازی‌شده و حرفه‌ای.»',
   ctaText: '«درخواست خدمات VIP»',
-  image: departureImg,
+  image: ASSETS.hero.travelServices.src,
 };
 
 export const VIP_EXPERIENCE_DATA = {
   title: '«یک همراه اختصاصی در مسیر شما»',
   lead: 'آرامش خاطر مطلق در گرو حضور دستیاری اختصاصی است که پیش از بروز هر نیازی، پاسخ آن را مهیا ساخته است.',
   description: 'در سطح خدمات VIP ایرسا سیمرغ، یک کانسی‌یژ ارشد و اختصاصی مسلط به زبان و پروتکل‌های تشریفات بین‌المللی در تمامی مراحل سفر همراه شماست. از هماهنگی گیت‌های اختصاصی فرودگاه و انتقال بی‌وقفه چمدان‌ها گرفته تا شخصی‌سازی اقامتگاه، رزرواسیون‌های ویژه، تنظیم ملاقات‌های پزشکی و رفع موانع زبانی، تمامی امور با بالاترین ضریب محرمانگی و دقت میلی‌متری به انجام می‌رسد.',
-  image: personalCompanionImg,
+  image: ASSETS.team.medicalCoordinator.src,
   pillars: [
     { title: 'محرمانگی و حریم خصوصی', desc: 'حفاظت کامل از اطلاعات، هویت و آرامش فردی مهمانان' },
     { title: 'پاسخگویی بی‌وقفه ۲۴/۷', desc: 'ارتباط مستقیم اختصاصی در تمامی ساعات شبانه‌روز' },
@@ -57,7 +45,7 @@ export const VIP_HOSPITALITY_OVERVIEW = {
   title: 'آرامش بی‌دغدغه، هماهنگی بی‌نقص',
   subtitle: '«هنر میزبانی لوکس، در پیش‌بینی جزئیاتی است که شما هنوز به آن فکر نکرده‌اید.»',
   description: 'تجربه سفر تشریفاتی در ایرسا سیمرغ تنها معطوف به امکانات مجلل نیست؛ بلکه حاصل هماهنگی شبکه‌ای یکپارچه از متخصصان تشریفات فرودگاهی، رانندگان مجرب ناوگان VIP، مدیران اقامتگاه‌های ۵ ستاره و مشاوران زبده است. ما تمامی دسترسی‌ها، زمان‌بندی‌ها و ترتیبات اداری را پیش از حضور شما نهایی می‌کنیم تا جریان سفر با بیشترین آرامش و بدون کوچک‌ترین اتلاف وقت طی شود.',
-  image: conciergeImg,
+  image: ASSETS.services.seamlessTravel.src,
   highlights: [
     {
       title: 'مدیریت دقیق زمان و تردد',
@@ -86,7 +74,7 @@ export const VIP_SERVICES_DATA: VipServiceItem[] = [
     subtitle: 'تشریفات اختصاصی CIP پای پرواز',
     description: 'خروج اختصاصی پای پلکان هواپیما با خودروی تشریفاتی، پذیرایی در سالن اختصاصی CIP، و انجام کلیه تشریفات گذرنامه و تحویل چمدان بدون معطلی در صفوف عمومی.',
     tag: 'Fast-Track & CIP Lounge',
-    image: airportCipImg,
+    image: ASSETS.services.cipAirportLounge.src,
     features: [
       'انتقال اختصاصی پای پرواز با خودروی تشریفات',
       'پذیرایی در سالن‌های VIP و استراحت مسافر',
@@ -99,7 +87,7 @@ export const VIP_SERVICES_DATA: VipServiceItem[] = [
     subtitle: 'ناوگان لوکس خودروهای تشریفاتی',
     description: 'ناوگان مدرن از برترین خودروهای تشریفاتی روز دنیا همراه با رانندگان زبده، مسلط به آداب مهمانداری و متعهد به حفظ کامل حریم خصوصی و امنیت سفر.',
     tag: 'Chauffeur & Fleet VIP',
-    image: transferImg,
+    image: ASSETS.services.privateTransfer.src,
     features: [
       'خودروهای مدرن کلاس لوکس با سیستم تهویه مطبوع پیشرفته',
       'رانندگان مسلط به زبان‌های بین‌المللی و آداب دیپلماتیک',
@@ -112,7 +100,7 @@ export const VIP_SERVICES_DATA: VipServiceItem[] = [
     subtitle: 'سوئیت‌های منتخب در بهترین هتل‌ها',
     description: 'اقامت در باشکوه‌ترین سوئیت‌های پرزیدنتال و هتل‌های بوتیک اصیل دارای استاندارد جهانی با امکانات چک‌این اختصاصی در اتاق و سرویس‌دهی اختصاصی ۲۴ ساعته.',
     tag: 'Curated 5-Star Suites',
-    image: hotelImg,
+    image: ASSETS.services.hotelAccommodation.src,
     features: [
       'چک‌این و چک‌اوت اختصاصی در داخل سوئیت بدون توقف در لابی',
       'سرویس‌دهی اختصاصی و منوی تغذیه‌ای شخصی‌سازی‌شده',
@@ -125,7 +113,7 @@ export const VIP_SERVICES_DATA: VipServiceItem[] = [
     subtitle: 'کانسی‌یژ اختصاصی در تمام ساعات سفر',
     description: 'حضور یک مشاور و همراه شخصی اختصاصی مسلط به زبان شما برای تسهیل ارتباطات، برنامه‌ریزی قرارهای کاری یا گردشگری، و مدیریت سریع تغییرات احتمالی.',
     tag: 'Dedicated Concierge',
-    image: conciergeImg,
+    image: ASSETS.services.seamlessTravel.src,
     features: [
       'دسترسی تلفنی و حضوری مستقیم در تمام لحظات سفر',
       'تسلط کامل به زبان انگلیسی، عربی و فارسی',
@@ -138,7 +126,7 @@ export const VIP_SERVICES_DATA: VipServiceItem[] = [
     subtitle: 'مسیر سبز مراقبت‌های سلامت و درمانی',
     description: 'در صورت نیاز به خدمات درمانی، چکاپ یا مشاوره‌های سلامت، پذیرش مستقیم نزد زبده‌ترین اساتید پزشکی در کلینیک‌ها و بیمارستان‌های فوق‌تخصصی بدون کوچک‌ترین معطلی.',
     tag: 'Priority Healthcare Liaison',
-    image: medicalCoordImg,
+    image: ASSETS.services.healthcareHospitality.src,
     features: [
       'مسیر سبز بدون نوبت در برترین بیمارستان‌های معتبر',
       'هماهنگی مستقیم با پزشکان ارشد و فوق‌تخصص',
@@ -151,7 +139,7 @@ export const VIP_SERVICES_DATA: VipServiceItem[] = [
     subtitle: 'ترخیص و بدرقه با آرامش مطلق تا پای پرواز',
     description: 'پایان سفر با همان شکوه آغاز؛ بدرقه از هتل، انتقال مستقیم به لانژ تشریفات فرودگاه، تحویل بار، کارت پرواز و هدایت VIP تا لحظه ورود به کابین هواپیما.',
     tag: 'Seamless Departure VIP',
-    image: departureImg,
+    image: ASSETS.hero.travelServices.src,
     features: [
       'دریافت کارت پرواز و بارنامه توسط کارشناس تشریفات',
       'استراحت در سالن لانژ خصوصی همراه با پذیرایی بوفه',
@@ -216,10 +204,10 @@ export const VIP_BRAND_STATEMENT = {
   faStatement: '«از اولین لحظه ورود تا زمان بازگشت، در کنار شما هستیم.»',
   subtext: 'تعهد به برتری، دقت در جزئیات نادیدنی و احترام به حریم فردی مهمانان، جوهره بنیادین خدمات VIP ایرسا سیمرغ است.',
   mosaicImages: [
-    { src: archStainedGlass, title: 'شکوه و اصالت' },
-    { src: serenePatientCare, title: 'مراقبت و آرامش' },
-    { src: carpetArtistry, title: 'ظرافت بی‌مانند' },
-    { src: historicOmanSerenity, title: 'میزبانی شاهانه' },
+    { src: ASSETS.services.nasirAlMulkArchitecture.src, title: 'شکوه و اصالت' },
+    { src: ASSETS.services.vipPatientRecovery.src, title: 'مراقبت و آرامش' },
+    { src: ASSETS.services.persianCarpetCulture.src, title: 'ظرافت بی‌مانند' },
+    { src: ASSETS.services.luxuryTourism.src, title: 'میزبانی شاهانه' },
   ],
 };
 
