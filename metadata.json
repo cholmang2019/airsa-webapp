@@ -1,0 +1,8 @@
+{
+  "name": "Airsa Simorgh Jahan | ایرسا سیمرغ جهان",
+  "description": "پرتال جامع ایرسا سیمرغ جهان (Airsa Simorgh Jahan) با هدر و فوتر سراسری - گردشگری سلامت، گردشگری ورودی، خدمات سفر، تشریفات VIP و خدمات بین‌المللی",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
