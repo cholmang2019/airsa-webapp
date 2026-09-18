@@ -1,3 +1,4 @@
+```javascript
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -6,7 +7,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(() => {
   return {
-    base: '/airsa-webapp/',
+    // Custom domain: https://airsasimorghjahan.com/
+    base: '/',
 
     plugins: [
       react(),
@@ -22,7 +24,7 @@ export default defineConfig(() => {
         ],
 
         manifest: {
-          id: '/airsa-webapp/',
+          id: '/',
           name: 'ایرسا سیمرغ جهان (Airsa Simorgh Jahan)',
           short_name: 'ایرسا سیمرغ جهان',
 
@@ -35,8 +37,8 @@ export default defineConfig(() => {
           display: 'standalone',
           orientation: 'portrait',
 
-          start_url: '/airsa-webapp/',
-          scope: '/airsa-webapp/',
+          start_url: '/',
+          scope: '/',
 
           lang: 'fa',
           dir: 'rtl',
@@ -53,7 +55,7 @@ export default defineConfig(() => {
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any',
-            },
+              },
             {
               src: 'images/icons/app-icon-512.png',
               sizes: '512x512',
@@ -92,3 +94,4 @@ export default defineConfig(() => {
     },
   };
 });
+```
