@@ -8,7 +8,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(() => {
   return {
     // Custom domain: https://airsasimorghjahan.com/
-    base: '/',
+    base: '/airsa-webapp/',
 
     plugins: [
       react(),
