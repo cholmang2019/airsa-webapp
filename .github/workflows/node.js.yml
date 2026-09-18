@@ -1,3 +1,4 @@
+```yaml
 name: Deploy Vite App to GitHub Pages
 
 on:
@@ -39,12 +40,39 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Build
-        run: npm run build
+        run: |
+          echo "===== NODE VERSION ====="
+          node --version
+
+          echo "===== NPM VERSION ====="
+          npm --version
+
+          echo "===== INSTALLED PACKAGES ====="
+          npm list vite vite-plugin-pwa @vitejs/plugin-react @tailwindcss/vite --depth=0 || true
+
+          echo "===== PACKAGE JSON ====="
+          cat package.json
+
+          echo "===== VITE CONFIG ====="
+          cat vite.config.ts
+
+          echo "===== RUNNING BUILD ====="
+          set +e
+          npm run build 2>&1 | tee build.log
+          BUILD_EXIT=${PIPESTATUS[0]}
+
+          echo "===== BUILD LOG ====="
+          cat build.log
+
+          echo "===== BUILD EXIT CODE: ${BUILD_EXIT} ====="
+
+          exit ${BUILD_EXIT}
 
       - name: Verify dist
         run: |
           echo "===== DIST CONTENT ====="
           ls -la dist
+
           echo "===== DIST INDEX ====="
           cat dist/index.html
 
@@ -56,3 +84,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+```
