@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, ArrowLeft, Menu, X, Sparkles } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { PWAInstallButton } from './PWAInstallButton';
 import {
@@ -8,7 +8,6 @@ import {
   SERVICES_DROPDOWN_ITEMS,
   SECONDARY_NAV_ITEMS,
   ALL_ROUTES,
-  PRIMARY_CTA,
   normalizePath,
 } from '../navigation';
 
@@ -239,22 +238,10 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
             })}
           </nav>
 
-          {/* LEFT: Primary CTA on Desktop / Tablet + Mobile Hamburger */}
+          {/* LEFT: Actions on Desktop / Tablet + Mobile Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Install PWA Button */}
             <PWAInstallButton variant="header" />
-
-            {/* Primary CTA Button (Visible on Desktop and Tablet) */}
-            <a
-              id="header-primary-cta"
-              href={PRIMARY_CTA.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-md shadow-amber-500/20 hover:shadow-amber-500/30 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 cursor-pointer whitespace-nowrap"
-            >
-              <span>{PRIMARY_CTA.label}</span>
-              <ArrowLeft className="w-3.5 h-3.5 transform group-hover:-translate-x-0.5 transition-transform" />
-            </a>
 
             {/* Hamburger Button for Mobile and Tablet (< 1280px) */}
             <button
@@ -344,23 +331,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
                   })}
                 </div>
 
-                {/* Mobile Drawer Footer with CTA */}
+                {/* Mobile Drawer Footer */}
                 <div className="pt-5 space-y-3">
                   <PWAInstallButton variant="header" className="w-full justify-center py-2.5" />
 
-                  <a
-                    href={PRIMARY_CTA.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/20"
-                  >
-                    <Sparkles className="w-4 h-4" />
-                    <span>{PRIMARY_CTA.label}</span>
-                    <ArrowLeft className="w-4 h-4" />
-                  </a>
-
-                  <p className="text-center text-[11px] text-slate-400">
+                  <p className="text-center text-[11px] text-slate-400 pt-1">
                     ایرسا سیمرغ جهان؛ خدمات گردشگری سلامت و تشریفات بین‌المللی در ایران
                   </p>
                 </div>
