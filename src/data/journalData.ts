@@ -1,4 +1,5 @@
 import { ASSETS } from '../assets/assetManager';
+import { Language } from '../context/LanguageContext';
 
 export interface Article {
   id: string;
@@ -31,13 +32,40 @@ export const JOURNAL_CATEGORIES = [
 
 export type JournalCategory = typeof JOURNAL_CATEGORIES[number];
 
-export const JOURNAL_HERO_DATA = {
-  badge: 'مجله تخصصی و راهنمای جامع ایرسا سیمرغ جهان',
-  title: '«مجله ایرسا سیمرغ جهان»',
-  subtitle: '«راهنمای سفر، گردشگری سلامت و خدمات بین‌المللی»',
-  description: 'مجموعه‌ای از مقالات تحلیلی، راهنماهای کاربردی و تجارب میزبانی اختصاصی در مسیر سفر، سلامت و فعالیت‌های بین‌المللی در ایران.',
-  image: ASSETS.hero.iranTourism.src,
+export const JOURNAL_HERO_BY_LANG: Record<Language, { badge: string; title: string; subtitle: string; description: string; image: string }> = {
+  fa: {
+    badge: 'مجله تخصصی و راهنمای جامع ایرسا سیمرغ جهان',
+    title: '«مجله ایرسا سیمرغ جهان»',
+    subtitle: '«راهنمای سفر، گردشگری سلامت و خدمات بین‌المللی»',
+    description: 'مجموعه‌ای از مقالات تحلیلی، راهنماهای کاربردی و تجارب میزبانی اختصاصی در مسیر سفر، سلامت و فعالیت‌های بین‌المللی در ایران.',
+    image: ASSETS.hero.iranTourism.src,
+  },
+  en: {
+    badge: 'Airsa Simorgh Jahan Specialized Journal & Guide',
+    title: '«Airsa Simorgh Jahan Journal»',
+    subtitle: '«Guide to Travel, Medical Tourism & International Services»',
+    description: 'Analytical articles, practical travel guides, and bespoke hospitality insights across health, discovery, and global ventures in Iran.',
+    image: ASSETS.hero.iranTourism.src,
+  },
+  ar: {
+    badge: 'مجلة ودليل إيرسا سيمرغ جهان المتخصص',
+    title: '«مجلة إيرسا سيمرغ جهان»',
+    subtitle: '«دليل السفر، السياحة العلاجية، والخدمات الدولية»',
+    description: 'مقالات تحليلية، أدلة إرشادية وتجارب ضيافة فاخرة في مسارات السفر، الاستشفاء، والأعمال الدولية في إيران.',
+    image: ASSETS.hero.iranTourism.src,
+  },
+  tr: {
+    badge: 'Airsa Simorgh Jahan Dergi ve Rehberi',
+    title: '«Airsa Simorgh Jahan Dergisi»',
+    subtitle: '«Seyahat, Sağlık Turizmi ve Uluslararası Hizmetler Rehberi»',
+    description: 'İran’da sağlık, kültür turları ve uluslararası ticari girişimlere dair analizler, pratik rehberler ve seçkin konaklama deneyimleri.',
+    image: ASSETS.hero.iranTourism.src,
+  },
 };
+
+export const getJournalHeroData = (lang: Language = 'fa') => JOURNAL_HERO_BY_LANG[lang] || JOURNAL_HERO_BY_LANG.fa;
+
+export const JOURNAL_HERO_DATA = JOURNAL_HERO_BY_LANG.fa;
 
 export const FEATURED_ARTICLE_DATA: Article = {
   id: 'featured-health-tourism-guide',
@@ -456,9 +484,58 @@ export const ARTICLES_DATA: Article[] = [
   },
 ];
 
-export const JOURNAL_CTA_DATA = {
-  title: '«سؤالی درباره سفر یا درمان در ایران دارید؟»',
-  subtitle: 'تیم کارشناسان و مشاوران چندزبانه ایرسا سیمرغ جهان آماده ارائه مشاوره رایگان، راهنمایی روادید و تنظیم برنامه‌های اختصاصی برای شما هستند.',
-  buttonText: 'درخواست مشاوره',
-  contactUrl: 'https://medixmaster.com/contact-us/',
+export const JOURNAL_CTA_BY_LANG: Record<Language, {
+  badge: string;
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  trust1: string;
+  trust2: string;
+  trust3: string;
+  contactUrl: string;
+}> = {
+  fa: {
+    badge: 'مشاوره و پشتیبانی اختصاصی',
+    title: '«سؤالی درباره سفر یا درمان در ایران دارید؟»',
+    subtitle: 'تیم کارشناسان و مشاوران چندزبانه ایرسا سیمرغ جهان آماده ارائه مشاوره رایگان، راهنمایی روادید و تنظیم برنامه‌های اختصاصی برای شما هستند.',
+    buttonText: 'درخواست مشاوره',
+    trust1: 'پاسخگویی سریع و محرمانه',
+    trust2: 'تیم کارشناسان چندزبانه',
+    trust3: 'همراهی ۲۴ ساعته',
+    contactUrl: 'https://medixmaster.com/contact-us/',
+  },
+  en: {
+    badge: 'Dedicated Advisory & Concierge',
+    title: 'Have Questions About Travel or Medical Care in Iran?',
+    subtitle: 'Our multilingual senior consultants are ready to provide complimentary initial assessments, visa guidance, and tailored itineraries.',
+    buttonText: 'Request Consultation',
+    trust1: 'Swift & Confidential Response',
+    trust2: 'Multilingual Expert Team',
+    trust3: '24/7 Dedicated Support',
+    contactUrl: 'https://medixmaster.com/contact-us/',
+  },
+  ar: {
+    badge: 'استشارات ودعم مخصص',
+    title: '«هل لديكم أي استفسار حول العلاج أو السفر إلى إيران؟»',
+    subtitle: 'فريق خبرائنا ومستشارينا متعددي اللغات جاهزون لتقديم استشارة أولية مجانية، تسهيلات التأشيرة، وتصميم برامج سياحية وعلاجية متكاملة.',
+    buttonText: 'طلب استشارة فورية',
+    trust1: 'استجابة سريعة وسرية تامة',
+    trust2: 'فريق استشاري يجيد لغتكم',
+    trust3: 'متابعة تشريفية على مدار الساعة',
+    contactUrl: 'https://medixmaster.com/contact-us/',
+  },
+  tr: {
+    badge: 'Özel Danışmanlık ve Destek',
+    title: '«İran’da Tedavi veya Seyahat Hakkında Sorularınız mı Var?»',
+    subtitle: 'Airsa Simorgh Jahan’ın çok dilli uzman danışmanları; ücretsiz ön değerlendirme, vize kolaylığı ve kişiye özel seyahat planları sunmak için hazırdır.',
+    buttonText: 'Ücretsiz Danışmanlık Alın',
+    trust1: 'Hızlı ve Gizli Yanıt',
+    trust2: 'Çok Dilli Uzman Kadro',
+    trust3: '7/24 Kesintisiz Refakat',
+    contactUrl: 'https://medixmaster.com/contact-us/',
+  },
 };
+
+export const getJournalCtaData = (lang: Language = 'fa') => JOURNAL_CTA_BY_LANG[lang] || JOURNAL_CTA_BY_LANG.fa;
+
+export const JOURNAL_CTA_DATA = JOURNAL_CTA_BY_LANG.fa;

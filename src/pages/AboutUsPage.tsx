@@ -1,6 +1,7 @@
 import React from 'react';
 import { AboutHeroSection } from '../components/AboutHeroSection';
 import { AboutWhoWeAreSection } from '../components/AboutWhoWeAreSection';
+import { AboutCeoSpotlightSection } from '../components/AboutCeoSpotlightSection';
 import { AboutMissionSection } from '../components/AboutMissionSection';
 import { AboutVisionSection } from '../components/AboutVisionSection';
 import { AboutOurFocusSection } from '../components/AboutOurFocusSection';
@@ -13,6 +14,7 @@ export const AboutUsPage: React.FC = () => {
     <div id="page-about-us">
       <AboutHeroSection />
       <AboutWhoWeAreSection />
+      <AboutCeoSpotlightSection />
       <AboutMissionSection />
       <AboutVisionSection />
       <AboutOurFocusSection />

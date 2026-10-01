@@ -1,9 +1,14 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ShieldCheck, ChevronDown, Sparkles } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
 import { ASSETS } from '../assets/assetManager';
+import { useLanguage } from '../context/LanguageContext';
+import { getTreatmentRequestHero } from '../data/treatmentRequestData';
 
 export const RequestHeroSection: React.FC = () => {
+  const { language, dir, isRtl, t } = useLanguage();
+  const hero = getTreatmentRequestHero(language);
+
   const scrollToForm = () => {
     const formElement = document.getElementById('treatment-form-section');
     if (formElement) {
@@ -12,10 +17,10 @@ export const RequestHeroSection: React.FC = () => {
   };
 
   return (
-    <section 
-      id="request-hero" 
+    <section
+      id="request-hero"
       className="relative min-h-[50vh] sm:min-h-[55vh] lg:min-h-[62vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white select-none"
-      dir="rtl"
+      dir={dir}
     >
       {/* Calm Medical Tourism Photography Background */}
       <div className="absolute inset-0 z-0">
@@ -32,7 +37,6 @@ export const RequestHeroSection: React.FC = () => {
 
       {/* Main Hero Container */}
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 pb-16 sm:pt-28 sm:pb-20 text-center flex flex-col items-center justify-center">
-        
         {/* Eyebrow Brand Tag */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -46,40 +50,41 @@ export const RequestHeroSection: React.FC = () => {
           <span className="text-slate-200 text-xs font-light tracking-wide">Airsa Simorgh Jahan</span>
         </motion.div>
 
-        {/* Title: «مسیر درمان خود را آغاز کنید» */}
+        {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.3] mb-6 text-center max-w-2xl"
         >
-          «مسیر درمان خود را آغاز کنید»
+          {hero.title}
         </motion.h1>
 
-        {/* Subtitle: «اطلاعات اولیه خود را ارسال کنید تا کارشناسان ایرسا سیمرغ جهان درخواست شما را بررسی کنند.» */}
+        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-base sm:text-lg md:text-xl font-light text-slate-200 leading-relaxed max-w-2xl mb-8 text-center"
+          className="text-base sm:text-lg md:text-xl font-light text-slate-200/90 leading-relaxed max-w-2xl mb-8 text-center"
         >
-          «اطلاعات اولیه خود را ارسال کنید تا کارشناسان ایرسا سیمرغ جهان درخواست شما را بررسی کنند.»
+          {hero.subtitle}
         </motion.p>
 
-        {/* Quick scroll action */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          onClick={scrollToForm}
-          type="button"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/20 text-xs sm:text-sm text-slate-100 font-medium transition-all hover:translate-y-0.5 cursor-pointer"
+        {/* Smooth Scroll Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <ShieldCheck className="w-4 h-4 text-emerald-300" />
-          <span>تکمیل فرم درخواست درمان</span>
-          <ChevronDown className="w-3.5 h-3.5 text-white/70" />
-        </motion.button>
-
+          <button
+            type="button"
+            onClick={scrollToForm}
+            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md text-xs sm:text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+          >
+            <span>{t.common.sendRequest || (isRtl ? 'شروع تکمیل فرم درخواست' : 'Start Treatment Request')}</span>
+            <ChevronDown className="w-4 h-4 text-amber-300" />
+          </button>
+        </motion.div>
       </div>
     </section>
   );

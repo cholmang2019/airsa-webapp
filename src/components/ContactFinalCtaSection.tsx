@@ -1,10 +1,13 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowUp, Send } from 'lucide-react';
-import { CONTACT_PAGE_DATA } from '../data/contactData';
+import { ArrowUp } from 'lucide-react';
+import { getContactPageData } from '../data/contactData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ContactFinalCtaSection: React.FC = () => {
-  const { finalCta } = CONTACT_PAGE_DATA;
+  const { language, dir } = useLanguage();
+  const pageData = getContactPageData(language);
+  const { finalCta } = pageData;
 
   const handleScrollToForm = () => {
     const section = document.getElementById('contact-form-section');
@@ -24,7 +27,7 @@ export const ContactFinalCtaSection: React.FC = () => {
     <section
       id="contact-final-cta-section"
       className="relative py-20 sm:py-24 bg-[#070a12] text-white text-center overflow-hidden"
-      dir="rtl"
+      dir={dir}
     >
       {/* Decorative Glow */}
       <div className="absolute inset-0 bg-radial from-amber-500/10 via-transparent to-transparent pointer-events-none" />

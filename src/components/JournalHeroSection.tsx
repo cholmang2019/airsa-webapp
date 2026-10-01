@@ -1,21 +1,25 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { BookOpen } from 'lucide-react';
-import { JOURNAL_HERO_DATA } from '../data/journalData';
+import { getJournalHeroData } from '../data/journalData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const JournalHeroSection: React.FC = () => {
+  const { language, isRtl } = useLanguage();
+  const heroData = getJournalHeroData(language);
+
   return (
     <section
       id="journal-hero-section"
       className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#070a12] text-white pt-24 pb-20 sm:pt-32 sm:pb-28 border-b border-white/[0.08]"
-      dir="rtl"
+      dir={isRtl ? 'rtl' : 'ltr'}
     >
       {/* Background Large Editorial Travel Image with High Clarity */}
       <div className="absolute inset-0 z-0">
         <img
           id="journal-hero-bg-image"
-          src={JOURNAL_HERO_DATA.image}
-          alt="مجله ایرسا سیمرغ جهان - راهنمای سفر، گردشگری سلامت و خدمات بین‌المللی"
+          src={heroData.image}
+          alt={heroData.title}
           className="w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.08] scale-105"
           referrerPolicy="no-referrer"
         />
@@ -34,27 +38,27 @@ export const JournalHeroSection: React.FC = () => {
           className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/80 backdrop-blur-xl border border-white/[0.15] text-xs sm:text-sm text-slate-200 shadow-xl mb-8"
         >
           <BookOpen className="w-4 h-4 text-amber-300 shrink-0" />
-          <span className="font-medium tracking-wide">{JOURNAL_HERO_DATA.badge}</span>
+          <span className="font-medium tracking-wide">{heroData.badge}</span>
         </motion.div>
 
-        {/* Title: «مجله ایرسا سیمرغ جهان» */}
+        {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.2] mb-6 drop-shadow-md"
         >
-          {JOURNAL_HERO_DATA.title}
+          {heroData.title}
         </motion.h1>
 
-        {/* Subtitle: «راهنمای سفر، گردشگری سلامت و خدمات بین‌المللی» */}
+        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-3xl mx-auto text-xl sm:text-2xl md:text-3xl text-amber-200/95 font-medium leading-relaxed drop-shadow"
         >
-          {JOURNAL_HERO_DATA.subtitle}
+          {heroData.subtitle}
         </motion.p>
 
         {/* Short Editorial Mission statement */}
@@ -64,7 +68,7 @@ export const JournalHeroSection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl mx-auto mt-4 text-sm sm:text-base text-slate-300 font-light leading-relaxed drop-shadow-sm"
         >
-          {JOURNAL_HERO_DATA.description}
+          {heroData.description}
         </motion.p>
       </div>
     </section>

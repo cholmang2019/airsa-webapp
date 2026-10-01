@@ -1,19 +1,18 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CONTACT_PAGE_DATA } from '../data/contactData';
+import { getContactPageData } from '../data/contactData';
+import { useLanguage } from '../context/LanguageContext';
 
-/**
- * ContactPillarsSection — سکشن ۳ ستونه تعهدات و ارکان خدمات ایرسا سیمرغ جهان
- * شامل ۳ ستون متوازن با تصویر، عنوان و زیرعنوان متناسب
- */
 export const ContactPillarsSection: React.FC = () => {
-  const { pillarsSection } = CONTACT_PAGE_DATA;
+  const { language, dir, isRtl } = useLanguage();
+  const pageData = getContactPageData(language);
+  const { pillarsSection } = pageData;
 
   return (
     <section
       id="contact-pillars-section"
       className="py-16 sm:py-24 bg-[#080c15] text-white border-b border-white/[0.08] relative overflow-hidden"
-      dir="rtl"
+      dir={dir}
     >
       {/* Subtle Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-amber-500/5 blur-[120px] pointer-events-none rounded-full" />
@@ -54,7 +53,7 @@ export const ContactPillarsSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
 
                 {/* Index Pill in Corner */}
-                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-slate-950/70 border border-white/15 backdrop-blur-md text-amber-300 font-bold text-xs">
+                <div className={`absolute top-3 ${isRtl ? 'right-3' : 'left-3'} px-2.5 py-1 rounded-lg bg-slate-950/70 border border-white/15 backdrop-blur-md text-amber-300 font-bold text-xs`}>
                   {item.number}
                 </div>
               </div>

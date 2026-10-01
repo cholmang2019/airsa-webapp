@@ -207,6 +207,13 @@ export const ASSETS = {
       alt: 'مشاوره حقوقی، بازرگانی و تجاری بین‌المللی',
       fallback: LOCAL_PLACEHOLDERS.about,
     },
+
+    internationalHealthTradeOpportunities: {
+      id: 'international-health-trade-opportunities',
+      src: assetPath('/images/about/international-health-trade-opportunities.webp'),
+      alt: 'فرصت‌های بین‌المللی در حوزه سلامت، تجارت و ارتباطات جهانی ایرسا',
+      fallback: LOCAL_PLACEHOLDERS.about,
+    },
   },
 
   services: {
@@ -401,6 +408,13 @@ export const ASSETS = {
   },
 
   team: {
+    hadisehDehghani: {
+      id: 'hadiseh-dehghani-ceo',
+      src: assetPath('/images/team/hadiseh-dehghani-ceo.jpg'),
+      alt: 'حدیثه دهقانی پوده - بنیان‌گذار و مدیر ایرسا سیمرغ جهان',
+      fallback: LOCAL_PLACEHOLDERS.team,
+    },
+
     medicalCoordinator: {
       id: 'medical-coordinator',
       src: assetPath('/images/team/medical-coordinator.webp'),

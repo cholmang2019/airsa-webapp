@@ -1,3 +1,4 @@
+import { Language } from '../context/LanguageContext';
 import { ASSETS } from '../assets/assetManager';
 
 export const CONSULTATION_URL = "https://medixmaster.com/contact-us/";
@@ -15,9 +16,11 @@ export interface ExperienceItem {
   id: string;
   title: string;
   subtitle: string;
-  category: 'فرهنگ' | 'تاریخ' | 'غذا' | 'طبیعت' | 'معماری' | 'زندگی ایرانی';
+  category: string;
   image: string;
   aspectClass: string;
+  description?: string;
+  location?: string;
 }
 
 export interface JourneyStep {
@@ -26,186 +29,482 @@ export interface JourneyStep {
   title: string;
   description: string;
   details: string[];
+  deliverables?: string[];
+  highlights?: string[];
 }
 
-export const HERO_DATA = {
-  title: '«ایران را به شیوه خود تجربه کنید»',
-  subtitle: '«خدمات تخصصی گردشگری ورودی برای مسافرانی که میخواهند ایران را متفاوت تجربه کنند.»',
-  ctaText: '«برنامه سفر من را طراحی کنید»',
-  image: ASSETS.hero.iranTourism.src,
+export interface TourismHeroData {
+  title: string;
+  subtitle: string;
+  ctaText: string;
+  image: string;
+  badge?: string;
+  ctaUrl?: string;
+}
+
+export interface TourismIntroData {
+  badge: string;
+  title: string;
+  lead?: string;
+  locationCaption: string;
+  paragraph1: string;
+  paragraph2: string;
+  paragraphs?: string[];
+  pillars: Array<{ title: string; desc: string } | string>;
+  image: string;
+  ctaUrl: string;
+  ctaText: string;
+}
+
+export const TOURISM_HERO_BY_LANG: Record<Language, TourismHeroData> = {
+  fa: {
+    title: '«ایران را به شیوه خود تجربه کنید»',
+    subtitle: '«خدمات تخصصی گردشگری ورودی برای مسافرانی که می‌خواهند ایران را متفاوت تجربه کنند.»',
+    ctaText: '«برنامه سفر من را طراحی کنید»',
+    image: ASSETS.hero.iranTourism.src,
+  },
+  en: {
+    title: 'Experience Iran on Your Own Terms',
+    subtitle: 'Bespoke inbound tourism curated for discerning international travelers who seek authentic cultural immersion and personalized luxury.',
+    ctaText: 'Design My Custom Itinerary',
+    image: ASSETS.hero.iranTourism.src,
+  },
+  ar: {
+    title: '«اكتشف سحر إيران بأسلوبك الخاص»',
+    subtitle: '«خدمات السياحة الوافدة المتخصصة للضيوف الباحثين عن تجربة استثنائية تجمع بين التاريخ العريق والضيافة الفاخرة.»',
+    ctaText: '«صمّم برنامج رحلتي الخاصة»',
+    image: ASSETS.hero.iranTourism.src,
+  },
+  tr: {
+    title: '«İran’ı Kendi Tarzınızla Keşfedin»',
+    subtitle: '«İran’ı farklı ve ayrıcalıklı bir biçimde deneyimlemek isteyen misafirler için özel gelen turizm hizmetleri.»',
+    ctaText: '«Özel Seyahat Planımı Hazırlayın»',
+    image: ASSETS.hero.iranTourism.src,
+  },
 };
 
-export const INTRO_DATA = {
-  title: '«سفر شما، با یک برنامه اختصاصی»',
-  lead: 'ایران سرزمینی با هزاره‌ها تاریخ، تنوع اقلیمی کم‌نظیر و مهمان‌نوازی افسانه‌ای است. ما در ایرسا سیمرغ جهان باور داریم که هیچ دو مسافری علایق، ریتم و انتظارات یکسانی ندارند.',
-  paragraphs: [
-    'تیم گردشگری ورودی ایرسا سیمرغ جهان با تکیه بر شبکه گسترده هتل‌های بوتیک اصیل، ناوگان ترانسفر اختصاصی، راهنمایان مسلط به زبان‌های بین‌المللی و ارتباطات عمیق بومی، برنامه‌ای منحصربه‌فرد بر پایه علایق فرهنگی، معماری، طبیعت‌گردی یا شکم‌گردی شما طراحی می‌کند.',
-    'از لحظه صدور ویزا و تشریفات فرودگاهی CIP تا همراهی اختصاصی در طول سفر، تجربه‌ای روان، امن و خاطره‌انگیز برای مسافران بین‌المللی رقم می‌زنیم.',
-  ],
-  pillars: [
-    {
-      title: 'برنامه‌ریزی کاملاً شخصی‌سازی‌شده',
-      desc: 'تدوین ریتم و مسیر روزانه بر اساس ترجیحات و علایق فردی',
-    },
-    {
-      title: 'اقامت در هتل‌های بوتیک منتخب',
-      desc: 'ترکیب لوکس معماری قاجار و زندیه با استانداردهای نوین رفاهی',
-    },
-    {
-      title: 'ترانسفر اختصاصی و راهنمایان زبده',
-      desc: 'ناوگان VIP بین‌شهری همراه با لیدرهای حرفه‌ای چندزبانه',
-    },
-    {
-      title: 'پشتیبانی بی‌وقفه ۲۴ ساعته',
-      desc: 'کانسی‌یژ اختصاصی در تمام طول اقامت برای اطمینان خاطر کامل',
-    },
-  ],
-  image: ASSETS.services.inboundTouristExperience.src,
+export const TOURISM_INTRO_BY_LANG: Record<Language, TourismIntroData> = {
+  fa: {
+    badge: 'رویکرد متمایز در سفر',
+    title: '«سفر شما، با یک برنامه اختصاصی»',
+    lead: 'ایران سرزمینی با هزاره‌ها تاریخ، تنوع اقلیمی کم‌نظیر و مهمان‌نوازی افسانه‌ای است. ما در ایرسا سیمرغ جهان باور داریم که هیچ دو مسافری علایق، ریتم و انتظارات یکسانی ندارند.',
+    locationCaption: 'اصفهان و شیراز | اقامت‌های بوتیک میراثی',
+    paragraph1: 'ایران سرزمینی با هزاره‌ها تاریخ، تنوع اقلیمی کم‌نظیر و مهمان‌نوازی افسانه‌ای است. ما در ایرسا سیمرغ جهان باور داریم که هیچ دو مسافری علایق، ریتم و انتظارات یکسانی ندارند.',
+    paragraph2: 'تیم گردشگری ورودی ایرسا سیمرغ جهان با تکیه بر شبکه گسترده هتل‌های بوتیک اصیل، ناوگان ترانسفر اختصاصی و راهنمایان مسلط بین‌المللی، برنامه‌ای منحصربه‌فرد برای شما طراحی می‌کند.',
+    paragraphs: [
+      'تیم گردشگری ورودی ایرسا سیمرغ جهان با تکیه بر شبکه گسترده هتل‌های بوتیک اصیل، ناوگان ترانسفر اختصاصی، راهنمایان مسلط به زبان‌های بین‌المللی و ارتباطات عمیق بومی، برنامه‌ای منحصربه‌فرد بر پایه علایق فرهنگی، معماری، طبیعت‌گردی یا شکم‌گردی شما طراحی می‌کند.',
+      'از لحظه صدور ویزا و تشریفات فرودگاهی CIP تا همراهی اختصاصی در طول سفر، تجربه‌ای روان، امن و خاطره‌انگیز برای مسافران بین‌المللی رقم می‌زنیم.',
+    ],
+    pillars: [
+      'برنامه‌ریزی کاملاً شخصی‌سازی‌شده و منعطف',
+      'اقامت در هتل‌های سنتی و بوتیک منتخب',
+      'ترانسفر اختصاصی و راهنمایان مسلط بین‌المللی',
+      'پشتیبانی و همراهی بی‌وقفه ۲۴ ساعته',
+    ],
+    image: ASSETS.services.inboundTouristExperience.src,
+    ctaUrl: CONSULTATION_URL,
+    ctaText: 'درخواست برنامه سفر اختصاصی',
+  },
+  en: {
+    badge: 'Distinctive Travel Philosophy',
+    title: 'Your Journey, Perfectly Tailored',
+    lead: 'Iran is a land of millennia of living history, breathtaking geographical diversity, and world-renowned hospitality.',
+    locationCaption: 'Isfahan & Shiraz | Heritage Boutique Mansions',
+    paragraph1: 'Iran is a land of millennia of living history, breathtaking geographical diversity, and world-renowned hospitality. At Airsa Simorgh Jahan, we recognize that no two travelers share identical rhythms or aspirations.',
+    paragraph2: 'Our inbound tourism division leverages a curated network of historic boutique mansions, private chauffeured transport, and fluent multilingual guides to craft unique routes matching your passions.',
+    paragraphs: [
+      'Our inbound tourism division leverages a curated network of historic boutique mansions, private chauffeured transport, fluent multilingual guides, and deep local relationships to craft unique routes centered on your passion for archaeology, architecture, culinary traditions, or desert landscapes.',
+      'From visa facilitation and VIP airport receptions to uninterrupted concierge support, we deliver a smooth, secure, and deeply enriching Persian voyage.',
+    ],
+    pillars: [
+      '100% Tailored and flexible itineraries',
+      'Handpicked heritage boutique hotels',
+      'Executive private chauffeurs and certified guides',
+      '24/7 dedicated concierge assistance',
+    ],
+    image: ASSETS.services.inboundTouristExperience.src,
+    ctaUrl: CONSULTATION_URL,
+    ctaText: 'Request Custom Itinerary',
+  },
+  ar: {
+    badge: 'نهج متميز في السفر',
+    title: '«رحلتكم، ببرنامج سياحي مصمم خصيصاً لكم»',
+    lead: 'إيران بلد يعبق بآلاف السنين من التاريخ، وتنوع طبيعي ساحر، وكرم ضيافة أسطوري.',
+    locationCaption: 'أصفهان وشيراز | قصور تراثية فندقية فاخرة',
+    paragraph1: 'إيران بلد يعبق بآلاف السنين من التاريخ، وتنوع طبيعي ساحر، وكرم ضيافة أسطوري. في إيرسا سيمرغ جهان، نؤمن بأن كل ضيف يملك ذوقاً واهتمامات وتطلعات فريدة.',
+    paragraph2: 'يعتمد فريق السياحة الوافدة لدينا على شبكة واسعة من القصور التراثية الفندقية الفاخرة، وأسطول النقل الخاص، ومرشدين سياحيين يتحدثون العربية والإنجليزية بطلاقة.',
+    paragraphs: [
+      'يعتمد فريق السياحة الوافدة لدينا على شبكة واسعة من القصور التراثية الفندقية الفاخرة، وأسطول النقل الخاص، ومرشدين سياحيين يتحدثون العربية والإنجليزية بطلاقة، لتصميم برنامج سياحي مخصص يلبي شغفكم بالآثار التاريخية، أو الطبيعة، أو فنون العمارة، أو المأكولات الإيرانية الشهيرة.',
+      'من لحظة استخراج الفيزا واستقبال صالة كبار الشخصيات CIP وحتى نهاية الرحلة، نضمن لكم إقامة مريحة، آمنة ومفعمة بأجمل الذكريات.',
+    ],
+    pillars: [
+      'تخطيط سياحي مخصص ومرن بالكامل',
+      'إقامة في قصور وفنادق تراثية فاخرة',
+      'سيارات تنفيذية خاصة ومرشدون متمرسون',
+      'دعم ومتابعة شخصية على مدار ۲۴ ساعة',
+    ],
+    image: ASSETS.services.inboundTouristExperience.src,
+    ctaUrl: CONSULTATION_URL,
+    ctaText: 'طلب تصميم جدول سياحي خاص',
+  },
+  tr: {
+    badge: 'Seyahatte Seçkin Bir Yaklaşım',
+    title: '«Size Özel Tasarlanmış Bir Seyahat»',
+    lead: 'İran, binlerce yıllık tarihi, eşsiz coğrafi çeşitliliği ve efsanevi misafirperverliğiyle büyüleyici bir ülkedir.',
+    locationCaption: 'İsfahan ve Şiraz | Tarihi Butik Konaklar',
+    paragraph1: 'İran, binlerce yıllık tarihi, eşsiz coğrafi çeşitliliği ve efsanevi misafirperverliğiyle büyüleyici bir ülkedir. Airsa Simorgh Jahan olarak, hiçbir iki gezginin aynı ilgi alanlarına veya seyahat temposuna sahip olmadığını biliyoruz.',
+    paragraph2: 'Gelen turizm ekibimiz; seçkin tarihi butik oteller, özel şoförlü VIP araç filosu ve çok dilli profesyonel rehberleriyle ilgi alanlarınıza özel bir rota oluşturur.',
+    paragraphs: [
+      'Airsa Simorgh Jahan gelen turizm ekibi; köklü butik konaklar, özel transfer filosu, yabancı dillere hakim rehberler ve yerel bağlantılarıyla; mimari, tarih, doğa veya gastronomi tutkunuza uygun benzersiz bir seyahat programı sunar.',
+      'Hızlı vize sürecinden CIP havalimanı karşılamasına ve seyahat boyunca kesintisiz refakata kadar güvenli, konforlu ve unutulmaz bir deneyim vadediyoruz.',
+    ],
+    pillars: [
+      'Tamamen kişiselleştirilmiş ve esnek seyahat planı',
+      'Özenle seçilmiş tarihi ve butik otellerde konaklama',
+      'Özel transfer araçları ve lisanslı yabancı dil rehberleri',
+      '7/24 kesintisiz konsiyerj ve saha desteği',
+    ],
+    image: ASSETS.services.inboundTouristExperience.src,
+    ctaUrl: CONSULTATION_URL,
+    ctaText: 'Özel Seyahat Programı Talep Edin',
+  },
 };
 
-export const SERVICES_DATA: TourismService[] = [
-  {
-    id: 'cip',
-    title: 'استقبال فرودگاهی',
-    subtitle: 'تشریفات اختصاصی CIP و ترانسفر مستقیم',
-    description: 'استقبال بدون معطلی در سالن تشریفات اختصاصی فرودگاه، انجام امور گذرنامه و بار، و هدایت به ترانسفر VIP.',
-    image: ASSETS.services.cipAirportLounge.src,
-    tag: 'ورود بدون دغدغه',
-  },
-  {
-    id: 'stay',
-    title: 'اقامت',
-    subtitle: 'هتل‌های لوکس و بوتیک‌های تاریخی اصیل',
-    description: 'رزرو اقامتگاه‌های دست‌چین‌شده سنتی با حیاط‌های دلنشین فیروزه‌ای یا هتل‌های مدرن ۵ ستاره با بالاترین استانداردهای رفاهی.',
-    image: ASSETS.services.hotelAccommodation.src,
-    tag: 'آرامش و شکوه',
-  },
-  {
-    id: 'transfer',
-    title: 'ترانسفر اختصاصی',
-    subtitle: 'ناوگان VIP بین‌شهری و درون‌شهری',
-    description: 'جابه‌جایی ایمن و آسوده در سراسر ایران با خودروهای لوکس مجهز، رانندگان مجرب و سیستم ره‌گیری دقیق مسیر.',
-    image: ASSETS.services.privateTransfer.src,
-    tag: 'سفری ایمن و راحت',
-  },
-  {
-    id: 'itinerary',
-    title: 'برنامه‌ریزی سفر',
-    subtitle: 'طراحی گشت‌ها متناسب با ریتم و سلیقه شما',
-    description: 'مسیرهای ویژه فراتر از تورهای کلیشه‌ای، متمرکز بر علایق باستان‌شناسی، عکاسی، طبیعت، معماری یا خوراک‌شناسی.',
-    image: ASSETS.services.itineraryPlanning.src,
-    tag: 'اختصاصی و منعطف',
-  },
-  {
-    id: 'experiences',
-    title: 'تجربه‌های محلی',
-    subtitle: 'ملاقات با قلب تپنده فرهنگ و هنر ایرانی',
-    description: 'از ضیافت شام در خانه‌های سنتی و بافتن گره‌های فرش تا پیمایش کویرهای پرستاره و هم‌صحبتی با استادکاران بازار.',
-    image: ASSETS.services.traditionalBazaarLife.src,
-    tag: 'اصیل و لمس‌کردنی',
-  },
-  {
-    id: 'support',
-    title: 'پشتیبانی در طول سفر',
-    subtitle: 'همراهی شبانه‌روزی و کانسی‌یژ اختصاصی',
-    description: 'پشتیبانی چندزبانه ۲۴/۷ از آغاز تا خروج از ایران؛ پاسخگویی فوری به نیازها، تغییرات برنامه و راهنمایی لحظه‌ای.',
-    image: ASSETS.team.medicalCoordinator.src,
-    tag: 'آسودگی خاطر کامل',
-  },
-];
+export const TOURISM_SERVICES_BY_LANG: Record<Language, TourismService[]> = {
+  fa: [
+    {
+      id: 'cip',
+      title: 'استقبال فرودگاهی',
+      subtitle: 'تشریفات اختصاصی CIP و ترانسفر مستقیم',
+      description: 'استقبال بدون معطلی در سالن تشریفات اختصاصی فرودگاه، انجام امور گذرنامه و بار، و هدایت به ترانسفر VIP.',
+      image: ASSETS.services.cipAirportLounge.src,
+      tag: 'ورود بدون دغدغه',
+    },
+    {
+      id: 'stay',
+      title: 'اقامت',
+      subtitle: 'هتل‌های لوکس و بوتیک‌های تاریخی اصیل',
+      description: 'رزرو اقامتگاه‌های دست‌چین‌شده سنتی با حیاط‌های دلنشین فیروزه‌ای یا هتل‌های مدرن ۵ ستاره با بالاترین استانداردهای رفاهی.',
+      image: ASSETS.services.hotelAccommodation.src,
+      tag: 'آرامش و شکوه',
+    },
+    {
+      id: 'transfer',
+      title: 'ترانسفر اختصاصی',
+      subtitle: 'ناوگان VIP بین‌شهری و درون‌شهری',
+      description: 'جابه‌جایی ایمن و آسوده در سراسر ایران با خودروهای لوکس مجهز، رانندگان مجرب و سیستم ره‌گیری دقیق مسیر.',
+      image: ASSETS.services.privateTransfer.src,
+      tag: 'سفری ایمن و راحت',
+    },
+    {
+      id: 'itinerary',
+      title: 'برنامه‌ریزی سفر',
+      subtitle: 'طراحی گشت‌ها متناسب با ریتم و سلیقه شما',
+      description: 'مسیرهای ویژه فراتر از تورهای کلیشه‌ای، متمرکز بر علایق باستان‌شناسی، عکاسی، طبیعت، معماری یا خوراک‌شناسی.',
+      image: ASSETS.services.itineraryPlanning.src,
+      tag: 'اختصاصی و منعطف',
+    },
+    {
+      id: 'experiences',
+      title: 'تجربه‌های بومی',
+      subtitle: 'ارتباط اصیل با فرهنگ و هنر ایرانی',
+      description: 'دیدار با اساتید صنایع دستی اصفهان و شیراز، صرف چای در باغ‌های تاریخی، و چشیدن اصیل‌ترین طعم‌های محلی.',
+      image: ASSETS.services.traditionalBazaarLife.src,
+      tag: 'روح اصیل ایران',
+    },
+    {
+      id: 'guide',
+      title: 'راهنمای چندزبانه',
+      subtitle: 'لیدرهای حرفه‌ای و مسلط به تاریخ و هنر',
+      description: 'همراهی راهنمایان کارت‌دار دارای تسلط کامل بر زبان‌های انگلیسی، عربی، فرانسوی یا آلمانی با دانش عمیق تاریخی.',
+      image: ASSETS.services.inboundTouristExperience.src,
+      tag: 'همراه آگاه و امین',
+    },
+  ],
+  en: [
+    {
+      id: 'cip',
+      title: 'Airport CIP Welcoming',
+      subtitle: 'Dedicated Fast-Track & Chauffeured Pickup',
+      description: 'Zero-wait tarmac pickup, luggage and passport formalities completed in the private lounge, followed by direct luxury transit.',
+      image: ASSETS.services.cipAirportLounge.src,
+      tag: 'Effortless Arrival',
+    },
+    {
+      id: 'stay',
+      title: 'Historic Lodging',
+      subtitle: 'Royal Boutique Mansions & 5-Star Suites',
+      description: 'Handpicked restored mansions with turquoise courtyards alongside modern international 5-star properties.',
+      image: ASSETS.services.hotelAccommodation.src,
+      tag: 'Elegance & Serenity',
+    },
+    {
+      id: 'transfer',
+      title: 'Private Ground Fleet',
+      subtitle: 'VIP Intercity & City Chauffeured Transport',
+      description: 'Travel securely across Iran in modern luxury sedans and vans with vetted drivers and precision routing.',
+      image: ASSETS.services.privateTransfer.src,
+      tag: 'Comfort & Reliability',
+    },
+    {
+      id: 'itinerary',
+      title: 'Curated Itineraries',
+      subtitle: 'Designed to Match Your Exact Rhythm',
+      description: 'Non-formulaic routes tailored specifically to your passions: UNESCO monuments, photography, Silk Road caravanserais, or culinary arts.',
+      image: ASSETS.services.itineraryPlanning.src,
+      tag: 'Flexible & Private',
+    },
+    {
+      id: 'experiences',
+      title: 'Authentic Encounters',
+      subtitle: 'Living Heritage & Master Artisans',
+      description: 'Private studio visits with master carpet weavers and miniature artists in Isfahan, saffron harvests, and tea ceremonies in Persian gardens.',
+      image: ASSETS.services.traditionalBazaarLife.src,
+      tag: 'Persian Soul',
+    },
+    {
+      id: 'guide',
+      title: 'Multilingual Ambassadors',
+      subtitle: 'Licensed Cultural Specialists',
+      description: 'Certified guides fluent in English, Arabic, French, and German possessing authoritative knowledge of Persian civilizations.',
+      image: ASSETS.services.inboundTouristExperience.src,
+      tag: 'Expert Cultural Companion',
+    },
+  ],
+  ar: [
+    {
+      id: 'cip',
+      title: 'استقبال المطار CIP',
+      subtitle: 'تشريفات خاصة وتوصيل مباشر للفندق',
+      description: 'استقبال فوري في صالة كبار الشخصيات، وتخليص الجوازات والأمتعة دون عناء، والانتقال بسيارة خاصة ومكيفة.',
+      image: ASSETS.services.cipAirportLounge.src,
+      tag: 'وصول مريح وبلا انتظار',
+    },
+    {
+      id: 'stay',
+      title: 'الإقامة الراقية',
+      subtitle: 'فنادق 5 نجوم وقصور تراثية ساحرة',
+      description: 'حجوزات مؤكدة في أفضل القصور التاريخية المرممة ذات الأفنية المائية الخلابة، أو الفنادق الحديثة الفخمة.',
+      image: ASSETS.services.hotelAccommodation.src,
+      tag: 'أصالة وفخامة',
+    },
+    {
+      id: 'transfer',
+      title: 'المواصلات الخاصة',
+      subtitle: 'أسطول VIP للجولات اليومية والسفر بین المدن',
+      description: 'تنقل آمن ومريح في كافة المحافظات الإيرانية بأحدث السيارات وسائقين متمرسين يراعون راحة العائلة.',
+      image: ASSETS.services.privateTransfer.src,
+      tag: 'أمان وراحة تامة',
+    },
+    {
+      id: 'itinerary',
+      title: 'تصميم برامج السفر',
+      subtitle: 'جولات سياحية تناسب رغباتكم الخاصة',
+      description: 'جداول سياحية مرنة بعيدة عن المسارات التقليدية، تركز على المعالم التاريخية، الطبيعة، الأسواق التراثية والمطاعم الفاخرة.',
+      image: ASSETS.services.itineraryPlanning.src,
+      tag: 'مرونة وخصوصية',
+    },
+    {
+      id: 'experiences',
+      title: 'تجارب ثقافية حية',
+      subtitle: 'معايشة أصيلة للتراث والفنون الإيرانية',
+      description: 'زيارة ورش الحرف اليدوية وحياكة السجاد الفاخر بأصفهان وشيراز، وتناول الشاي في الحدائق الفارسية المصنفة باليونسكو.',
+      image: ASSETS.services.traditionalBazaarLife.src,
+      tag: 'عبق الشرق الأصيل',
+    },
+    {
+      id: 'guide',
+      title: 'مرشدون سياحيون معتمدون',
+      subtitle: 'مرشدون يتحدثون العربية والإنجليزية بطلاقة',
+      description: 'مرافقة من قبل مرشدين محترفين حاصلين على تراخيص رسمية وملمين بتاريخ وحضارة إيران العريقة.',
+      image: ASSETS.services.inboundTouristExperience.src,
+      tag: 'رفيق سفر أمين ومثقف',
+    },
+  ],
+  tr: [
+    {
+      id: 'cip',
+      title: 'Havalimanı CIP Karşılama',
+      subtitle: 'Özel Hızlı Geçiş ve Doğrudan VIP Transfer',
+      description: 'Havalimanında beklemeden özel salonda pasaport ve bagaj işlemleri, ardından doğrudan lüks araçla otele transfer.',
+      image: ASSETS.services.cipAirportLounge.src,
+      tag: 'Zahmetsiz Varış',
+    },
+    {
+      id: 'stay',
+      title: 'Tarihi ve Lüks Konaklama',
+      subtitle: 'Seçkin Butik Konaklar ve 5 Yıldızlı Oteller',
+      description: 'Geleneksel mimariye sahip avlulu butik oteller veya en yüksek konfora sahip modern 5 yıldızlı süitler.',
+      image: ASSETS.services.hotelAccommodation.src,
+      tag: 'Zarafet ve Huzur',
+    },
+    {
+      id: 'transfer',
+      title: 'Özel VIP Transfer',
+      subtitle: 'Şehir İçi ve Şehirlerarası Özel Araç Filosu',
+      description: 'Modern lüks araçlar, deneyimli şoförler ve güvenli güzergah takibiyle İran genelinde huzurlu yolculuk.',
+      image: ASSETS.services.privateTransfer.src,
+      tag: 'Güvenli ve Konforlu',
+    },
+    {
+      id: 'itinerary',
+      title: 'Kişiye Özel Rota Tasarımı',
+      subtitle: 'Zevkinize ve Temponuza Uygun Gezi Programı',
+      description: 'Klasik turların ötesinde; arkeoloji, fotoğrafçılık, çöl safarisi veya gurme lezzetlere odaklanan esnek programlar.',
+      image: ASSETS.services.itineraryPlanning.src,
+      tag: 'Özgün ve Esnek',
+    },
+    {
+      id: 'experiences',
+      title: 'Otantik Kültürel Deneyimler',
+      subtitle: 'İran Kültürü ve Sanatıyla Birebir Temas',
+      description: 'İsfahan ve Şiraz el sanatları ustalarıyla buluşma, tarihi Pers bahçelerinde çay molası ve yerel lezzet tadımları.',
+      image: ASSETS.services.traditionalBazaarLife.src,
+      tag: 'Doğunun Büyüsü',
+    },
+    {
+      id: 'guide',
+      title: 'Çok Dilli Profesyonel Rehberler',
+      subtitle: 'Tarih ve Sanat Uzmanı Lisanslı Rehberler',
+      description: 'Türkçe, İngilizce, Arapça ve diğer dillerde yetkin, İran’ın derin tarihine hakim lisanslı uzmanlar.',
+      image: ASSETS.services.inboundTouristExperience.src,
+      tag: 'Bilgili ve Güvenilir Yol Arkadaşı',
+    },
+  ],
+};
 
-export const EXPERIENCES_DATA: ExperienceItem[] = [
-  {
-    id: 'exp-arch',
-    title: 'معماری و نور',
-    subtitle: 'رقص نور از پشت شیشه‌های رنگی و کاشی‌کاری‌های زرین‌فام',
-    category: 'معماری',
-    image: ASSETS.services.nasirAlMulkArchitecture.src,
-    aspectClass: 'sm:col-span-2 lg:col-span-2 row-span-2 aspect-[4/3] sm:aspect-auto sm:min-h-[420px]',
-  },
-  {
-    id: 'exp-hist',
-    title: 'هزاره‌های تاریخ',
-    subtitle: 'شکوه هخامنشیان در تخت‌جمشید و پایتخت‌های باستانی پارس',
-    category: 'تاریخ',
-    image: ASSETS.services.persepolisHeritage.src,
-    aspectClass: 'col-span-1 aspect-[3/4] sm:min-h-[300px]',
-  },
-  {
-    id: 'exp-food',
-    title: 'سفره اصیل ایرانی',
-    subtitle: 'طعم زعفران، انار، زرشک و عطر ادویه‌های باستانی',
-    category: 'غذا',
-    image: ASSETS.services.persianCuisineFeast.src,
-    aspectClass: 'col-span-1 sm:col-span-1 aspect-square sm:min-h-[300px]',
-  },
-  {
-    id: 'exp-cult',
-    title: 'هنر و فرهنگ',
-    subtitle: 'ظرافت گره‌های فرش ابریشم و میراث جاودانه استادکاران',
-    category: 'فرهنگ',
-    image: ASSETS.services.persianCarpetCulture.src,
-    aspectClass: 'col-span-1 aspect-square sm:min-h-[290px]',
-  },
-  {
-    id: 'exp-life',
-    title: 'زندگی و اصالت',
-    subtitle: 'نبض گرم بازارهای تاریخی، بادگیرهای کویری و عطر چای دارچین',
-    category: 'زندگی ایرانی',
-    image: ASSETS.services.yazdWindcatchers.src,
-    aspectClass: 'col-span-1 sm:col-span-1 aspect-[4/3] sm:min-h-[290px]',
-  },
-  {
-    id: 'exp-nat',
-    title: 'طبیعت سحرانگیز',
-    subtitle: 'سکوت رمل‌های کویر لوت تا سپیدی قله‌های البرز',
-    category: 'طبیعت',
-    image: ASSETS.services.lutDesertSafari.src,
-    aspectClass: 'col-span-1 sm:col-span-2 lg:col-span-1 aspect-[3/4] sm:min-h-[290px]',
-  },
-];
+export const EXPERIENCES_BY_LANG: Record<Language, ExperienceItem[]> = {
+  fa: [
+    { id: '1', title: 'میدان نقش جهان اصفهان', subtitle: 'شکوه معماری عصر صفوی و کاشی‌کاری‌های فیروزه‌ای', category: 'معماری', image: ASSETS.services.isfahanNaghsheJahan.src, aspectClass: 'aspect-[4/3]' },
+    { id: '2', title: 'پرسپولیس (تخت جمشید)', subtitle: 'پایتخت تشریفاتی امپراتوری هخامنشی', category: 'تاریخ', image: ASSETS.services.persepolisHeritage.src, aspectClass: 'aspect-[3/4]' },
+    { id: '3', title: 'کویر مرنجاب و کاشان', subtitle: 'سکوت رمل‌های طلایی و آسمان پر ستاره کویری', category: 'طبیعت', image: ASSETS.services.lutDesertSafari.src, aspectClass: 'aspect-[4/3]' },
+    { id: '4', title: 'بازار بزرگ قیصریه', subtitle: 'عطر ادویه‌ها و کارگاه‌های زنده قلم‌زنی و مسگری', category: 'فرهنگ', image: ASSETS.services.traditionalBazaarLife.src, aspectClass: 'aspect-[3/4]' },
+    { id: '5', title: 'باغ‌های اصیل ایرانی', subtitle: 'باغ فین کاشان و باغ ارم شیراز با معماری ثبت جهانی', category: 'معماری', image: ASSETS.services.nasirAlMulkArchitecture.src, aspectClass: 'aspect-[4/3]' },
+    { id: '6', title: 'طعم اصیل غذاهای سنتی', subtitle: 'بریانی اصفهان، کباب‌های زعفرانی و دمنوش‌های گیاهی', category: 'غذا', image: ASSETS.services.persianCuisineFeast.src, aspectClass: 'aspect-[3/4]' },
+  ],
+  en: [
+    { id: '1', title: 'Naqsh-e Jahan Square', subtitle: 'Safavid architectural splendor and turquoise tilework in Isfahan', category: 'Architecture', image: ASSETS.services.isfahanNaghsheJahan.src, aspectClass: 'aspect-[4/3]' },
+    { id: '2', title: 'Persepolis (Takht-e Jamshid)', subtitle: 'The ceremonial imperial capital of the Achaemenid Empire', category: 'History', image: ASSETS.services.persepolisHeritage.src, aspectClass: 'aspect-[3/4]' },
+    { id: '3', title: 'Maranjab Desert Dunes', subtitle: 'Golden silences and celestial night skies across the Silk Road', category: 'Nature', image: ASSETS.services.lutDesertSafari.src, aspectClass: 'aspect-[4/3]' },
+    { id: '4', title: 'Isfahan Grand Bazaar', subtitle: 'Fragrant saffron spices and live coppersmith artisan guilds', category: 'Culture', image: ASSETS.services.traditionalBazaarLife.src, aspectClass: 'aspect-[3/4]' },
+    { id: '5', title: 'UNESCO Persian Gardens', subtitle: 'Fin Garden in Kashan and Eram Garden in Shiraz with flowing fountains', category: 'Architecture', image: ASSETS.services.nasirAlMulkArchitecture.src, aspectClass: 'aspect-[4/3]' },
+    { id: '6', title: 'Traditional Persian Culinary', subtitle: 'Savory saffron kebabs, pomegranate fesenjan, and herbal distillates', category: 'Gastronomy', image: ASSETS.services.persianCuisineFeast.src, aspectClass: 'aspect-[3/4]' },
+  ],
+  ar: [
+    { id: '1', title: 'ساحة نقش جهان في أصفهان', subtitle: 'روعة العمارة الصفوية والزخارف القاشانية الفيروزية الساحرة', category: 'العمارة', image: ASSETS.services.isfahanNaghsheJahan.src, aspectClass: 'aspect-[4/3]' },
+    { id: '2', title: 'تخت جمشيد (برسيبوليس)', subtitle: 'عاصمة الإمبراطورية الأخمينية التاريخية وعجائب الآثار الحجرية', category: 'التاريخ', image: ASSETS.services.persepolisHeritage.src, aspectClass: 'aspect-[3/4]' },
+    { id: '3', title: 'صحراء مرنجاب الذهبية', subtitle: 'هدوء الكثبان الرملية وسماء الصحراء المضاءة بالنجوم', category: 'الطبيعة', image: ASSETS.services.lutDesertSafari.src, aspectClass: 'aspect-[4/3]' },
+    { id: '4', title: 'سوق أصفهان التاريخي الكبير', subtitle: 'عبق الزعفران الإيراني وورش صناعة النحاسيات والتحف اليدوية', category: 'الثقافة', image: ASSETS.services.traditionalBazaarLife.src, aspectClass: 'aspect-[3/4]' },
+    { id: '5', title: 'الحدائق الفارسية المسجلة باليونسكو', subtitle: 'حديقة فين في كاشان وحديقة إرم في شيراز بجداولها المائية العذبة', category: 'العمارة', image: ASSETS.services.nasirAlMulkArchitecture.src, aspectClass: 'aspect-[4/3]' },
+    { id: '6', title: 'أشهى المأكولات الإيرانية الأصيلة', subtitle: 'كباب الزعفران الفاخر، الأطباق التراثية اللذيذة والعصائر الطبيعية', category: 'المأكولات', image: ASSETS.services.persianCuisineFeast.src, aspectClass: 'aspect-[3/4]' },
+  ],
+  tr: [
+    { id: '1', title: 'İsfahan Nakş-ı Cihan Meydanı', subtitle: 'Safevi mimarisinin ihtişamı ve turkuaz çini işlemeleri', category: 'Mimari', image: ASSETS.services.isfahanNaghsheJahan.src, aspectClass: 'aspect-[4/3]' },
+    { id: '2', title: 'Persepolis (Taht-ı Cemşid)', subtitle: 'Ahameniş İmparatorluğu’nun görkemli tören başkenti', category: 'Tarih', image: ASSETS.services.persepolisHeritage.src, aspectClass: 'aspect-[3/4]' },
+    { id: '3', title: 'Maranjab Çölü ve Kaşan Kumulları', subtitle: 'Altın kum tepelerinin dinginliği ve yıldız dolu çöl gökyüzü', category: 'Doğa', image: ASSETS.services.lutDesertSafari.src, aspectClass: 'aspect-[4/3]' },
+    { id: '4', title: 'Tarihi Kapalıçarşı (Kayseriye)', subtitle: 'Baharat kokuları ve canlı bakır/oyma zanaat atölyeleri', category: 'Kültür', image: ASSETS.services.traditionalBazaarLife.src, aspectClass: 'aspect-[3/4]' },
+    { id: '5', title: 'UNESCO Tescilli Pers Bahçeleri', subtitle: 'Kaşan Fin Bahçesi ve Şiraz İrem Bahçesi’nin havuzları ve selvileri', category: 'Mimari', image: ASSETS.services.nasirAlMulkArchitecture.src, aspectClass: 'aspect-[4/3]' },
+    { id: '6', title: 'Geleneksel İran Mutfağı', subtitle: 'Safranlı kebaplar, fesencen ve ferahlatıcı bitkisel şerbetler', category: 'Gastronomi', image: ASSETS.services.persianCuisineFeast.src, aspectClass: 'aspect-[3/4]' },
+  ],
+};
 
-export const JOURNEY_STEPS: JourneyStep[] = [
-  {
-    number: '۰۱',
-    stepEn: 'Plan',
-    title: 'طراحی و برنامه‌ریزی',
-    description: 'شنیدن خواسته‌ها، مدت اقامت و سبک سفر شما برای تدوین دقیق‌ترین برنامه سفر شخصی‌سازی‌شده.',
-    details: ['مشاوره آنلاین اولیه', 'انتخاب مسیر و هتل‌ها', 'تنظیم بودجه و پیش‌فاکتور شفاف'],
+export const JOURNEY_STEPS_BY_LANG: Record<Language, JourneyStep[]> = {
+  fa: [
+    { number: '۰۱', stepEn: 'Discovery', title: 'ارتباط اولیه و شناخت علایق', description: 'گفتگوی مستقیم با مشاور گردشگری ما برای تعیین سلیقه، سبک سفر و شهرهای مدنظر شما.', details: ['تعیین اولویت‌های تاریخی، فرهنگی یا تفریحی', 'برآورد زمان سفر و ترکیب همسفران'] },
+    { number: '۰۲', stepEn: 'Tailored Plan', title: 'طراحی برنامه اختصاصی سفر', description: 'تدوین روزشمار دقیق گشت‌ها، انتخاب هتل‌های متناسب و تایید مسیر رفت‌وآمد.', details: ['پیشنهاد اقامتگاه‌های سنتی یا مدرن لوکس', 'محاسبه شفاف هزینه‌ها و خدمات جانبی'] },
+    { number: '۰۳', stepEn: 'Logistics', title: 'ویزا، پرواز و هماهنگی‌ها', description: 'اخذ روادید الکترونیک، رزرو قطعی اقامتگاه‌ها و خودروهای در اختیار.', details: ['صدور سریع ویزای گردشگری ایران', 'رزرو بهترین پروازهای بین‌المللی و داخلی'] },
+    { number: '۰۴', stepEn: 'CIP Arrival', title: 'استقبال فرودگاهی و آغاز سفر', description: 'تشریفات اختصاصی در بدو ورود به ایران و هدایت به هتل برای استراحت و شروع برنامه.', details: ['استقبال در سالن تشریفات اختصاصی فرودگاه', 'تحویل سیم‌کارت و ملزومات سفر به مسافر'] },
+    { number: '۰۵', stepEn: 'Unforgettable Journey', title: 'اجرای سفر همراه با پشتیبانی ۲۴ ساعته', description: 'همراهی مداوم لیدرهای اختصاصی و پیگیری تیم پشتیبانی تا لحظه بازگشت.', details: ['ارتباط مستقیم با کارشناس در تمام ساعات', 'امکان تغییرات منعطف در برنامه بنا به درخواست'] },
+  ],
+  en: [
+    { number: '01', stepEn: 'Discovery', title: 'Discovery & Preferences', description: 'One-on-one consultation to define your passions, travel pacing, and ideal Iranian destinations.', details: ['Clarifying cultural, nature, or architectural focal points', 'Confirming group dynamics, duration, and seasonality'] },
+    { number: '02', stepEn: 'Tailored Plan', title: 'Custom Itinerary Curation', description: 'Formulating a day-by-day blueprint, curating boutique hotels, and finalizing private transport.', details: ['Recommending boutique heritage vs modern 5-star properties', 'Transparent budgeting with zero hidden costs'] },
+    { number: '03', stepEn: 'Logistics', title: 'Visa, Ticketing & Logistics', description: 'Securing electronic visa approvals, issuing domestic flights, and chartering private vehicles.', details: ['Fast-track Iranian tourist visa clearances', 'Confirmed reservations on premier flight routes'] },
+    { number: '04', stepEn: 'CIP Arrival', title: 'VIP Arrival & Welcoming', description: 'Seamless airport greeting via private CIP terminals and executive transfer to your suite.', details: ['Tarmac reception and expedited passport formalities', 'Local data SIM provision and orientation briefing'] },
+    { number: '05', stepEn: 'Unforgettable Journey', title: 'Enriching Journey with 24/7 Concierge', description: 'Guided exploration led by certified experts backed by our round-the-clock support desk.', details: ['Direct hotline to your dedicated journey manager', 'Real-time flexibility to adjust daily schedules'] },
+  ],
+  ar: [
+    { number: '۰۱', stepEn: 'Discovery', title: 'التواصل الأولي وتحديد الرغبات', description: 'محادثة مباشرة مع خبير السياحة لمعرفة تفضيلاتكم، وأسلوب السفر المحبب، والمدن التي تودون زيارتها.', details: ['تحديد الأولويات: تاريخية، طبيعية، تسوق، أو دينية', 'تحديد مدة الرحلة وعدد المرافقين'] },
+    { number: '۰۲', stepEn: 'Tailored Plan', title: 'تصميم البرنامج السياحي الخاص', description: 'إعداد جدول يومي مفصل للجولات، واختيار الفنادق الملائمة، وتأكيد مسارات التنقل.', details: ['اقتراح فنادق تراثية فاخرة أو فنادق عصرية 5 نجوم', 'بيان تفصيلي وشفاف لكافة التكاليف والخدمات'] },
+    { number: '۰۳', stepEn: 'Logistics', title: 'استخراج التأشيرات وحجز الطيران', description: 'استخراج التأشيرة الإلكترونية السريعة، وتثبيت حجوزات الفنادق والسيارات الخاصة.', details: ['إصدار تأشيرة الدخول السياحية لإيران بسرعة', 'حجز تذاكر الطيران الداخلي والدولي بأفضل المواعيد'] },
+    { number: '۰۴', stepEn: 'CIP Arrival', title: 'استقبال المطار وبدء الرحلة', description: 'تشريفات خاصة في صالة كبار الشخصيات بالمطار ونقل مريح إلى الفندق للاستراحة.', details: ['استقبال في صالة كبار الشخصيات CIP وتخليص الإجراءات', 'تسليم خط اتصال وإنترنت محلي للضيف'] },
+    { number: '۰۵', stepEn: 'Unforgettable Journey', title: 'جولات ممتعة مع دعم مستمر ۲۴/۷', description: 'مرافقة مرشدين سياحيين محترفين ومتابعة مستمرة من إدارة الشركة حتى لحظة العودة.', details: ['تواصل مباشر مع المنسق الخاص في أي وقت', 'مرونة تامة لتعديل أوقات الجولات اليومية حسب رغبتكم'] },
+  ],
+  tr: [
+    { number: '01', stepEn: 'Discovery', title: 'İlk İletişim ve Tercihlerin Belirlenmesi', description: 'Seyahat danışmanımızla birebir görüşerek ilgi alanlarınızı, seyahat temponuzu ve rotanızı netleştirin.', details: ['Tarihi, kültürel veya doğa odak noktalarının belirlenmesi', 'Seyahat süresi ve katılımcı sayısının planlanması'] },
+    { number: '02', stepEn: 'Tailored Plan', title: 'Kişiye Özel Gezi Programının Tasarlanması', description: 'Gün gün detaylandırılmış rota, butik konaklama seçenekleri ve özel ulaşım güzergahının hazırlanması.', details: ['Tarihi butik konaklar veya modern 5 yıldızlı otel alternatifleri', 'Net ve şeffaf maliyet tablosu'] },
+    { number: '03', stepEn: 'Logistics', title: 'Vize, Uçak Bileti ve Rezervasyonlar', description: 'Hızlı elektronik vize onayı, iç hat uçuşları ve özel tahsisli araçların kesinleştirilmesi.', details: ['Hızlı İran turist vizesi temini', 'En uygun saatlerde iç ve dış hat uçak biletleri'] },
+    { number: '04', stepEn: 'CIP Arrival', title: 'CIP Havalimanı Karşılaması ve Başlangıç', description: 'Özel CIP salonunda beklemesiz karşılama, bagaj formaliteleri ve lüks araçla otele transfer.', details: ['Tarmak karşılama ve CIP salonunda pasaport işlemleri', 'Yerel SIM kart ve seyahat bilgilendirme paketi teslimi'] },
+    { number: '05', stepEn: 'Unforgettable Journey', title: '7/24 Kesintisiz Destek ile Unutulmaz Seyahat', description: 'Lisanslı rehberler eşliğinde zengin bir keşif ve operasyon ekibimizden kesintisiz destek.', details: ['Özel seyahat danışmanınızla doğrudan iletişim', 'Programda esnek ve anlık uyarlamalar yapabilme imkanı'] },
+  ],
+};
+
+export const TOURISM_CTA_BY_LANG = {
+  fa: {
+    badge: 'برنامه‌ریزی سفری متمایز و به‌یادماندنی',
+    title: 'سفر رویایی خود به ایران را با خیالی آسوده آغاز کنید',
+    subtitle: 'همین حالا با مشاوران ارشد ما گفتگو کنید تا متناسب با علایق و زمان شما، برنامه‌ای بی‌نظیر و اختصاصی طراحی کنیم.',
+    ctaUrl: CONSULTATION_URL,
+    ctaText: 'شروع گفتگو و درخواست برنامه اختصاصی',
+    benefits: [
+      'راهنمای مجرب چندزبانه مسلط به تاریخ و فرهنگ ایران',
+      'امنیت و پشتیبانی کامل ۲۴ ساعته در سراسر کشور',
+      'انعطاف‌پذیری و شخصی‌سازی کامل برنامه‌های سفر',
+    ],
   },
-  {
-    number: '۰۲',
-    stepEn: 'Visa',
-    title: 'روادید و امور کنسولی',
-    description: 'دریافت تاییدیه ویزای توریستی ایران (E-Visa) با پیگیری کامل و بدون نیاز به مراجعه حضوری مسافر.',
-    details: ['تسهیل کد دعوت‌نامه', 'پشتیبانی سریع کنسولی', 'بیمه مسافرتی معتبر بین‌المللی'],
+  en: {
+    badge: 'Curate a Distinctive Journey',
+    title: 'Begin Your Persian Odyssey with Unmatched Peace of Mind',
+    subtitle: 'Consult directly with our bespoke journey curators to tailor a customized itinerary reflecting your passions and timeline.',
+    ctaUrl: CONSULTATION_URL,
+    ctaText: 'Start Consultation & Request Itinerary',
+    benefits: [
+      'Licensed multilingual cultural guides throughout Iran',
+      '24/7 dedicated executive security & concierge support',
+      'Total flexibility & bespoke customized itinerary design',
+    ],
   },
-  {
-    number: '۰۳',
-    stepEn: 'Arrival',
-    title: 'ورود و استقبال تشریفاتی',
-    description: 'میزبانی در فرودگاه، تحویل سیم‌کارت و کارت پرداخت اعتباری ریالی، و انتقال روان به هتل با ترانسفر VIP.',
-    details: ['تشریفات CIP فرودگاهی', 'کارت بانکی توریستی Tourist Card', 'استقرار آسوده در هتل'],
+  ar: {
+    badge: 'تخطيط رحلة استثنائية لا تُنسى',
+    title: 'ابدأ رحلتك السياحية الفاخرة إلى إيران بكل طمأنينة وراحة',
+    subtitle: 'تواصل الآن مباشرة مع مستشارينا لتصميم جدول سياحي مخصص يلبي تطلعاتكم ويراعي أدق التفاصيل.',
+    ctaUrl: CONSULTATION_URL,
+    ctaText: 'طلب استشارة وتصميم برنامج سياحي خاص',
+    benefits: [
+      'مرشدون سياحيون محترفون يجيدون العربية والإنجليزية',
+      'دعم تشريفي ومرافقة ميدانية على مدار الساعة',
+      'مرونة كاملة لتخصيص جدول الرحلة بما يلائم الضيوف',
+    ],
   },
-  {
-    number: '۰۴',
-    stepEn: 'Stay',
-    title: 'اقامت در هتل‌های برگزیده',
-    description: 'تجربه استراحت در اصیل‌ترین بوتیک‌هتل‌های سنتی و هتل‌های ۵ ستاره مجهز به مدرن‌ترین امکانات بین‌المللی.',
-    details: ['رزرو تاییدشده قبلی', 'کیفیت‌سنجی مستمر اتاق‌ها', 'پذیرایی صبحانه اصیل محلی'],
+  tr: {
+    badge: 'Ayrıcalıklı Bir Seyahat Planlayın',
+    title: 'İran Seyahatinize Tam Bir Güven ve Huzurla Başlayın',
+    subtitle: 'Zamanınıza ve zevklerinize göre benzersiz bir seyahat programı hazırlamak için uzman danışmanlarımızla hemen iletişime geçin.',
+    ctaUrl: CONSULTATION_URL,
+    ctaText: 'Danışmanlığa Başlayın ve Özel Plan İsteyin',
+    benefits: [
+      'İran tarihi ve kültürüne hakim çok dilli lisanslı rehberler',
+      'Ülke genelinde 7/24 özel operasyon ve güvenlik desteği',
+      'Seyahat planında tam esneklik ve kişiselleştirme',
+    ],
   },
-  {
-    number: '۰۵',
-    stepEn: 'Experience',
-    title: 'تجربه ناب و گشت‌های ویژه',
-    description: 'کشف عمیق تاریخ، طعم‌ها، طبیعت و معاشرت با جامعه محلی در همراهی راهنمایان اختصاصی زبده.',
-    details: ['گشت‌های خصوصی بدون شتاب', 'ورود اختصاصی به جاذبه‌ها', 'تجربه‌های آشپزی و صنایع دستی'],
-  },
-  {
-    number: '۰۶',
-    stepEn: 'Return',
-    title: 'بدرقه و بازگشت خاطره‌انگیز',
-    description: 'ترانسفر برگشت به فرودگاه بین‌المللی، بدرقه تشریفاتی و خاطراتی بی‌بدیل که تا همیشه زنده خواهند ماند.',
-    details: ['ترانسفر سر وقت پرواز', 'بدرقه در سالن فرودگاه', 'پشتیبانی بازخورد و هدایای یادبود'],
-  },
-];
+};
+
+export const getTourismHeroData = (lang: Language = 'fa') => TOURISM_HERO_BY_LANG[lang] || TOURISM_HERO_BY_LANG.fa;
+export const getTourismIntroData = (lang: Language = 'fa') => TOURISM_INTRO_BY_LANG[lang] || TOURISM_INTRO_BY_LANG.fa;
+export const getTourismServicesData = (lang: Language = 'fa') => TOURISM_SERVICES_BY_LANG[lang] || TOURISM_SERVICES_BY_LANG.fa;
+export const getExperiencesData = (lang: Language = 'fa') => EXPERIENCES_BY_LANG[lang] || EXPERIENCES_BY_LANG.fa;
+export const getJourneySteps = (lang: Language = 'fa') => JOURNEY_STEPS_BY_LANG[lang] || JOURNEY_STEPS_BY_LANG.fa;
+export const getTourismCta = (lang: Language = 'fa') => TOURISM_CTA_BY_LANG[lang] || TOURISM_CTA_BY_LANG.fa;
+
+export const getTourismHero = getTourismHeroData;
+export const getTourismIntro = getTourismIntroData;
+export const getTourismServices = getTourismServicesData;
+export const getPersonalizedSteps = getJourneySteps;
+export const getExperienceIranMasonry = getExperiencesData;
+
+export const HERO_DATA = TOURISM_HERO_BY_LANG.fa;
+export const INTRO_DATA = TOURISM_INTRO_BY_LANG.fa;
+export const SERVICES_DATA = TOURISM_SERVICES_BY_LANG.fa;
+export const EXPERIENCES_DATA = EXPERIENCES_BY_LANG.fa;
+export const JOURNEY_STEPS = JOURNEY_STEPS_BY_LANG.fa;

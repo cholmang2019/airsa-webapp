@@ -1,21 +1,24 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CONTACT_PAGE_DATA } from '../data/contactData';
+import { getContactPageData } from '../data/contactData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ContactSupportMessageSection: React.FC = () => {
-  const { supportMessage } = CONTACT_PAGE_DATA;
+  const { language, dir } = useLanguage();
+  const pageData = getContactPageData(language);
+  const { supportMessage } = pageData;
 
   return (
     <section
       id="contact-support-message-section"
       className="relative py-24 sm:py-32 overflow-hidden bg-[#060911] text-white flex items-center justify-center border-b border-white/[0.08]"
-      dir="rtl"
+      dir={dir}
     >
       {/* Clear and Luminous Background Image */}
       <div className="absolute inset-0 z-0">
         <img
           src={supportMessage.backgroundImage}
-          alt="همراهی در تمام مراحل سفر"
+          alt={supportMessage.statement}
           className="w-full h-full object-cover object-center filter brightness-[0.85] contrast-[1.05] saturate-[1.1] scale-105"
           referrerPolicy="no-referrer"
         />

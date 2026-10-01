@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { PWAInstallButton } from './PWAInstallButton';
+import { LanguageSelector } from './LanguageSelector';
+import { useLanguage } from '../context/LanguageContext';
 import {
-  MAIN_NAV_ITEMS,
-  SERVICES_DROPDOWN_ITEMS,
-  SECONDARY_NAV_ITEMS,
-  ALL_ROUTES,
+  getMainNavItems,
+  getServicesDropdownItems,
+  getSecondaryNavItems,
+  getAllRoutes,
   normalizePath,
 } from '../navigation';
 
@@ -17,11 +19,17 @@ interface GlobalHeaderProps {
 }
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavigate }) => {
+  const { language, dir, isRtl, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const normalizedCurrent = normalizePath(currentPath);
+
+  const mainNavItems = getMainNavItems(language);
+  const servicesDropdownItems = getServicesDropdownItems(language);
+  const secondaryNavItems = getSecondaryNavItems(language);
+  const allRoutes = getAllRoutes(language);
 
   // Detect scroll to toggle sticky solid glassmorphism
   useEffect(() => {
@@ -72,7 +80,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
     onNavigate(href);
   };
 
-  const isServicesActive = SERVICES_DROPDOWN_ITEMS.some(
+  const isServicesActive = servicesDropdownItems.some(
     (item) => normalizePath(item.href) === normalizedCurrent
   );
 
@@ -81,15 +89,15 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
       <header
         id="global-header"
         role="banner"
-        dir="rtl"
+        dir={dir}
         className={`sticky top-0 z-50 w-full transition-all duration-300 font-sans ${
           isScrolled
-            ? 'bg-[#070a12]/92 backdrop-blur-xl border-b border-white/[0.08] shadow-xl shadow-black/25 py-3'
-            : 'bg-[#070a12]/70 backdrop-blur-md border-b border-white/[0.04] py-4'
+            ? 'bg-[#070a12]/92 backdrop-blur-xl border-b border-white/[0.08] shadow-xl shadow-black/25 py-2.5 sm:py-3'
+            : 'bg-[#070a12]/70 backdrop-blur-md border-b border-white/[0.04] py-3.5 sm:py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-3">
-          {/* RIGHT: Logo / Brand */}
+          {/* Logo / Brand */}
           <div className="flex-shrink-0 flex items-center">
             <a
               href="/"
@@ -98,20 +106,20 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
                 handleNavClick('/');
               }}
               className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-xl"
-              aria-label="ایرسا سیمرغ جهان - صفحه اصلی"
+              aria-label={t.header.homeAria}
             >
               <BrandLogo size="md" />
             </a>
           </div>
 
-          {/* CENTER: Desktop & Large Tablet Navigation */}
+          {/* Desktop Navigation */}
           <nav
             role="navigation"
-            aria-label="منوی اصلی وبسایت ایرسا سیمرغ جهان"
+            aria-label={t.header.navAria}
             className="hidden xl:flex items-center gap-1.5 2xl:gap-2 text-sm"
           >
             {/* Direct Main Items */}
-            {MAIN_NAV_ITEMS.map((item) => {
+            {mainNavItems.map((item) => {
               const isActive = normalizePath(item.href) === normalizedCurrent;
               return (
                 <a
@@ -140,75 +148,84 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
               );
             })}
 
-            {/* Dropdown: خدمات (Grouping: خدمات سفر, خدمات VIP, خدمات بین‌المللی) */}
+            {/* "Services" Dropdown Menu */}
             <div className="relative" ref={dropdownRef}>
               <button
+                id="header-services-dropdown-btn"
                 type="button"
                 onClick={() => setIsServicesDropdownOpen((prev) => !prev)}
-                onMouseEnter={() => setIsServicesDropdownOpen(true)}
-                aria-expanded={isServicesDropdownOpen}
-                aria-haspopup="true"
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs 2xl:text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 whitespace-nowrap cursor-pointer ${
-                  isServicesActive || isServicesDropdownOpen
+                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs 2xl:text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
+                  isServicesActive
                     ? 'text-amber-300 bg-white/10'
                     : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
                 }`}
+                aria-haspopup="true"
+                aria-expanded={isServicesDropdownOpen}
+                aria-controls="services-menu-dropdown"
               >
-                <span>خدمات</span>
+                <span>{t.header.services}</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  className={`w-4 h-4 transition-transform duration-200 ${
                     isServicesDropdownOpen ? 'rotate-180 text-amber-400' : 'text-slate-400'
                   }`}
                 />
-                {isServicesActive && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                )}
               </button>
 
-              {/* Dropdown Menu Panel */}
+              {/* Dropdown Panel */}
               <AnimatePresence>
                 {isServicesDropdownOpen && (
                   <motion.div
+                    id="services-menu-dropdown"
+                    role="menu"
+                    aria-label={t.header.servicesMenu}
                     initial={{ opacity: 0, y: 8, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.98 }}
                     transition={{ duration: 0.18, ease: 'easeOut' }}
-                    onMouseLeave={() => setIsServicesDropdownOpen(false)}
-                    className="absolute right-0 top-full mt-2 w-48 rounded-xl bg-[#0b101b]/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/60 py-2 z-50"
-                    role="menu"
-                    aria-label="زیرمنوی خدمات"
+                    className={`absolute top-full mt-2 w-72 rounded-2xl bg-[#090d19]/98 border border-white/10 backdrop-blur-2xl shadow-2xl shadow-black/60 p-2 z-50 ${
+                      isRtl ? 'right-0 origin-top-right' : 'left-0 origin-top-left'
+                    }`}
                   >
-                    {SERVICES_DROPDOWN_ITEMS.map((item) => {
-                      const isActive = normalizePath(item.href) === normalizedCurrent;
-                      return (
-                        <a
-                          key={item.id}
-                          href={item.href}
-                          role="menuitem"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavClick(item.href);
-                          }}
-                          className={`flex items-center justify-between px-4 py-2.5 text-xs 2xl:text-sm transition-colors ${
-                            isActive
-                              ? 'text-amber-300 bg-white/10 font-bold'
-                              : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
-                          }`}
-                        >
-                          <span>{item.label}</span>
-                          {isActive && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                          )}
-                        </a>
-                      );
-                    })}
+                    <div className="space-y-1">
+                      {servicesDropdownItems.map((item) => {
+                        const isActive = normalizePath(item.href) === normalizedCurrent;
+                        return (
+                          <a
+                            key={item.id}
+                            href={item.href}
+                            role="menuitem"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleNavClick(item.href);
+                            }}
+                            className={`flex items-start gap-3 p-2.5 rounded-xl text-xs transition-colors duration-150 ${
+                              isActive
+                                ? 'bg-amber-400/10 text-amber-300 font-bold border border-amber-400/20'
+                                : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                            }`}
+                          >
+                            <div className="flex-1">
+                              <div className="font-semibold">{item.label}</div>
+                              {item.description && (
+                                <p className="text-[11px] text-slate-400 font-normal mt-0.5 line-clamp-1">
+                                  {item.description}
+                                </p>
+                              )}
+                            </div>
+                            {isActive && (
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 self-center" />
+                            )}
+                          </a>
+                        );
+                      })}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            {/* Secondary Direct Items: درباره ما, مجله, تماس با ما */}
-            {SECONDARY_NAV_ITEMS.map((item) => {
+            {/* Secondary Nav Items */}
+            {secondaryNavItems.map((item) => {
               const isActive = normalizePath(item.href) === normalizedCurrent;
               return (
                 <a
@@ -228,7 +245,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
                   {item.label}
                   {isActive && (
                     <motion.div
-                      layoutId="activeIndicator"
+                      layoutId="activeIndicatorSecondary"
                       className="absolute bottom-0 left-2 right-2 h-[2px] bg-amber-400 rounded-full"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
@@ -238,8 +255,13 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
             })}
           </nav>
 
-          {/* LEFT: Actions on Desktop / Tablet + Mobile Hamburger */}
+          {/* ACTIONS: Language Selector with Country Flags + Install PWA + Mobile Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Multi-language Selector Dropdown with Flags (Desktop & Tablet) */}
+            <div className="hidden sm:block">
+              <LanguageSelector variant="dropdown" />
+            </div>
+
             {/* Install PWA Button */}
             <PWAInstallButton variant="header" />
 
@@ -249,7 +271,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
               type="button"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               className="xl:hidden inline-flex items-center justify-center p-2.5 rounded-xl bg-white/[0.06] hover:bg-white/10 text-white border border-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
-              aria-label={isMobileMenuOpen ? 'بستن منوی ناوبری' : 'باز کردن منوی ناوبری'}
+              aria-label={isMobileMenuOpen ? t.header.closeMenu : t.header.openMenu}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-navigation-drawer"
             >
@@ -269,7 +291,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
           <div
             id="mobile-navigation-drawer"
             className="fixed inset-0 z-50 xl:hidden flex flex-col justify-start"
-            dir="rtl"
+            dir={dir}
           >
             {/* Dark Backdrop */}
             <motion.div
@@ -296,16 +318,21 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
                   type="button"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
-                  aria-label="بستن منو"
+                  aria-label={t.header.closeMenu}
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
+              {/* Language Selector in Mobile Drawer with Flags */}
+              <div className="px-6 pt-4 pb-2 border-b border-white/[0.06]">
+                <LanguageSelector variant="mobile" />
+              </div>
+
               {/* Navigation Items List */}
               <nav className="p-6 space-y-1.5 divide-y divide-white/[0.05]">
                 <div className="pb-3 space-y-1">
-                  {ALL_ROUTES.map((item) => {
+                  {allRoutes.map((item) => {
                     const isActive = normalizePath(item.href) === normalizedCurrent;
                     return (
                       <a
@@ -336,7 +363,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
                   <PWAInstallButton variant="header" className="w-full justify-center py-2.5" />
 
                   <p className="text-center text-[11px] text-slate-400 pt-1">
-                    ایرسا سیمرغ جهان؛ خدمات گردشگری سلامت و تشریفات بین‌المللی در ایران
+                    {t.footer.slogan}
                   </p>
                 </div>
               </nav>

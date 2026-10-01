@@ -1,7 +1,9 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ArrowLeft, MessageCircle, Sparkles } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowLeft, ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
-import { PRIMARY_CTA, normalizePath } from '../navigation';
+import { LanguageSelector } from './LanguageSelector';
+import { useLanguage } from '../context/LanguageContext';
+import { getPrimaryCta, getServicesDropdownItems, normalizePath } from '../navigation';
 
 interface GlobalFooterProps {
   currentPath: string;
@@ -9,22 +11,17 @@ interface GlobalFooterProps {
 }
 
 export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavigate }) => {
+  const { language, dir, isRtl, t } = useLanguage();
   const normalizedCurrent = normalizePath(currentPath);
-
-  const servicesLinks = [
-    { label: 'گردشگری سلامت', href: '/medical-tourism/' },
-    { label: 'درخواست درمان', href: '/treatment-request/' },
-    { label: 'گردشگری ورودی', href: '/incoming-tourism/' },
-    { label: 'خدمات سفر', href: '/travel-services/' },
-    { label: 'خدمات VIP', href: '/vip-services/' },
-    { label: 'خدمات بین‌المللی', href: '/international-services/' },
-  ];
+  const primaryCta = getPrimaryCta(language);
+  const servicesDropdown = getServicesDropdownItems(language);
 
   const quickLinks = [
-    { label: 'خانه', href: '/' },
-    { label: 'درباره ما', href: '/about-us/' },
-    { label: 'مجله', href: '/journal/' },
-    { label: 'تماس با ما', href: '/contact-us/' },
+    { label: t.nav.home, href: '/' },
+    { label: t.nav.aboutUs, href: '/about-us/' },
+    { label: t.nav.ceo || (language === 'fa' ? 'مدیر عامل' : language === 'ar' ? 'المدير التنفيذي' : language === 'tr' ? 'Genel Müdür' : 'Founder & CEO'), href: '/ceo/' },
+    { label: t.nav.journal, href: '/journal/' },
+    { label: t.nav.contactUs, href: '/contact-us/' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -33,53 +30,55 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const ArrowIcon = isRtl ? ArrowLeft : ArrowRight;
+
   return (
     <footer
       id="global-footer"
       role="contentinfo"
-      dir="rtl"
+      dir={dir}
       className="bg-[#05070d] text-white border-t border-white/[0.08] relative overflow-hidden font-sans"
     >
       {/* Subtle Ambient Background Glow */}
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-amber-500/5 blur-[120px] pointer-events-none rounded-full" />
       <div className="absolute top-0 left-1/4 w-[400px] h-[250px] bg-blue-500/5 blur-[120px] pointer-events-none rounded-full" />
 
-      {/* SECTION 14: FOOTER BANNER CTA */}
+      {/* FOOTER BANNER CTA */}
       <div className="border-b border-white/[0.06] bg-gradient-to-r from-slate-900/60 via-slate-900/30 to-slate-900/60">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-12 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center md:text-right">
+          <div className={`space-y-2 text-center ${isRtl ? 'md:text-right' : 'md:text-left'}`}>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-300 text-xs font-semibold">
               <Sparkles className="w-3 h-3" />
-              همراهی از اولین گام
+              {t.footer.bannerBadge}
             </span>
             <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
-              برای شروع مسیر خود با ما در ارتباط باشید
+              {t.footer.bannerTitle}
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 font-light max-w-xl">
-              تیم متخصصان و راهنمایان بین‌المللی ایرسا سیمرغ جهان آماده ارائه مشاوره، برنامه‌ریزی سفر و پذیرش درمانی شما هستند.
+              {t.footer.bannerSubtitle}
             </p>
           </div>
 
           <div className="flex-shrink-0">
             <a
               id="footer-cta-btn"
-              href={PRIMARY_CTA.href}
+              href={primaryCta.href}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm shadow-xl shadow-amber-500/20 hover:shadow-amber-500/30 transition-all duration-300 hover:-translate-y-0.5"
             >
-              <span>{PRIMARY_CTA.label}</span>
-              <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
+              <span>{t.footer.bannerCta}</span>
+              <ArrowIcon className={`w-4 h-4 transform ${isRtl ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'} transition-transform`} />
             </a>
           </div>
         </div>
       </div>
 
-      {/* SECTION 13: 4-COLUMN FOOTER STRUCTURE */}
+      {/* 4-COLUMN FOOTER STRUCTURE */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-14 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-          {/* COLUMN 1: Airsa Simorgh Jahan (Brand & Positioning) */}
-          <div className="lg:col-span-4 space-y-4 text-right">
+          {/* COLUMN 1: Brand & Positioning */}
+          <div className={`lg:col-span-4 space-y-4 ${isRtl ? 'text-right' : 'text-left'}`}>
             <a
               href="/"
               onClick={(e) => handleLinkClick(e, '/')}
@@ -88,20 +87,20 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
               <BrandLogo size="md" />
             </a>
             <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed max-w-sm">
-              «ایرسا سیمرغ جهان؛ همراه شما در تمام مسیر سفر، درمان و تجربه ایران»
+              {t.footer.slogan}
             </p>
             <p className="text-[11px] text-slate-400 font-light leading-relaxed max-w-sm">
-              ارائه‌دهنده خدمات تخصصی گردشگری سلامت، گردشگری ورودی، تشریفات VIP و ارتباطات تجاری بین‌المللی با تکیه بر استانداردهای جهانی و مهمان‌نوازی اصیل ایرانی.
+              {t.footer.brandDesc}
             </p>
           </div>
 
-          {/* COLUMN 2: خدمات (Services Links) */}
-          <div className="lg:col-span-3 space-y-3.5 text-right">
-            <h4 className="text-sm font-bold text-white tracking-wide border-r-2 border-amber-400 pr-2.5">
-              خدمات
+          {/* COLUMN 2: Services Links */}
+          <div className={`lg:col-span-3 space-y-3.5 ${isRtl ? 'text-right' : 'text-left'}`}>
+            <h4 className={`text-sm font-bold text-white tracking-wide ${isRtl ? 'border-r-2 pr-2.5' : 'border-l-2 pl-2.5'} border-amber-400`}>
+              {t.footer.colServices}
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm">
-              {servicesLinks.map((link) => {
+              {servicesDropdown.map((link) => {
                 const isActive = normalizePath(link.href) === normalizedCurrent;
                 return (
                   <li key={link.href}>
@@ -110,8 +109,8 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
                       onClick={(e) => handleLinkClick(e, link.href)}
                       className={`inline-block transition-colors py-0.5 ${
                         isActive
-                          ? 'text-amber-300 font-bold pr-1'
-                          : 'text-slate-300 hover:text-white hover:translate-x-[-2px]'
+                          ? 'text-amber-300 font-bold'
+                          : 'text-slate-300 hover:text-white hover:underline'
                       }`}
                     >
                       {link.label}
@@ -122,10 +121,10 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
             </ul>
           </div>
 
-          {/* COLUMN 3: دسترسی سریع (Quick Links) */}
-          <div className="lg:col-span-2 space-y-3.5 text-right">
-            <h4 className="text-sm font-bold text-white tracking-wide border-r-2 border-amber-400 pr-2.5">
-              دسترسی سریع
+          {/* COLUMN 3: Quick Links */}
+          <div className={`lg:col-span-2 space-y-3.5 ${isRtl ? 'text-right' : 'text-left'}`}>
+            <h4 className={`text-sm font-bold text-white tracking-wide ${isRtl ? 'border-r-2 pr-2.5' : 'border-l-2 pl-2.5'} border-amber-400`}>
+              {t.footer.colQuickLinks}
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm">
               {quickLinks.map((link) => {
@@ -137,8 +136,8 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
                       onClick={(e) => handleLinkClick(e, link.href)}
                       className={`inline-block transition-colors py-0.5 ${
                         isActive
-                          ? 'text-amber-300 font-bold pr-1'
-                          : 'text-slate-300 hover:text-white hover:translate-x-[-2px]'
+                          ? 'text-amber-300 font-bold'
+                          : 'text-slate-300 hover:text-white hover:underline'
                       }`}
                     >
                       {link.label}
@@ -149,10 +148,10 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
             </ul>
           </div>
 
-          {/* COLUMN 4: ارتباط با ما (Verified Contact Information) */}
-          <div className="lg:col-span-3 space-y-3.5 text-right">
-            <h4 className="text-sm font-bold text-white tracking-wide border-r-2 border-amber-400 pr-2.5">
-              ارتباط با ما
+          {/* COLUMN 4: Contact Information */}
+          <div className={`lg:col-span-3 space-y-3.5 ${isRtl ? 'text-right' : 'text-left'}`}>
+            <h4 className={`text-sm font-bold text-white tracking-wide ${isRtl ? 'border-r-2 pr-2.5' : 'border-l-2 pl-2.5'} border-amber-400`}>
+              {t.footer.colContact}
             </h4>
             <div className="space-y-2.5 text-xs sm:text-sm text-slate-300 font-light">
               {/* Phones */}
@@ -160,17 +159,17 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
                 <Phone className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
                 <div className="space-y-0.5 font-mono text-xs">
                   <a href="tel:03131324716" className="block hover:text-white transition-colors" dir="ltr">
-                    ۰۳۱-۳۱۳۲۴۷۱۶
+                    +98 (31) 3132-4716
                   </a>
                   <a href="tel:03131324717" className="block hover:text-white transition-colors" dir="ltr">
-                    ۰۳۱-۳۱۳۲۴۷۱۷
+                    +98 (31) 3132-4717
                   </a>
                 </div>
               </div>
 
               {/* WhatsApp */}
               <div className="flex items-center gap-2.5">
-                <MessageCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" aria-label="واتس‌اپ" />
+                <MessageCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" aria-label="WhatsApp" />
                 <a
                   href="https://wa.me/989133607595"
                   target="_blank"
@@ -178,7 +177,7 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
                   className="hover:text-emerald-300 transition-colors font-mono text-xs"
                   dir="ltr"
                 >
-                  واتس‌اپ: ۰۹۱۳۳۶۰۷۵۹۵
+                  WhatsApp: +98 913 360 7595
                 </a>
               </div>
 
@@ -198,7 +197,7 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
               <div className="flex items-start gap-2.5 pt-1">
                 <MapPin className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />
                 <span className="text-[11px] leading-relaxed text-slate-300">
-                  اصفهان، خیابان بهار آزادی، روبروی درب دانشگاه اصفهان، مجتمع پردیس ۲، طبقه اول، واحد ۲۱۲
+                  {t.footer.addressText || t.footer.addressLabel}
                 </span>
               </div>
             </div>
@@ -206,16 +205,25 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
         </div>
       </div>
 
-      {/* SECTION 15: FOOTER BOTTOM BAR */}
+      {/* FOOTER BOTTOM BAR WITH LANGUAGE SELECTOR */}
       <div className="border-t border-white/[0.06] bg-[#04060a]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-right text-[11px] text-slate-400">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right text-[11px] text-slate-400">
           <div>
-            <span>© {new Date().getFullYear()} Airsa Simorgh Jahan | ایرسا سیمرغ جهان. کلیه حقوق محفوظ است.</span>
+            <span>{t.footer.copyright}</span>
           </div>
+
+          {/* Language Selector in Footer with Flags */}
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-slate-400">
+              {t.header?.chooseLanguage || t.nav.selectLanguage}:
+            </span>
+            <LanguageSelector variant="inline" />
+          </div>
+
           <div className="flex items-center gap-4 text-slate-400">
-            <span className="font-light">استاندارد بین‌المللی گردشگری و سلامت</span>
+            <span className="font-light">{t.footer.standards}</span>
             <span>•</span>
-            <span className="font-light">Iran Tourism & Medical Hub</span>
+            <span className="font-light">Airsa Simorgh Jahan Global</span>
           </div>
         </div>
       </div>
