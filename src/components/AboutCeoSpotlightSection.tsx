@@ -77,7 +77,11 @@ export const AboutCeoSpotlightSection: React.FC = () => {
           {/* Portrait Column */}
           <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
             <div className="w-full max-w-sm">
-              <CeoPortrait name={content.title} title={content.subtitle} />
+              <CeoPortrait
+                name={content.title}
+                title={content.subtitle}
+                imageSrc="/images/team/hadiseh-dehghani-ceo.jpg"
+              />
             </div>
           </div>
 

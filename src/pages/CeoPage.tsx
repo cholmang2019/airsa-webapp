@@ -91,7 +91,11 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
               className="lg:col-span-5 flex justify-center order-1 lg:order-1"
             >
               <div className="w-full max-w-md">
-                <CeoPortrait name={data.hero.name} title={data.hero.title} />
+                <CeoPortrait
+                  name={data.hero.name}
+                  title={data.hero.title}
+                  imageSrc={data.hero.portraitImage}
+                />
               </div>
             </motion.div>
 

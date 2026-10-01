@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ShieldCheck, Award, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { assetPath } from '../assets/assetManager';
@@ -7,65 +7,46 @@ interface CeoPortraitProps {
   className?: string;
   name: string;
   title: string;
+  imageSrc?: string;
 }
 
-const STORAGE_PHOTO_KEY = 'airsa_ceo_photo_custom_v1';
-const DEFAULT_IMAGE_PATHS = [
+const PRIMARY_CEO_PHOTO = assetPath('/images/team/hadiseh-dehghani-ceo.jpg');
+
+const FALLBACK_IMAGE_PATHS = [
+  PRIMARY_CEO_PHOTO,
   assetPath('/Hadiseh Dehghani CEO.jpg'),
-  assetPath('/images/team/hadiseh-dehghani-ceo.jpg'),
-  assetPath('/images/team/hadiseh-dehghani.jpg'),
+  assetPath('/images/team/hadiseh-dehghani-ceo.webp'),
   assetPath('/images/ceo/hadiseh-dehghani.jpg'),
+  assetPath('/images/about/hadiseh-dehghani-ceo.jpg'),
+  assetPath('/images/team/hadiseh-dehghani.jpg'),
   assetPath('/images/team/hadiseh-dehghani.webp'),
-  assetPath('/images/team/placeholder-team.webp'),
 ];
 
 export const CeoPortrait: React.FC<CeoPortraitProps> = ({
   className = '',
   name,
   title,
+  imageSrc,
 }) => {
   const { language, isRtl } = useLanguage();
   const [currentSourceIndex, setCurrentSourceIndex] = useState(0);
-  const [customPhotoUrl, setCustomPhotoUrl] = useState<string | null>(null);
   const [imageError, setImageError] = useState(false);
 
-  // Load custom saved photo if exists in localStorage and sync with local project disk
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem(STORAGE_PHOTO_KEY);
-        if (saved) {
-          setCustomPhotoUrl(saved);
-
-          // Permanently sync photo to local filesystem in background
-          fetch('/api/save-ceo-photo', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ dataUrl: saved }),
-          }).catch(() => {});
-        }
-      } catch {
-        // Storage fail-safe
-      }
-    }
-  }, []);
+  // Candidate images list starting with imageSrc if provided, followed by the local official CEO photos
+  const candidateImages = [
+    ...(imageSrc ? [assetPath(imageSrc)] : []),
+    ...FALLBACK_IMAGE_PATHS,
+  ];
 
   const handleImageError = () => {
-    if (customPhotoUrl) {
-      // If custom photo failed, fall back to defaults
-      setCustomPhotoUrl(null);
-      setCurrentSourceIndex(0);
-      return;
-    }
-
-    if (currentSourceIndex < DEFAULT_IMAGE_PATHS.length - 1) {
+    if (currentSourceIndex < candidateImages.length - 1) {
       setCurrentSourceIndex((prev) => prev + 1);
     } else {
       setImageError(true);
     }
   };
 
-  const activeSrc = customPhotoUrl || DEFAULT_IMAGE_PATHS[currentSourceIndex];
+  const activeSrc = candidateImages[currentSourceIndex] || PRIMARY_CEO_PHOTO;
 
   return (
     <div className={`relative group ${className}`}>
