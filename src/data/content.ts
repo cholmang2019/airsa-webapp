@@ -84,6 +84,14 @@ export const HERO_DATA_BY_LANG: Record<Language, HeroData> = {
     ctaText: "Tedavi Danışmanlığı Talep Edin",
     ctaUrl: CONSULTATION_URL,
   },
+  zh: {
+    brandEn: "Airsa Simorgh Jahan",
+    brandFa: "ایرسا سیمرغ جهان",
+    title: "超越国界的国际医疗旅游",
+    subtitle: "我们为国际患者提供从入境抵达、国际一流医疗救治到高品质定制住宿的全流程专业协调与贴心看护。",
+    ctaText: "申请医疗咨询",
+    ctaUrl: CONSULTATION_URL,
+  },
 };
 
 export const INTRO_DATA_BY_LANG: Record<Language, IntroData> = {
@@ -135,6 +143,18 @@ export const INTRO_DATA_BY_LANG: Record<Language, IntroData> = {
       { title: "Sürekli İyileşme ve Takip Desteği", desc: "Özel hemşire takibi, ilaç temini ve ülkenize dönüş sonrasında da devam eden konsültasyon." },
     ],
   },
+  zh: {
+    badge: "全流程医疗照护",
+    title: "专为国际患者打造的无缝就医旅程",
+    lead: "在异国他乡接受专科医疗，患者及其家属最需要的是安心、信赖与无微不至的严谨规划。",
+    description:
+      "艾尔萨·西摩格 (Airsa Simorgh Jahan) 打造了一体化海外就医保障体系：从医疗签证加急办理、国际航班预订，到符合卫生标准的五星级豪华住宿、与顶尖主任医师的会诊预约、正规重点医院住院陪护，乃至术后全天候专属护理康复支持，全程提供专业个性化定制服务。",
+    highlights: [
+      { title: "尊贵出行与舒适住宿", desc: "精选五星级酒店及配备专业护理设施的疗养套房，保障静养环境。" },
+      { title: "绿色就医免排队通道", desc: "直接对接权威医学专家及具备国际医疗资质的知名重点医院。" },
+      { title: "康复期全程动态监测", desc: "专业双语护士团队随行护理，严密跟进恢复进程并协助术后随访。" },
+    ],
+  },
 };
 
 export const MEDICAL_SERVICES_BY_LANG: Record<Language, MedicalService[]> = {
@@ -178,6 +198,16 @@ export const MEDICAL_SERVICES_BY_LANG: Record<Language, MedicalService[]> = {
     { id: "transfer", number: "07", enTitle: "Airport Transfer", title: "CIP Havalimanı & VIP Transfer", description: "CIP salonunda özel karşılama, gümrük kolaylığı ve lüks araçlarla güvenli transfer hizmeti." },
     { id: "recovery", number: "08", enTitle: "Recovery Support", title: "İyileşme & Taburculuk Sonrası Destek", description: "Ameliyat sonrası hemşirelik bakımı, reçete temini ve memleketinize döndükten sonra uzaktan takip." },
   ],
+  zh: [
+    { id: "consultation", number: "01", enTitle: "Medical Consultation", title: "专业医学初审与评估", description: "出行前由资深专科医生对您的过往检查报告进行详尽临床评估，并制定初步治疗建议。" },
+    { id: "doctor", number: "02", enTitle: "Doctor Coordination", title: "权威专家精准匹配", description: "根据病症定向匹配最具声望的知名主刀教授与主任专家，锁定门诊及手术席位。" },
+    { id: "hospital", number: "03", enTitle: "Hospital Coordination", title: "重点医院入院协调", description: "在具备国际患者服务资质的顶尖重点医院快速办理VIP病房预订与手术排期。" },
+    { id: "visa", number: "04", enTitle: "Visa Assistance", title: "加急医疗签证办理 (T-Visa)", description: "出具官方医疗邀请函，为您及陪同家属加急办理专属医疗签证与出入境手续。" },
+    { id: "flight", number: "05", enTitle: "Flight Booking", title: "国际航班与航线规划", description: "规划最便捷舒适的飞行路线，协助出票、灵活改签并提供飞行适航医学证明。" },
+    { id: "accommodation", number: "06", enTitle: "Accommodation", title: "高品质卫生疗养住宿", description: "精选五星级豪华酒店及配备专业护理设施的疗养套房，确保术后静养环境与舒适度。" },
+    { id: "transfer", number: "07", enTitle: "Airport Transfer", title: "机场CIP贵宾通道与专车", description: "停机坪专属摆渡车、CIP贵宾厅海关快速通关及豪华商务专车全程接送。" },
+    { id: "recovery", number: "08", enTitle: "Recovery Support", title: "术后护理与长效随访", description: "专业护理团队上门看护、处方药品配送、出院复查以及回国后的远程长效追踪。" },
+  ],
 };
 
 export const PATIENT_JOURNEY_BY_LANG: Record<Language, JourneyStep[]> = {
@@ -220,6 +250,16 @@ export const PATIENT_JOURNEY_BY_LANG: Record<Language, JourneyStep[]> = {
     { step: "06", title: "Tedavi ve Cerrahi Süreç", description: "Ameliyat öncesi son kontroller, uzman görüşmesi, cerrahi operasyon ve ana dilde birebir refakat." },
     { step: "07", title: "Gözetimli İyileşme (Riyazet)", description: "Doktor kontrolleri, fizyoterapi, özel beslenme ve otel süitinde profesyonel hemşire takibi." },
     { step: "08", title: "Güvenli Dönüş ve Uzaktan Takip", description: "Eksiksiz epikriz raporları, uçuşa uygundur belgesi, havalimanı uğurlaması ve online takip." },
+  ],
+  zh: [
+    { step: "01", title: "初步病历咨询", description: "安全、私密地向我们的国际接诊团队提交病历资料与症状诉求。" },
+    { step: "02", title: "专家会诊与方案制定", description: "多学科医疗专家会诊，明确治疗方案、预估整体费用及全流程行程表。" },
+    { step: "03", title: "主治专家匹配与确认", description: "匹配对口学科领军专家，确认门诊复查与外科手术的具体时间节点。" },
+    { step: "04", title: "加急签证与出行安排", description: "出具官方医疗邀请函、快速办理医疗签证、国际机票预订及每日日程规划。" },
+    { step: "05", title: "VIP抵离礼遇与入住", description: "机场CIP贵宾通道尊崇迎接、发放当地通讯卡并由专车护送至星级酒店入住。" },
+    { step: "06", title: "临床治疗与手术实施", description: "在现代化高等级医院完成入院诊断、术前检查、手术治疗与多语种专业陪护。" },
+    { step: "07", title: "专业监护与康复疗养", description: "在舒适安静的套房内享受医师上门复查、专属理疗、专业配餐与护士看护。" },
+    { step: "08", title: "出院返程与远程随访", description: "领取完整中英双语出院报告与适航证明，专车送机，并享受长效海外随访。" },
   ],
 };
 
@@ -276,6 +316,19 @@ export const VIP_EXPERIENCE_DATA_BY_LANG: Record<Language, VipExperienceData> = 
       "Kolay döviz işlemleri, kesintisiz finansal lojistik ve İran genelinde 7/24 konsiyerj.",
     ],
   },
+  zh: {
+    tag: "VIP 尊享礼宾标准",
+    title: "为患者与同行家属打造静心无忧的康复体验",
+    lead: "恪守对患者隐私的绝对尊重、保障陪同家属的极致舒适、消除跨国旅行就医的繁琐与焦虑，是艾尔萨·西摩格的核心使命。",
+    description:
+      "依托私人定制化照护方案、母语级双语医学翻译常驻随行、机场CIP贵宾通道免排队礼遇、甄选豪华星级休养套房及专属商务专车接送，让您与您的挚爱家属在伊朗全境享受到如家般安心、尊崇的守护。",
+    features: [
+      "24/7 全天候专属双语医疗协调员与专业医学翻译贴心陪同。",
+      "机场 CIP 贵宾专属通道，无缝值机通关与行李代办，免除公共排队。",
+      "入住经过严格卫生认证的五星级酒店及配套完善的病患疗养套房。",
+      "境内货币兑换协助、无忧支付流程与伊朗全境全天候私人礼宾响应。",
+    ],
+  },
 };
 
 export const FINAL_CTA_DATA_BY_LANG: Record<Language, FinalCtaData> = {
@@ -301,6 +354,12 @@ export const FINAL_CTA_DATA_BY_LANG: Record<Language, FinalCtaData> = {
     title: "Tedavi Yolculuğunuza Ücretsiz Danışmanlıkla Başlayın",
     subtitle: "Uluslararası medikal kurulumuz sağlık raporlarınızı değerlendirmeye ve ihtiyaçlarınıza özel bir plan hazırlamaya hazırdır.",
     buttonText: "Tedavi Danışmanlığı İsteyin",
+    buttonUrl: CONSULTATION_URL,
+  },
+  zh: {
+    title: "从免费专业医学咨询开启您的健康旅程",
+    subtitle: "我们的国际医疗专家委员会随时准备仔细评估您的病历资料，为您量身定制最合适的诊疗方案与透明出行计划。",
+    buttonText: "立即申请医疗咨询",
     buttonUrl: CONSULTATION_URL,
   },
 };

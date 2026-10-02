@@ -107,7 +107,7 @@ export const CeoPortrait: React.FC<CeoPortraitProps> = ({
           <div className={`absolute top-4 ${isRtl ? 'right-4' : 'left-4'} z-10`}>
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs font-bold shadow-lg">
               <Award className="w-3.5 h-3.5 text-amber-400" />
-              <span>{language === 'fa' ? 'بنیان‌گذار و مدیر عامل' : language === 'ar' ? 'المؤسس والمدير التنفيذي' : language === 'tr' ? 'Kurucu ve Genel Müdür' : 'Founder & CEO'}</span>
+              <span>{language === 'fa' ? 'بنیان‌گذار و مدیر عامل' : language === 'ar' ? 'المؤسس والمدير التنفيذي' : language === 'tr' ? 'Kurucu ve Genel Müdür' : language === 'zh' ? '创始人兼首席执行官' : 'Founder & CEO'}</span>
             </div>
           </div>
 
@@ -140,7 +140,7 @@ export const CeoPortrait: React.FC<CeoPortraitProps> = ({
             ISFAHAN • TEHRAN • GLOBAL
           </span>
           <span className="text-[11px] text-slate-300">
-            {language === 'fa' ? 'گردشگری • سلامت • تجارت' : language === 'ar' ? 'سياحة • صحة • تجارة' : language === 'tr' ? 'Turizm • Sağlık • Ticaret' : 'Tourism • Health • Trade'}
+            {language === 'fa' ? 'گردشگری • سلامت • تجارت' : language === 'ar' ? 'سياحة • صحة • تجارة' : language === 'tr' ? 'Turizm • Sağlık • Ticaret' : language === 'zh' ? '旅游 • 医疗健康 • 国际商贸' : 'Tourism • Health • Trade'}
           </span>
         </div>
       </div>

@@ -81,6 +81,12 @@ export const TOURISM_HERO_BY_LANG: Record<Language, TourismHeroData> = {
     ctaText: '«Özel Seyahat Planımı Hazırlayın»',
     image: ASSETS.hero.iranTourism.src,
   },
+  zh: {
+    title: '«以您独有的步调，深度探索伊朗»',
+    subtitle: '«专为追求地道文化沉浸与尊崇个性化体验的国际旅行者打造的定制入境旅游服务。»',
+    ctaText: '«量身定制我的专属行程»',
+    image: ASSETS.hero.iranTourism.src,
+  },
 };
 
 export const TOURISM_INTRO_BY_LANG: Record<Language, TourismIntroData> = {
@@ -167,6 +173,27 @@ export const TOURISM_INTRO_BY_LANG: Record<Language, TourismIntroData> = {
     image: ASSETS.services.inboundTouristExperience.src,
     ctaUrl: CONSULTATION_URL,
     ctaText: 'Özel Seyahat Programı Talep Edin',
+  },
+  zh: {
+    badge: '独树一帜的旅行理念',
+    title: '«您的专属旅程，精准定制»',
+    lead: '伊朗是一片拥有数千年灿烂文明、丰富多变地貌与传奇待客热情的古老沃土。在艾尔萨·西摩格，我们深知没有哪两位客人的偏好与节奏会完全相同。',
+    locationCaption: '伊斯法罕与设拉子 | 历史传统精品行馆',
+    paragraph1: '伊朗是一片拥有数千年灿烂文明、丰富多变地貌与传奇待客热情的古老沃土。在艾尔萨·西摩格，我们深知没有哪两位客人的偏好与节奏会完全相同。',
+    paragraph2: '艾尔萨·西摩格入境旅游事业部依托庞大的原真历史精品行馆网络、专属带驾VIP车队以及精通中文与国际语言的权威向导，为您量身定制独一无二的探索方案。',
+    paragraphs: [
+      '艾尔萨·西摩格入境旅游专业团队依托精心甄选的传统精品府邸、私密尊享专车车队、谙熟历史文脉的持证向导及深厚的本土资源，根据您在古代建筑、历史文脉、自然秘境或地道美食上的特别兴趣，架构专属于您的路线。',
+      '从签证加急申办、机场CIP贵宾室无缝迎送到旅途全程贴身管家陪伴，我们为国际宾客缔造流畅、安全且永生难忘的波斯体验。',
+    ],
+    pillars: [
+      '完全个性化、高度灵活的弹性日程设计',
+      '入住甄选历史遗迹改建精品行馆与五星级酒店',
+      '全程私密专车与持证专业多语种向导陪同',
+      '全天候24小时不间断专属管家与落地保障',
+    ],
+    image: ASSETS.services.inboundTouristExperience.src,
+    ctaUrl: CONSULTATION_URL,
+    ctaText: '申请定制专属旅行方案',
   },
 };
 
@@ -371,6 +398,56 @@ export const TOURISM_SERVICES_BY_LANG: Record<Language, TourismService[]> = {
       tag: 'Bilgili ve Güvenilir Yol Arkadaşı',
     },
   ],
+  zh: [
+    {
+      id: 'cip',
+      title: '机场CIP贵宾迎送',
+      subtitle: '停机坪专属通道与专车直达',
+      description: '在机场CIP贵宾楼享受零排队尊享礼遇，专员代办入境手续与行李提取，随后直达VIP专车。',
+      image: ASSETS.services.cipAirportLounge.src,
+      tag: '从容无忧入境',
+    },
+    {
+      id: 'stay',
+      title: '精品特色住宿',
+      subtitle: '奢华五星级酒店与原汁原味历史行馆',
+      description: '预订精挑细选的传统庭院式精品行馆（绿松石水池与古朴回廊），或国际高标准的现代奢华五星级酒店。',
+      image: ASSETS.services.hotelAccommodation.src,
+      tag: '静谧与尊荣',
+    },
+    {
+      id: 'transfer',
+      title: '全流程私密专车',
+      subtitle: '城际与市内高规格带驾车队',
+      description: '以车况卓越的高端商务车、经验丰富的礼宾司机与智能路线追踪，保障在伊朗境内安全舒适畅行。',
+      image: ASSETS.services.privateTransfer.src,
+      tag: '安全尊贵出行',
+    },
+    {
+      id: 'itinerary',
+      title: '量身定制路线规划',
+      subtitle: '依据您的个人步调与独特审美设计',
+      description: '打破千篇一律的常规走马观花路线，深度聚焦考古探寻、摄影采风、沙漠星空或丝路文化。',
+      image: ASSETS.services.itineraryPlanning.src,
+      tag: '私享与弹性',
+    },
+    {
+      id: 'experiences',
+      title: '原真文化非遗体验',
+      subtitle: '与波斯传统艺术与生活方式深度交融',
+      description: '拜会伊斯法罕与设拉子手工艺国宝级大师，在联合国历史波斯园林中品茶，尝遍纯正传统美味。',
+      image: ASSETS.services.traditionalBazaarLife.src,
+      tag: '波斯文明神韵',
+    },
+    {
+      id: 'guide',
+      title: '资深中文多语种向导',
+      subtitle: '熟谙历史艺术的专业持证双语向导',
+      description: '全程由精通中文、英文并持有国家高级导游资质的文化学者型领队随行讲解，带来深刻生动的人文洞见。',
+      image: ASSETS.services.inboundTouristExperience.src,
+      tag: '学识渊博的同行者',
+    },
+  ],
 };
 
 export const EXPERIENCES_BY_LANG: Record<Language, ExperienceItem[]> = {
@@ -406,6 +483,14 @@ export const EXPERIENCES_BY_LANG: Record<Language, ExperienceItem[]> = {
     { id: '5', title: 'UNESCO Tescilli Pers Bahçeleri', subtitle: 'Kaşan Fin Bahçesi ve Şiraz İrem Bahçesi’nin havuzları ve selvileri', category: 'Mimari', image: ASSETS.services.nasirAlMulkArchitecture.src, aspectClass: 'aspect-[4/3]' },
     { id: '6', title: 'Geleneksel İran Mutfağı', subtitle: 'Safranlı kebaplar, fesencen ve ferahlatıcı bitkisel şerbetler', category: 'Gastronomi', image: ASSETS.services.persianCuisineFeast.src, aspectClass: 'aspect-[3/4]' },
   ],
+  zh: [
+    { id: '1', title: '伊斯法罕伊玛目广场 (Naqsh-e Jahan)', subtitle: '萨法维王朝建筑奇迹与蓝绿琉璃瓦马赛克艺术', category: '古建筑', image: ASSETS.services.isfahanNaghsheJahan.src, aspectClass: 'aspect-[4/3]' },
+    { id: '2', title: '波斯波利斯 (Persepolis)', subtitle: '阿契美尼德帝国辉煌的礼仪帝国首都遗址', category: '历史遗迹', image: ASSETS.services.persepolisHeritage.src, aspectClass: 'aspect-[3/4]' },
+    { id: '3', title: '马兰贾卜金色沙漠 (Maranjab)', subtitle: '丝绸之路上的金色沙丘、静谧落日与漫天星河', category: '自然风光', image: ASSETS.services.lutDesertSafari.src, aspectClass: 'aspect-[4/3]' },
+    { id: '4', title: '伊斯法罕大巴扎 (Bazaar)', subtitle: '藏红花香气与传承千年的铜盘錾刻及珐琅彩手工作坊', category: '非遗文化', image: ASSETS.services.traditionalBazaarLife.src, aspectClass: 'aspect-[3/4]' },
+    { id: '5', title: '联合国世遗名录波斯园林', subtitle: '卡尚费恩花园与设拉子天堂花园的潺潺清泉与古柏', category: '古典园林', image: ASSETS.services.nasirAlMulkArchitecture.src, aspectClass: 'aspect-[4/3]' },
+    { id: '6', title: '波斯传统宫廷珍馐盛宴', subtitle: '特级藏红花烤肉、石榴核桃炖鸭与天然花草清酿', category: '美食佳酿', image: ASSETS.services.persianCuisineFeast.src, aspectClass: 'aspect-[3/4]' },
+  ],
 };
 
 export const JOURNEY_STEPS_BY_LANG: Record<Language, JourneyStep[]> = {
@@ -436,6 +521,13 @@ export const JOURNEY_STEPS_BY_LANG: Record<Language, JourneyStep[]> = {
     { number: '03', stepEn: 'Logistics', title: 'Vize, Uçak Bileti ve Rezervasyonlar', description: 'Hızlı elektronik vize onayı, iç hat uçuşları ve özel tahsisli araçların kesinleştirilmesi.', details: ['Hızlı İran turist vizesi temini', 'En uygun saatlerde iç ve dış hat uçak biletleri'] },
     { number: '04', stepEn: 'CIP Arrival', title: 'CIP Havalimanı Karşılaması ve Başlangıç', description: 'Özel CIP salonunda beklemesiz karşılama, bagaj formaliteleri ve lüks araçla otele transfer.', details: ['Tarmak karşılama ve CIP salonunda pasaport işlemleri', 'Yerel SIM kart ve seyahat bilgilendirme paketi teslimi'] },
     { number: '05', stepEn: 'Unforgettable Journey', title: '7/24 Kesintisiz Destek ile Unutulmaz Seyahat', description: 'Lisanslı rehberler eşliğinde zengin bir keşif ve operasyon ekibimizden kesintisiz destek.', details: ['Özel seyahat danışmanınızla doğrudan iletişim', 'Programda esnek ve anlık uyarlamalar yapabilme imkanı'] },
+  ],
+  zh: [
+    { number: '01', stepEn: 'Discovery', title: '初步对接与诉求意向沟通', description: '与我们的资深旅行顾问进行一对一深度交流，明确您的偏好主题、旅行节奏与目标城市。', details: ['明确历史、文化、摄影或自然风光重点', '确认出行天数、人数构成及季节偏好'] },
+    { number: '02', stepEn: 'Tailored Plan', title: '专属定制行程方案出炉', description: '制定精确到每日时段的详细活动日程，精选特色精品行馆并核定私密专属专车路线。', details: ['对比推荐历史文化特色客栈与五星级酒店', '费用明码标价，无任何隐形附加支出'] },
+    { number: '03', stepEn: 'Logistics', title: '签证审批、机票与落地保障', description: '高效申办伊朗电子旅游签证，锁定境内外航班黄金班次并调度专属商务专车。', details: ['加急办理伊朗旅游签证 (E-Visa)', '预留最舒适时段的国际与国内航班座位'] },
+    { number: '04', stepEn: 'CIP Arrival', title: '机场CIP贵宾楼尊享迎送', description: '专员停机坪舷梯接送，在独立贵宾室享用茶点，由专员代办通关取件后送抵酒店休整。', details: ['舷梯专车接机与VIP贵宾楼边检通关', '现场交付高速数据电话卡及行前实用包'] },
+    { number: '05', stepEn: 'Unforgettable Journey', title: '全程陪伴与24小时专属管家', description: '资深持证双语向导随行细致讲解，专属个案协调员24小时在线护航直至圆满返程。', details: ['专属行程经理24小时随时保持直线通畅', '旅途中可根据临时意向灵活微调当日节奏'] },
   ],
 };
 
@@ -486,6 +578,18 @@ export const TOURISM_CTA_BY_LANG = {
       'İran tarihi ve kültürüne hakim çok dilli lisanslı rehberler',
       'Ülke genelinde 7/24 özel operasyon ve güvenlik desteği',
       'Seyahat planında tam esneklik ve kişiselleştirme',
+    ],
+  },
+  zh: {
+    badge: '开启与众不同的尊贵之旅',
+    title: '满怀从容与笃定，开启您的波斯绮丽探索',
+    subtitle: '立即联系我们的资深旅行定制顾问，根据您的宝贵时间和独特品位，为您精心构筑无与伦比的专属行程。',
+    ctaUrl: CONSULTATION_URL,
+    ctaText: '开启咨询并索取专属旅行方案',
+    benefits: [
+      '精通波斯历史文化的专业持证多语种向导团队',
+      '覆盖伊朗全境的24小时不间断安全礼宾保障',
+      '全程行程设计完全定制化，随心调整弹性自如',
     ],
   },
 };

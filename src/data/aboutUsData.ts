@@ -101,6 +101,13 @@ export const ABOUT_HERO_BY_LANG: Record<Language, AboutHeroData> = {
     image: ASSETS.hero.aboutGateway.src,
     alt: ASSETS.hero.aboutGateway.alt,
   },
+  zh: {
+    badge: '艾尔萨·西摩格 | 企业品牌概况',
+    title: '«关于艾尔萨·西摩格 (Airsa Simorgh Jahan)»',
+    subtitle: '«全程相伴您的每一次商旅出行、医疗救治与波斯探索之旅»',
+    image: ASSETS.hero.aboutGateway.src,
+    alt: ASSETS.hero.aboutGateway.alt,
+  },
 };
 
 export const ABOUT_WHO_WE_ARE_BY_LANG: Record<Language, AboutWhoWeAreData> = {
@@ -152,6 +159,18 @@ export const ABOUT_WHO_WE_ARE_BY_LANG: Record<Language, AboutWhoWeAreData> = {
       { title: 'Çok Dilli Uzman Kadro', desc: 'Konaklamanız boyunca ana dilinizde size eşlik eden danışmanlar' },
     ],
   },
+  zh: {
+    badge: '企业实力介绍',
+    statement: '«艾尔萨·西摩格 (Airsa Simorgh Jahan) 是一家集国际商旅、航空票务、医疗旅游、入境文化旅游及跨国商务落地于一体的综合性领军企业。»',
+    elaboration: '我们的核心宗旨是依据全球高规格标准，为国际旅行者、观光客人及跨国就医患者打造省心、尊贵且无缝衔接的卓越体验。从出发前的领事签证加急、抵离机场CIP贵宾通道、精选奢华五星级酒店、专属专车车队，到权威三甲医院顶级专家预约挂号以及涉外法务商务咨询，我们在统一高效的体系下进行全流程协调，让您无忧享受纯正的波斯尊荣款待。',
+    image: ASSETS.about.whoWeAreReception.src,
+    alt: ASSETS.about.whoWeAreReception.alt,
+    highlights: [
+      { title: '一体化服务体系 (Integrated Care)', desc: '对旅行出行、高品质住宿与医疗健康各环节实施闭环统筹' },
+      { title: '全球严苛准则', desc: '坚守准时高效、恪守医疗伦理并执行严格信息保密协议' },
+      { title: '精通中文的多语种专家团队', desc: '配备专业双语个案经理，全程无微不至地陪伴您的在伊时光' },
+    ],
+  },
 };
 
 export const ABOUT_OUR_FOCUS_BY_LANG: Record<Language, FocusArea[]> = {
@@ -178,6 +197,12 @@ export const ABOUT_OUR_FOCUS_BY_LANG: Record<Language, FocusArea[]> = {
     { id: 'health-tourism', number: '02', title: 'Sağlık Turizmi', description: 'En iyi uzman cerrahlar, akredite hastaneler ve ameliyat sonrası profesyonel bakım desteği.', image: ASSETS.about.focusHealthDoctor.src, alt: ASSETS.about.focusHealthDoctor.alt },
     { id: 'vip-services', number: '03', title: 'VIP Hizmetler', description: 'Havalimanı CIP lounge karşılaması, lüks araç filosu, özel süitler ve 7/24 konsiyerj.', image: ASSETS.about.focusVipChauffeur.src, alt: ASSETS.about.focusVipChauffeur.alt },
     { id: 'international-services', number: '04', title: 'Uluslararası Hizmetler', description: 'Şirket kuruluşu, yasal oturum süreçleri, yatırım danışmanlığı ve stratejik iş geliştirme.', image: ASSETS.about.focusIntlCorporate.src, alt: ASSETS.about.focusIntlCorporate.alt },
+  ],
+  zh: [
+    { id: 'tourism', number: '01', title: '文化旅游', description: '私人定制深度历史文化遗产之旅，以极高款待规格揭开数千年波斯文明的神秘面纱。', image: ASSETS.about.focusTourismIsfahan.src, alt: ASSETS.about.focusTourismIsfahan.alt },
+    { id: 'health-tourism', number: '02', title: '医疗旅游', description: '直接对接国际认证三甲医院及权威主任专家，提供周到的术后专业护理与营养调养。', image: ASSETS.about.focusHealthDoctor.src, alt: ASSETS.about.focusHealthDoctor.alt },
+    { id: 'vip-services', number: '03', title: 'VIP贵宾礼宾', description: '停机坪CIP舷梯专车接送、豪华行政车队、总统套房尊享及24小时专属贴身管家。', image: ASSETS.about.focusVipChauffeur.src, alt: ASSETS.about.focusVipChauffeur.alt },
+    { id: 'international-services', number: '04', title: '国际商务', description: '加急跨境公司注册、外商投资居留合规办理、以及跨国经贸对接与战略咨询。', image: ASSETS.about.focusIntlCorporate.src, alt: ASSETS.about.focusIntlCorporate.alt },
   ],
 };
 
@@ -214,6 +239,14 @@ export const ABOUT_MISSION_BY_LANG: Record<Language, AboutMissionData> = {
     image: ASSETS.about.missionCareSupport.src,
     alt: ASSETS.about.missionCareSupport.alt,
   },
+  zh: {
+    badge: '宗旨与誓言',
+    title: '«我们的使命»',
+    text: '«为国际旅行者与全球就诊患者构筑专业、流畅且值得深厚信赖的跨国服务桥梁。»',
+    supportingText: '我们的承诺远超常规的服务提供；我们是联结您的真切期待与伊朗最优质医疗、文化和经贸资源之间的坚固信任桥梁。',
+    image: ASSETS.about.missionCareSupport.src,
+    alt: ASSETS.about.missionCareSupport.alt,
+  },
 };
 
 export const ABOUT_VISION_BY_LANG: Record<Language, AboutVisionData> = {
@@ -241,6 +274,12 @@ export const ABOUT_VISION_BY_LANG: Record<Language, AboutVisionData> = {
     text: '«Bölgede kültür turizmi, sağlık turizmi ve VIP hizmetlerde uluslararası alanda en çok güvenilen marka olmak.»',
     supportingText: 'Yerel değerleri dünya standartlarındaki protokollerle birleştirerek sınır ötesi hizmet kalitesini yeniden tanımlıyoruz.',
   },
+  zh: {
+    badge: '战略宏图',
+    title: '«我们的愿景»',
+    text: '«成为中东及西亚区域在文化旅游、医疗协调及VIP专属礼遇领域备受尊崇的国际卓越标杆。»',
+    supportingText: '将悠久深厚的民族待客传统与国际一流服务规范相融合，重新定义跨国服务品质标准。',
+  },
 };
 
 export const ABOUT_BRAND_VALUES_BY_LANG: Record<Language, AboutBrandValue[]> = {
@@ -267,6 +306,12 @@ export const ABOUT_BRAND_VALUES_BY_LANG: Record<Language, AboutBrandValue[]> = {
     { id: 'quality', title: 'Dünya Standartlarında Kalite', lead: 'Sağlık ve konaklama ortaklarında tavizsiz mükemmellik.', description: 'Tıbbi akreditasyonlara tam uyum, lider cerrahlarla iş birliği ve onaylı 5 yıldızlı tesislerde konaklama.' },
     { id: 'trust', title: 'Şeffaflık, Dürüstlük ve Gizlilik', lead: 'Maliyetlerde, tedavide ve kişisel verilerde mutlak güven.', description: 'Gizli ücret içermeyen net fiyatlandırma, tıbbi raporların tam gizliliği ve dürüst kurumsal iletişim.' },
     { id: 'hospitality', title: 'Özgün İran Misafirperverliği', lead: 'Geleneksel sıcak karşılama ile çağdaş uluslararası protokollerin uyumu.', description: 'Yüzyılların sıcak misafirperverlik kültürünü modern VIP standartlarıyla harmanlayarak unutulmaz anlar oluşturuyoruz.' },
+  ],
+  zh: [
+    { id: 'care', title: '以人为本的责任与关怀', lead: '将客人的健康安康、尊严体面与旅途舒适置于所有决策的核心。', description: '我们视每一位客人如家人；每一步安排皆源自至诚同理心、严谨临床专业度与主动贴心的全程守护。' },
+    { id: 'quality', title: '对标国际的高严标准', lead: '在医疗机构与接待酒店的选择上坚持毫不妥协的严苛甄选。', description: '严格核验医疗执业资质，仅与权威主刀名医及经实地检验的五星级酒店建立紧密协作。' },
+    { id: 'trust', title: '透明公开、诚信与绝对隐私', lead: '在费用开支、治疗方案与个人隐私上给予客户绝对踏实感。', description: '各项费用明码标价无隐形开销，对个人病历与商业信息施行最高安全级别的保密保护。' },
+    { id: 'hospitality', title: '真挚醇厚的波斯款待', lead: '将充满温度的传统敬重之礼与现代尊贵涉外礼仪完美融合。', description: '传承千年波斯好客美德，以细致入微的定制服务为您消除陌生的异国顾虑，缔造难忘回忆。' },
   ],
 };
 
@@ -326,13 +371,29 @@ export const ABOUT_APPROACH_BY_LANG: Record<Language, AboutApproachData> = {
     alt: ASSETS.about.approachBoardroom.alt,
     paragraphs: [
       'Airsa Simorgh Jahan’da mutlak huzur, şeffaflık ve derin güven duygusuyla şekillenen seyahatlere inanıyoruz. Hizmet yapımız geleneksel bir acentenin çok ötesindedir; protokol yetkilileri, yeminli tercümanlar ve klinik koordinatörlerden oluşan kesintisiz bir zincirle misafirlerimizin her an yanındayız.',
-      'Seyahat öncesi tıbbi değerlendirmeden vize alımına, CIP havalimanı karşılamasından 5 yıldızlı konaklamaya, önde gelen cerrahlarla hastane süreçlerinden butik kültür gezilerine kadar her aşama titizlikle denetlenir.',
+      'Seyahat öncesi tıbbi değerlendirmeden vize alımına, CIP havalimanı karşılamasından 5 yıldızlı konaklamaya, önde gelen cerrahlarla hastane süreçlerinden butik kültür gezilerine kadar هر aşama titizlikle denetlenir.',
       'Bu bütünleşik yaklaşım, uluslararası hastaların ve misafirlerimizin tüm operasyonel ayrıntıları profesyonel ekibimize emanet ederek sadece iyileşmelerine, kültürel keşiflerine veya ticari hedeflerine odaklanmalarını sağlar.',
     ],
     stats: [
       { label: 'Uçtan Uca Süreç Kapsamı', value: '%100', desc: 'Çıkış noktasından dönüşe kadar' },
       { label: 'Kesintisiz Destek', value: '7/24', desc: 'Tam zamanlı çok dilli danışmanlar' },
       { label: 'Akredite İş Ortağı Ağı', value: '+50', desc: 'Onaylı hastane ve lüks oteller' },
+    ],
+  },
+  zh: {
+    badge: '艾尔萨·西摩格的一体化服务体系',
+    title: '坚持全程贴心陪伴与无可挑剔的卓越品质',
+    image: ASSETS.about.approachBoardroom.src,
+    alt: ASSETS.about.approachBoardroom.alt,
+    paragraphs: [
+      '在艾尔萨·西摩格，我们致力于打造从容安心、全方位透明且安全感满满的难忘旅程。我们的业务架构超越了传统旅行社或临时中介的局限；我们整合了高级礼宾专员、资深翻译专家与医疗临床个案团队，为您提供全天候值得托付的专业支持。',
+      '从抵伊前的医疗档案初审与签证协助，到机场贵宾室CIP迎送、精选奢华酒店入驻、公立及私立名院权威主刀医生预约，乃至精品定制的人文游览，每一环节均由专人细致监督把控。',
+      '这一全方位的一体化服务模式，让国际患者与尊贵宾客能够放下一切琐碎事务，全心专注于身体康复、领略伊朗悠久灿烂的文明底蕴，或高效推进跨国经贸合作。',
+    ],
+    stats: [
+      { label: '全流程无缝覆盖率', value: '100%', desc: '从出发地登机直至平安返程' },
+      { label: '全天候专属管家保障', value: '24/7', desc: '全职专业多语种服务团队' },
+      { label: '国际认证合作网络', value: '+50', desc: '经资质核验的医疗中心与奢华酒店' },
     ],
   },
 };
@@ -360,6 +421,12 @@ export const ABOUT_CTA_BY_LANG: Record<Language, AboutCtaData> = {
     title: '«İran’a Güvenilir Yolculuğunuz Buradan Başlıyor»',
     subtitle: 'Kıdemli uzmanlarımız sorularınızı yanıtlamaya, tıbbi raporlarınızı incelemeye ve size özel programı hazırlamaya hazırdır.',
     buttonText: 'Danışmanlık Talep Edin & İletişime Geçin',
+    buttonUrl: OFFICIAL_CONTACT_URL,
+  },
+  zh: {
+    title: '«您的安心赴伊之旅，从这里启程»',
+    subtitle: '我们的资深专家团队随时为您解答疑问、评估病历资料并量身定制专属方案。',
+    buttonText: '预约专业咨询并联系我们',
     buttonUrl: OFFICIAL_CONTACT_URL,
   },
 };

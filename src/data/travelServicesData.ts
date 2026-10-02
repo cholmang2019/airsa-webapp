@@ -80,6 +80,15 @@ export const HERO_CONTENT_BY_LANG: Record<Language, TravelHeroContent> = {
     ctaUrl: CONSULTATION_URL,
     image: ASSETS.hero.travelServices.src,
   },
+  zh: {
+    badge: '一站式全流程商旅解决方案',
+    title: '«让每一次出行都从容笃定»',
+    subtitle: '«艾尔萨·西摩格全方位商旅服务：机票票务、签证加急、奢华酒店与专属VIP接送。»',
+    ctaText: '浏览商旅服务',
+    consultationText: '预约专业咨询',
+    ctaUrl: CONSULTATION_URL,
+    image: ASSETS.hero.travelServices.src,
+  },
 };
 
 export const CORE_SERVICES_BY_LANG: Record<Language, CoreServiceItem[]> = {
@@ -299,6 +308,60 @@ export const CORE_SERVICES_BY_LANG: Record<Language, CoreServiceItem[]> = {
       ],
     },
   ],
+  zh: [
+    {
+      id: 'flights',
+      title: '国际与境内航空机票',
+      blurb: '全球航班快速出票与航线网络精准对接。',
+      description: '直接对接全球主流航空公司与伊朗境内航空系统，享有优势票价、便捷改签及无缝联程航班规划。',
+      tag: '直飞与联程航班服务',
+      image: ASSETS.services.flightBooking.src,
+      highlights: [
+        '国际与国内权威航司即时出票及候补保障',
+        '全天候机票改签、退票与航班异动实时跟进',
+        '支持公务舱、头等舱与经济舱全舱位优选',
+      ],
+    },
+    {
+      id: 'visa',
+      title: '签证加急办理与领事支持',
+      blurb: '专业外事顾问跟进，签证办理省心快捷。',
+      description: '全流程辅导并代办各类入境许可，严谨审核材料并开辟领事绿色通道，避免繁琐延误。',
+      tag: '领事外事一站通',
+      image: ASSETS.services.visaAssistance.src,
+      highlights: [
+        '行前资深外事顾问深度预审材料合格率',
+        '直通申办伊朗旅游签、商务签及就医签证 (T-Visa)',
+        '提供详尽的出入境政策与转机要求权威指导',
+      ],
+    },
+    {
+      id: 'hotel',
+      title: '精选奢华酒店与历史行馆',
+      blurb: '甄选高品质下榻之所，尊享协议礼遇。',
+      description: '严选各大主要城市五星级奢华酒店或深具文化底蕴的历史精品行馆，确保住宿体验安全、典雅且舒适。',
+      tag: '品质甄选星级酒店',
+      image: ASSETS.services.hotelAccommodation.src,
+      highlights: [
+        '确认锁定五星级酒店及特色传统行馆核心房型',
+        '尊享最惠协议价格，各项服务明码标价无隐形消费',
+        '艾尔萨·西摩格贵宾专享欢迎礼遇与延迟退房',
+      ],
+    },
+    {
+      id: 'transfer',
+      title: '私密带驾专车与贵宾车队',
+      blurb: '机场专车迎送及城际全天候随行车队。',
+      description: '车况上乘的高端商务车与豪华轿车，配以受过礼宾培训的专业司机，保障市内接送与跨城出行的尊荣安全。',
+      tag: '尊享商务VIP车队',
+      image: ASSETS.services.privateTransfer.src,
+      highlights: [
+        '机场停机坪CIP或航站楼零延误专车无缝接送',
+        '现代高端VIP车型搭配懂外事礼仪的专业司机',
+        '提供全日包车、商务考察及跨省城际专线服务',
+      ],
+    },
+  ],
 };
 
 export const SEAMLESS_TRAVEL_BY_LANG: Record<Language, SeamlessTravelData> = {
@@ -374,6 +437,24 @@ export const SEAMLESS_TRAVEL_BY_LANG: Record<Language, SeamlessTravelData> = {
       { title: 'Dakiklik Garantisi', desc: 'Tüm transferlerde ve randevularda tam zamanlama disiplini.' },
     ],
   },
+  zh: {
+    title: '«从容无忧的惬意旅程»',
+    lead: '将旅途中的所有环节高效协同咬合，是缔造安心尊享体验的核心秘密。',
+    description: '在艾尔萨·西摩格，我们视您行程中的每一个细节为不可分割的完整链条。从启动签证申请与国际出票，到抵离机场的CIP礼遇、行李提取、专车接送直至下榻五星级酒店，专业顾问团队如瑞士钟表般严密把控每一分钟。',
+    image: ASSETS.services.seamlessTravel.src,
+    badge: '一体化流畅旅行体验',
+    highlights: [
+      '毫秒级精确规划航班抵离与酒店接驳时间表',
+      '机场独立CIP贵宾楼极速通关与专属茶歇接待',
+      '车况优异的奢华行政车队与外事礼仪专职司机',
+      '全天候24小时中文管家服务与实时应急响应',
+    ],
+    badges: [
+      { title: '全闭环服务整合', desc: '将机票、酒店、专车与导览集中在统一个案下全权协调。' },
+      { title: '专属私人管家', desc: '7×24小时全时段在线，快速处理临时行程变更与个性需求。' },
+      { title: '严谨守时保证', desc: '在每一次专车接送、航班登机与正式会面中贯彻绝对准时原则。' },
+    ],
+  },
 };
 
 export const CTA_CONTENT_BY_LANG: Record<Language, TravelCtaContent> = {
@@ -423,6 +504,18 @@ export const CTA_CONTENT_BY_LANG: Record<Language, TravelCtaContent> = {
       '2 saat içinde hızlı yanıt',
       'En avantajlı fiyat ve onaylı konaklama garantisi',
       'Seyahat süresince doğrudan danışman desteği',
+    ],
+  },
+  zh: {
+    badge: '全程贴心商旅指导',
+    title: '«需要为您即将启程的出行提供专业规划吗？»',
+    subtitle: '艾尔萨·西摩格资深商旅规划专家随时为您解答疑问、量身制定行程，并锁定最优质的航班与酒店下榻方案。',
+    buttonText: '预约商旅咨询',
+    ctaUrl: CONSULTATION_URL,
+    benefits: [
+      '2小时内极速专业响应',
+      '确保最具优势的协议价格与实地核验酒店',
+      '旅途全程专属管家直接在线保驾护航',
     ],
   },
 };

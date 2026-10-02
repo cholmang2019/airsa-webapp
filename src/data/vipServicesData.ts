@@ -89,6 +89,12 @@ export const VIP_HERO_BY_LANG: Record<Language, VipHeroData> = {
     ctaText: '«VIP Hizmet Talep Edin»',
     image: ASSETS.hero.travelServices.src,
   },
+  zh: {
+    title: '«超越期待的尊荣旅程»',
+    subtitle: '«专属VIP与CIP私人礼宾服务，在伊朗为您缔造从容、尊贵且高度定制的非凡体验。»',
+    ctaText: '«申请VIP专属礼遇»',
+    image: ASSETS.hero.travelServices.src,
+  },
 };
 
 export const VIP_EXPERIENCE_BY_LANG: Record<Language, VipExperienceData> = {
@@ -134,6 +140,17 @@ export const VIP_EXPERIENCE_BY_LANG: Record<Language, VipExperienceData> = {
       { title: 'Mutlak Gizlilik ve Mahremiyet', desc: 'Misafirlerimizin kimliği, seyahat planları ve kişisel verileri tam güvence altındadır.' },
       { title: '7/24 Kesintisiz İletişim', desc: 'Günün her saatinde özel danışmanınıza doğrudan erişim hattı.' },
       { title: 'Sınırsız Kişiselleştirme', desc: 'Programın her ayrıntısı kişisel tercihlerinize ve beklentilerinize göre uyarlanır.' },
+    ],
+  },
+  zh: {
+    title: '«专属私人管家全程陪伴»',
+    lead: '真正的安心无忧，源于拥有一位在您提出需求之前便已筹备就绪的专属行政管家。',
+    description: '在艾尔萨·西摩格的高端VIP服务体系中，一位通晓外事涉外礼仪且精通中文与波斯语的双语资深管家将全程陪伴您的在伊时光。从停机坪专车迎送与专人免排队行李提取，到奢华套房个性化布置、权威医生绿色会诊安排与无障碍跨语言沟通，所有事宜均以极高私密性与精准度细致推进。',
+    image: ASSETS.team.medicalCoordinator.src,
+    pillars: [
+      { title: '绝对隐私与信息保密', desc: '严密保护客人的身份信息、商务行程与就诊记录。' },
+      { title: '24/7 全天候即时响应', desc: '专属管家专线随时通畅，全时段处理突发与临时需求。' },
+      { title: '无限尊崇个性化定制', desc: '严格按照您的生活品味、时间节奏与出行习惯定制全部细节。' },
     ],
   },
 };
@@ -205,6 +222,23 @@ export const VIP_HOSPITALITY_BY_LANG: Record<Language, VipHospitalityOverview> =
       { value: '%100', label: 'Gizlilik Garantisi' },
       { value: '7/24', label: 'Özel Konsiyerj' },
       { value: 'Sıfır', label: 'Sırada Bekleme' },
+    ],
+  },
+  zh: {
+    tag: '卓越涉外礼宾规格',
+    title: '从容安宁，无可挑剔的高效协调',
+    subtitle: '«奢华款待的至高境界，在于提前洞察并妥帖安排您尚未言明的期许。»',
+    description: '在艾尔萨·西摩格，高端定制出行绝不仅仅是奢华硬件的罗列；它由机场CIP礼宾官员、专业国宾车队司机、五星级酒店总经理及资深医疗总监共同构成的协作网络有力驱动。我们在您抵达前便办妥全部通行许可、绿色通道与保密安排，确保行程流畅无阻。',
+    image: ASSETS.services.seamlessTravel.src,
+    highlights: [
+      { title: '严谨的时效与通行管理', desc: '在口岸出入境、机场要客通道及城际专车中享有毫无停滞的流畅通行。' },
+      { title: '甄选总统套房与外交级寓所', desc: '直通各核心城市顶奢酒店的总统套房及受保护的历史精品私密宅邸。' },
+      { title: '恪守安全准则与个人隐私', desc: '在所有拜访、会谈与诊疗场景中全面执行保密守则与安全防护规范。' },
+    ],
+    stats: [
+      { value: '100%', label: '绝对信息隐私保障' },
+      { value: '24/7', label: '专属管家专班守护' },
+      { value: '零', label: '公共区域排队等候' },
     ],
   },
 };
@@ -426,6 +460,60 @@ export const VIP_SERVICES_BY_LANG: Record<Language, VipServiceItem[]> = {
       ],
     },
   ],
+  zh: [
+    {
+      id: 'vip-airport-arrival',
+      title: '机场CIP贵宾要客迎送',
+      subtitle: '停机坪舷梯专车与独立贵宾楼通道',
+      description: '客机落地后舷梯专车直接接驳至机场CIP贵宾楼，在幽雅独立茶歇厅享用精致茶点，专员代办海关边检盖章与行李提取送上专车。',
+      tag: 'Fast-Track & CIP Lounge',
+      image: ASSETS.services.cipAirportLounge.src,
+      features: [
+        '飞机舷梯口停机坪豪华轿车专车直接接机',
+        '在专属CIP贵宾厅休憩，专享精品茶歇与咖啡',
+        '免去公共航站楼排队，由专员全权代办出入境与托运行李',
+      ],
+    },
+    {
+      id: 'vip-transfer',
+      title: '专属带驾国宾车队',
+      subtitle: '高规格豪华商务车与专业礼宾司机',
+      description: '车况崭新的高规格豪华商务车与高级轿车，配以受过外事安全与涉外礼节培训的专业专职司机，保障全天候安全出行。',
+      tag: 'Chauffeur & Fleet VIP',
+      image: ASSETS.services.privateTransfer.src,
+      features: [
+        '配备高级空气净化系统与极致舒适软装的豪华座驾',
+        '精通商务礼仪与安全保卫守则的资深专职司机',
+        '支持市内点对点、全日专属包车及跨省城际专程接送',
+      ],
+    },
+    {
+      id: 'vip-stay',
+      title: '皇家级尊尚套房住宿',
+      subtitle: '精选顶奢五星级酒店总统套房与行馆',
+      description: '下榻伊朗各重点城市经严苛标准甄选的奢华五星级酒店总统套房、外交套房或典藏级皇家历史行馆，配备私人英式管家服务。',
+      tag: 'Royal Suites & Hotels',
+      image: ASSETS.services.hotelAccommodation.src,
+      features: [
+        '优先锁定制高规格总统套房、皇家套房与外交级寓所',
+        '专享24小时私人管家服务、客房送餐及专属入住手续',
+        '私密静谧的环境高度适配商务闭门谈判与术后宁静调养',
+      ],
+    },
+    {
+      id: 'vip-concierge',
+      title: '专属中文私人礼宾官',
+      subtitle: '贯穿全行程的高级双语事务专员',
+      description: '一位熟稔涉外政商礼仪、医疗体系与旅行文脉的资深双语礼宾官全天候待命，协助处理一切沟通对接与行程需求。',
+      tag: 'Executive Concierge',
+      image: ASSETS.team.medicalCoordinator.src,
+      features: [
+        '名医门诊手术、高阶商务洽谈与私密游览的高效协调',
+        '严格遵守职业保密协议，全程无微不至体贴陪伴',
+        '提供流畅的现场中文口译与涉外文件手续快速指引',
+      ],
+    },
+  ],
 };
 
 export const VIP_TIMELINE_BY_LANG: Record<Language, VipTimelineStep[]> = {
@@ -597,6 +685,48 @@ export const VIP_TIMELINE_BY_LANG: Record<Language, VipTimelineStep[]> = {
       badge: 'Dönüş',
     },
   ],
+  zh: [
+    {
+      stepEn: '01',
+      stepFa: '01',
+      title: '行前意向倾听与专属方案定制',
+      lead: '充分倾听您的诉求，在启程前将每一处细节规划至完美',
+      description: '深入评估您的医疗健康诉求或跨国商务目标，精选指定尊尚套房并依托官方邀请函加急办理VIP签证。',
+      badge: '出行前筹备',
+    },
+    {
+      stepEn: '02',
+      stepFa: '02',
+      title: '飞机舷梯口CIP贵宾楼接机迎候',
+      lead: '无需步入拥挤的公共航站楼，从落地第一秒便尊享宁谧',
+      description: '停机坪舷梯口专车恭候，直达CIP贵宾楼品茗休息，由专属礼宾官代办边检手续与行李提取直送上车。',
+      badge: '抵伊迎候',
+    },
+    {
+      stepEn: '03',
+      stepFa: '03',
+      title: '专车护送下榻与套房内快捷登记',
+      lead: '乘坐奢华车队无缝直达酒店，免去大堂琐碎登记手续',
+      description: '由礼宾专车平稳护送至下榻酒店，由管家直接在套房内办理快速私密入住，呈现定制欢迎礼遇。',
+      badge: '入住休整',
+    },
+    {
+      stepEn: '04',
+      stepFa: '04',
+      title: '专属双语管家随行与全程闭环管理',
+      lead: '在权威会诊、商务洽谈与文化游览中提供贴心私人协助',
+      description: '协调名医门诊绿色通道、现场高水平中文翻译、私享顶级餐厅预订及深度独家文化景点特权探访。',
+      badge: '在伊全程',
+    },
+    {
+      stepEn: '05',
+      stepFa: '05',
+      title: 'CIP贵宾欢送登机与回国后跟踪',
+      lead: '以始终如一的典雅与尊重，为您的非凡旅途画上圆满句号',
+      description: '在机场CIP贵宾楼办理登机手续与退税托运，舷梯专车送达机舱门口；安全返国后持续随访康复进展。',
+      badge: '圆满返程',
+    },
+  ],
 };
 
 export const VIP_BRAND_BY_LANG: Record<Language, VipBrandStatement> = {
@@ -656,6 +786,20 @@ export const VIP_BRAND_BY_LANG: Record<Language, VipBrandStatement> = {
       { title: 'Özgün Sıcaklık', desc: 'Dünya standartlarında lüks protokoller ile kadim İran misafirperverliğinin harmanı.' },
     ],
   },
+  zh: {
+    title: '«无可比拟的尊尚外事规格»',
+    statement: '在旅途的每一寸时光中，感受静谧、精准与尊严',
+    faTitle: '«无可比拟的尊尚外事规格»',
+    faStatement: '在旅途的每一寸时光中，感受静谧、精准与尊严',
+    quote: '«真正的奢华从不喧哗，它存在于让万事井然有序、丝滑流淌的静水深流之中。»',
+    author: '艾尔萨·西摩格 (Airsa Simorgh Jahan)',
+    role: '国际高规格涉外款待',
+    principles: [
+      { title: '分秒级严谨守时', desc: '精准推进所有行程与预约节点，绝不耽误贵宾一分一秒宝贵时光。' },
+      { title: '全方位绝对私密', desc: '无条件保密客户个人身份、商务洽谈内容与医疗健康档案。' },
+      { title: '至真醇厚的人性温度', desc: '将国际顶级尊贵服务标准与波斯古老深厚的好客传统融为一体。' },
+    ],
+  },
 };
 
 export const VIP_CTA_BY_LANG: Record<Language, VipCtaData> = {
@@ -678,6 +822,11 @@ export const VIP_CTA_BY_LANG: Record<Language, VipCtaData> = {
     title: '«Farklı Bir Seyahat Deneyimine Hazır mısınız?»',
     subtitle: 'Airsa Simorgh Jahan kıdemli VIP protokol direktörleri seyahatinizin tüm ayrıntılarını kişiselleştirmek için hazırdır.',
     buttonText: 'VIP Hizmet ve Konsiyerj Talep Edin',
+  },
+  zh: {
+    title: '«准备好体验更高维度的尊荣出行了吗？»',
+    subtitle: '艾尔萨·西摩格资深VIP礼宾主管随时准备为您构思并量身定制在伊朗期间的每一处私享细节。',
+    buttonText: '申请VIP专属礼遇与礼宾服务',
   },
 };
 

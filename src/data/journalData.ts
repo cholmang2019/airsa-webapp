@@ -61,6 +61,13 @@ export const JOURNAL_HERO_BY_LANG: Record<Language, { badge: string; title: stri
     description: 'İran’da sağlık, kültür turları ve uluslararası ticari girişimlere dair analizler, pratik rehberler ve seçkin konaklama deneyimleri.',
     image: ASSETS.hero.iranTourism.src,
   },
+  zh: {
+    badge: '艾尔萨·西摩格专业期刊与综合指南',
+    title: '«艾尔萨·西摩格专刊»',
+    subtitle: '«旅行、医疗旅游与国际服务权威指南»',
+    description: '汇集深度分析文章、实用旅行指南与尊贵款待心得，全方位覆盖在伊朗的医疗康养、文化探索与跨国商务。',
+    image: ASSETS.hero.iranTourism.src,
+  },
 };
 
 export const getJournalHeroData = (lang: Language = 'fa') => JOURNAL_HERO_BY_LANG[lang] || JOURNAL_HERO_BY_LANG.fa;
@@ -532,6 +539,16 @@ export const JOURNAL_CTA_BY_LANG: Record<Language, {
     trust1: 'Hızlı ve Gizli Yanıt',
     trust2: 'Çok Dilli Uzman Kadro',
     trust3: '7/24 Kesintisiz Refakat',
+    contactUrl: 'https://medixmaster.com/contact-us/',
+  },
+  zh: {
+    badge: '专属咨询与贴心支持',
+    title: '«对赴伊朗旅行或就医有任何疑问？»',
+    subtitle: '艾尔萨·西摩格的多语种资深顾问团队随时为您提供免费初步评估、签证支持与量身定制的专属行程方案。',
+    buttonText: '预约专业咨询',
+    trust1: '快速响应与严格保密',
+    trust2: '精通中文的多语种专家团队',
+    trust3: '24/7 全程无缝相伴',
     contactUrl: 'https://medixmaster.com/contact-us/',
   },
 };

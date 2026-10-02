@@ -70,6 +70,19 @@ const PAGE_TITLES_BY_LANG: Record<Language, Record<string, string>> = {
     '/journal/': 'Dergi ve Sağlık Rehberi | Airsa Simorgh Jahan',
     '/contact-us/': 'İletişim | Airsa Simorgh Jahan',
   },
+  zh: {
+    '/': '艾尔萨·西摩格 (Airsa Simorgh Jahan) | 伊朗医疗旅游与国际VIP礼宾服务',
+    '/medical-tourism/': '医疗旅游服务 | 艾尔萨·西摩格 (Airsa Simorgh Jahan)',
+    '/treatment-request/': '国际就医申请 | 艾尔萨·西摩格 (Airsa Simorgh Jahan)',
+    '/incoming-tourism/': '入境旅游与深度伊朗体验 | 艾尔萨·西摩格',
+    '/travel-services/': '全方位商旅与票务服务 | 艾尔萨·西摩格',
+    '/vip-services/': 'VIP礼宾与CIP机场贵宾礼遇 | 艾尔萨·西摩格',
+    '/international-services/': '国际商贸与投资设立服务 | 艾尔萨·西摩格',
+    '/about-us/': '关于我们 | 艾尔萨·西摩格 (Airsa Simorgh Jahan)',
+    '/ceo/': '哈迪塞·德赫加尼·普德赫 | 艾尔萨·西摩格创始人兼CEO',
+    '/journal/': '专业期刊与旅行指南 | 艾尔萨·西摩格',
+    '/contact-us/': '联系我们 | 艾尔萨·西摩格 (Airsa Simorgh Jahan)',
+  },
 };
 
 const resolvePathFromUrl = (): string => {

@@ -65,6 +65,11 @@ export const TREATMENT_HERO_BY_LANG: Record<Language, TreatmentHeroData> = {
     subtitle: '«Klinik belgelerinizi iletin; kıdemli hekim kurulumuz 24 saat içinde en uygun tedavi ve seyahat planını hazırlasın.»',
     badge: 'Uluslararası Hasta Doğrudan Kabulü',
   },
+  zh: {
+    title: '«正式就医建档与医疗服务申请»',
+    subtitle: '«请提交您的病历及检查报告，我们的资深医学专家委员会将在24小时内为您制定专属诊疗与出行方案。»',
+    badge: '国际患者直通受理通道',
+  },
 };
 
 export const TREATMENT_OPTIONS_BY_LANG: Record<Language, TreatmentOption[]> = {
@@ -107,6 +112,16 @@ export const TREATMENT_OPTIONS_BY_LANG: Record<Language, TreatmentOption[]> = {
     { value: "cardiology", label: "Kardiyoloji & Kalp Damar Cerrahisi" },
     { value: "infertility", label: "Kısırlık Tedavisi & Tüp Bebek (IVF)" },
     { value: "other", label: "Diğer Uzmanlıklar & Kapsamlı Check-up" },
+  ],
+  zh: [
+    { value: "hair_transplant", label: "植发与眉毛精密种植" },
+    { value: "dental", label: "高端美容齿科与种植牙" },
+    { value: "cosmetic_surgery", label: "整形与医疗美容外科" },
+    { value: "ophthalmology", label: "眼科全飞秒与微创眼部手术" },
+    { value: "orthopedics", label: "骨科与人工关节置换" },
+    { value: "cardiology", label: "心血管内科与心外科手术" },
+    { value: "infertility", label: "辅助生殖与试管婴儿 (IVF)" },
+    { value: "other", label: "其他专科诊疗与深度体检" },
   ],
 };
 
@@ -165,6 +180,20 @@ export const TRUST_POINTS_BY_LANG: Record<Language, TrustPoint[]> = {
     {
       title: "24 Saat İçinde Garantili Yanıt",
       description: "Airsa Simorgh Jahan hasta koordinatörümüz WhatsApp, telefon veya e-posta yoluyla sizinle ivedilikle iletişime geçer.",
+    },
+  ],
+  zh: [
+    {
+      title: "严格临床信息保密",
+      description: "您的所有就诊病历、医学检查影像及个人身份资料均受到最高级别隐私保护，仅供指定会诊专家阅览。",
+    },
+    {
+      title: "权威主任专家联合初审",
+      description: "由对应专科资深医学专家进行全面评估，为您提供透明的治疗方案、就医时间表及清晰的费用预估。",
+    },
+    {
+      title: "24小时内高效回复承诺",
+      description: "艾尔萨·西摩格的多语种国际个案协调员将通过微信、WhatsApp或官方邮箱第一时间跟进指导后续步骤。",
     },
   ],
 };
@@ -262,6 +291,29 @@ export const FORM_STRINGS_BY_LANG: Record<Language, TreatmentFormData> = {
     trackingLabel: 'Klinik Dosya Takip Numarası',
     newRequestButton: 'Yeni Bir Tedavi Talebi Oluştur',
   },
+  zh: {
+    nameLabel: '患者姓名',
+    namePlaceholder: '例如：李先生 / 张女士',
+    countryLabel: '常住国家与城市',
+    countryPlaceholder: '例如：中国上海、北京或广州...',
+    phoneLabel: '联络电话（含国际区号）',
+    phonePlaceholder: '+86 139 ... 或国际号码',
+    whatsappLabel: '微信 / WhatsApp 号码（用于接收就医方案）',
+    emailLabel: '常用电子邮箱',
+    specialtyLabel: '所需诊疗专科或就医项目',
+    selectSpecialty: '请选择所需诊疗专科',
+    dateLabel: '预计出发旅行与就诊日期',
+    filesLabel: '上传病历或检查诊断报告（选填）',
+    filesHint: '支持格式：PDF, JPG, PNG，最大 25MB',
+    notesLabel: '病情描述、既往病史及特殊就医诉求',
+    notesPlaceholder: '请详细描述当前症状、过往手术史或正在服用的药物...',
+    submitButton: '提交病历并获取专属治疗方案',
+    submittingButton: '正在提交就医资料...',
+    successTitle: '就医申请已成功登记',
+    successDesc: '您的病历已录入艾尔萨·西摩格国际就医接待系统。我们的首席临床协调专员将在24小时内与您联系。',
+    trackingLabel: '就医病历追踪码',
+    newRequestButton: '提交新的就医申请',
+  },
 };
 
 export const SUPPORT_CTA_BY_LANG = {
@@ -284,6 +336,11 @@ export const SUPPORT_CTA_BY_LANG = {
     title: 'Acil Rehberliğe veya Doğrudan Telefon Desteğine mi İhtiyacınız Var?',
     subtitle: 'Uluslararası hasta birimi danışmanlarımız 7/24 sorularınızı yanıtlamaya hazırdır.',
     buttonText: 'Tıbbi Danışmanla Doğrudan Görüşün',
+  },
+  zh: {
+    title: '需要紧急就医指导或直接电话咨询？',
+    subtitle: '我们的国际患者协调部专家全天候24小时随时为您解答就医疑问与行程事宜。',
+    buttonText: '直接与医学顾问沟通',
   },
 };
 

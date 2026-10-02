@@ -64,6 +64,20 @@ export const NAV_LABELS: Record<Language, Record<string, string>> = {
     'contact-us': 'İletişim',
     cta: 'Danışmanlık Alın',
   },
+  zh: {
+    home: '首页',
+    'medical-tourism': '医疗旅游',
+    'treatment-request': '就医申请',
+    'incoming-tourism': '入境旅游',
+    'travel-services': '商旅服务',
+    'vip-services': 'VIP贵宾礼遇',
+    'international-services': '国际商务',
+    'about-us': '关于我们',
+    ceo: '创始人与CEO',
+    journal: '资讯刊物',
+    'contact-us': '联系我们',
+    cta: '预约咨询',
+  },
 };
 
 export const getMainNavItems = (lang: Language = 'fa'): NavItem[] => [
@@ -85,6 +99,8 @@ export const getServicesDropdownItems = (lang: Language = 'fa'): NavItem[] => [
         ? 'تنظيم رحلات متكاملة واستقبال CIP للضيوف الدوليين'
         : lang === 'tr'
         ? 'Özel turlar ve VIP havalimanı karşılama hizmeti'
+        : lang === 'zh'
+        ? '量身定制专属行程、深度文化体验与机场CIP贵宾通道'
         : 'Tailored itineraries & CIP reception for inbound guests',
   },
   {
@@ -98,6 +114,8 @@ export const getServicesDropdownItems = (lang: Language = 'fa'): NavItem[] => [
         ? 'حجوزات الطيران وفنادق ۵ نجوم وتأشيرات السفر السريعة'
         : lang === 'tr'
         ? 'Uçak bileti, 5 yıldızlı oteller ve ekspres vize desteği'
+        : lang === 'zh'
+        ? '国际机票、五星级酒店预订及加急旅游签证支持'
         : 'Flight tickets, 5-star hotels & express tourist visa',
   },
   {
@@ -111,6 +129,8 @@ export const getServicesDropdownItems = (lang: Language = 'fa'): NavItem[] => [
         ? 'سيارات فارهة مع سائق، تشريفات ولانجات المطارات'
         : lang === 'tr'
         ? 'Lüks araçlar, özel şoför ve CIP havalimanı salonları'
+        : lang === 'zh'
+        ? '专属豪华车队、双语私人礼宾与机场贵宾休息室'
         : 'Chauffeur fleet, private concierge & airport lounge',
   },
   {
@@ -124,6 +144,8 @@ export const getServicesDropdownItems = (lang: Language = 'fa'): NavItem[] => [
         ? 'تأسيس الشركات، الاستشارات التجارية والاستثمار الأجنبي'
         : lang === 'tr'
         ? 'Şirket kuruluşu, dış ticaret ve yatırım danışmanlığı'
+        : lang === 'zh'
+        ? '跨境公司注册、外商投资咨询与进出口贸易撮合'
         : 'Cross-border trade, FDI advisory & corporate formation',
   },
 ];
@@ -140,6 +162,8 @@ export const getAboutDropdownItems = (lang: Language = 'fa'): NavItem[] => [
         ? 'قصة التأسيس، الرسالة المؤسسية والرؤية المستقبلية'
         : lang === 'tr'
         ? 'Tarihçemiz, kurumsal misyonumuz ve temel vizyonumuz'
+        : lang === 'zh'
+        ? '企业发展历程、组织使命、品牌愿景与核心价值观'
         : 'Our story, institutional mission and core vision',
   },
   {
@@ -153,6 +177,8 @@ export const getAboutDropdownItems = (lang: Language = 'fa'): NavItem[] => [
         ? 'الملف القيادي ورسالة الأستاذة حديثة دهقاني بوده'
         : lang === 'tr'
         ? 'Hadiseh Dehghani Poudeh vizyonu ve yönetici profili'
+        : lang === 'zh'
+        ? '创始人兼CEO哈迪塞·德赫加尼·普德赫女士的战略寄语'
         : 'Strategic manifesto & profile of Hadiseh Dehghani Poudeh',
   },
 ];

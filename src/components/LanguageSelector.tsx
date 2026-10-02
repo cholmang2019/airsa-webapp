@@ -45,7 +45,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
           <Globe className="w-3.5 h-3.5 text-amber-400" />
           <span>{isRtl ? 'انتخاب زبان / Language' : 'Language / اللغة'}</span>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
           {availableLanguages.map((item) => {
             const isSelected = item.code === language;
             const Flag = item.FlagComponent;

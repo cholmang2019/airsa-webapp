@@ -75,6 +75,13 @@ export const INTL_HERO_BY_LANG: Record<Language, InternationalHeroData> = {
     ctaText: 'Uzman Danışmanlık Alın',
     image: ASSETS.hero.travelServices.src,
   },
+  zh: {
+    badge: '艾尔萨·西摩格 | 国际商贸与投资发展',
+    title: '«通往伊朗的高端经贸门户»',
+    subtitle: '«为有意在伊朗开展经贸拓展、跨国企业注册、合法长期居留及外商直接投资的企业家提供全流程战略顾问服务。»',
+    ctaText: '预约涉外商务咨询',
+    image: ASSETS.hero.travelServices.src,
+  },
 };
 
 export const INTL_SERVICES_BY_LANG: Record<Language, ServiceCardItem[]> = {
@@ -294,6 +301,60 @@ export const INTL_SERVICES_BY_LANG: Record<Language, ServiceCardItem[]> = {
       ],
     },
   ],
+  zh: [
+    {
+      id: 'company-formation',
+      number: '01',
+      title: '外资企业设立与商业注册',
+      description: '公司设立、法律架构及合规展业一站式解决方案。',
+      tag: 'Corporate & Legal Formation',
+      image: ASSETS.services.companyFormation.src,
+      highlights: [
+        '拟定公司章程并选择最优外资法律企业结构',
+        '协助开立商业银行账户与税务登记合规申报',
+        '代办官方商贸展业许可证与特许经营批文',
+      ],
+    },
+    {
+      id: 'residency-services',
+      number: '02',
+      title: '合法居留许可与工作签证',
+      description: '权威指导外商投资及高管合规居留路径。',
+      tag: 'Residency & Visa Solutions',
+      image: ASSETS.services.visaAssistance.src,
+      highlights: [
+        '个案评估投资居留、高管工签与自雇许可路径',
+        '加急协助长期商务签证申领与到期延期手续',
+        '专人陪同前往移民局及外事部门办理证件盖印',
+      ],
+    },
+    {
+      id: 'foreign-investment',
+      number: '03',
+      title: '外商直接投资 (FDI) 与法律保护',
+      description: '在《外国投资促进与保护法》(FIPPA) 框架下进行投资运作。',
+      tag: 'Foreign Direct Investment (FDI)',
+      image: ASSETS.services.luxuryTourism.src,
+      highlights: [
+        '战略投资契机尽职调查与项目可行性深度报告',
+        '依据 FIPPA 法规申请外商资本全额国家级保护批文',
+        '锁定合法跨境资金流动通道并筑牢法律产权屏障',
+      ],
+    },
+    {
+      id: 'international-advisory',
+      number: '04',
+      title: '跨国战略咨询与市场准入路线图',
+      description: '为跨国企业家提供深度本土市场调研与安全准入指引。',
+      tag: 'Strategic Advisory & Roadmapping',
+      image: ASSETS.services.intlAdvisory.src,
+      highlights: [
+        '深度剖析外资企业在伊商业目标与竞争格局',
+        '制定分阶段执行规划，有效规避合规与商业风险',
+        '在关键决策各节点提供全天候战略指引与伙伴引荐',
+      ],
+    },
+  ],
 };
 
 export const INTL_SUPPORT_BY_LANG: Record<Language, InternationalSupportData> = {
@@ -345,6 +406,18 @@ export const INTL_SUPPORT_BY_LANG: Record<Language, InternationalSupportData> = 
       { title: 'Seçkin Hukuk ve Finans Ağı', desc: 'Alanında uzman kurumsal avukatlar ve lisanslı yatırım danışmanlarıyla doğrudan çalışma.' },
     ],
   },
+  zh: {
+    badge: '一站式涉外综合支持体系',
+    title: '«企业在伊发展的单一专属联络专员 (SPOC)»',
+    lead: '由专业高效的执行专班护航，带来从容笃定与极速推进。',
+    description: '在艾尔萨·西摩格，所有涉及法务、商务、居留许可及落地物流的环节，均由指派的资深项目总监统筹把控。您无需在错综复杂的行政部门和陌生官僚流程中独自摸索，只需与一位精通涉外商业惯例的高级双语个案经理直接沟通，即可全权托付。',
+    image: ASSETS.services.consultation.src,
+    pillars: [
+      { title: '单一专属项目总监 (SPOC)', desc: '对商务出访、法人身份及跨国治理进行集中统一对接。' },
+      { title: '国际级严密商业保密', desc: '全面筑牢商业秘密、财务资料与知识产权的保密防线。' },
+      { title: '顶尖法务与财务顾问网络', desc: '直接联合知名涉外商事律师及持牌外商投资顾问协同作业。' },
+    ],
+  },
 };
 
 export const PROCESS_STEPS_BY_LANG: Record<Language, ProcessStep[]> = {
@@ -371,6 +444,12 @@ export const PROCESS_STEPS_BY_LANG: Record<Language, ProcessStep[]> = {
     { number: '02', stepNumber: '02', stepEn: 'Strategic Roadmapping', title: 'Stratejik Yol Haritası ve Hukuki Yapılandırma', description: 'Şeffaf maliyet tablosu, net takvim ve şirket kuruluşu/ikamet adımlarının belirlenmesi.' },
     { number: '03', stepNumber: '03', stepEn: 'Document & Filing', title: 'Belgelerin Hazırlanması ve Resmi Başvuru', description: 'Yeminli tercümeler, elçilik/bakanlık onayları ve resmi yasal portallara başvuru.' },
     { number: '04', stepNumber: '04', stepEn: 'Execution & Support', title: 'Nihai Onaylar ve Kesintisiz Destek', description: 'Ruhsatların alınması, banka hesaplarının açılması, ikamet kartları ve sürekli hukuki refakat.' },
+  ],
+  zh: [
+    { number: '01', stepNumber: '01', stepEn: 'Initial Consultation', title: '初步商务咨询与意向评估', description: '召开闭门沟通会议，评估您的投资目标、法律可行性及预期时间进度表。' },
+    { number: '02', stepNumber: '02', stepEn: 'Strategic Roadmapping', title: '制定战略路线图与法律架构', description: '提供清晰的费用预算模型、官方审批里程碑及公司设立或居留申请规划。' },
+    { number: '03', stepNumber: '03', stepEn: 'Document & Filing', title: '涉外公证认证与官方立案呈报', description: '办理经公证的专业法律翻译、领事海牙认证，并在对应官方政务系统完成立案。' },
+    { number: '04', stepNumber: '04', stepEn: 'Execution & Support', title: '执照批文获取与长期稳健展业', description: '领取商业注册登记证、开立公司账户、签发居留证件，并提供常年涉外法律支持。' },
   ],
 };
 
@@ -402,6 +481,13 @@ export const INTL_CTA_BY_LANG: Record<Language, InternationalCtaData> = {
     subtitle: 'Airsa Simorgh Jahan’ın kıdemli hukuk ve ticaret danışmanları, hedeflerinize uygun yol haritasını hazırlamak için hazırdır.',
     buttonText: 'Uzman Danışmanlık Talep Edin',
     trustPoints: ['Gizli ve Güvenli Hukuki Danışmanlık', 'Maliyet ve Takvimde Tam Şeffaflık', 'Sonuç Alınana Kadar Sürekli İdari Destek'],
+  },
+  zh: {
+    badge: '在伊朗进行战略布局与业务扩张',
+    title: '«满怀信心，开启您在伊朗的经贸投资新征程»',
+    subtitle: '艾尔萨·西摩格资深法务与经贸投资专家随时准备为您答疑解惑，构筑精准契合商业雄心的落地路径。',
+    buttonText: '预约涉外商贸投资咨询',
+    trustPoints: ['高度保密的专业法务咨询', '费用清单与审批时限完全公开透明', '从前期筹备到最终获批全程跟进到底'],
   },
 };
 

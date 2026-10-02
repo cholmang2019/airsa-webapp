@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
-import { IranFlag, UkFlag, UaeFlag, TurkeyFlag } from '../components/FlagIcons';
+import { IranFlag, UkFlag, UaeFlag, TurkeyFlag, ChinaFlag } from '../components/FlagIcons';
 import { TRANSLATIONS, TranslationDictionary } from '../i18n/translations';
 
-export type Language = 'fa' | 'en' | 'ar' | 'tr';
+export type Language = 'fa' | 'en' | 'ar' | 'tr' | 'zh';
 export type Direction = 'rtl' | 'ltr';
 
 export interface LanguageInfo {
@@ -52,6 +52,15 @@ export const AVAILABLE_LANGUAGES: LanguageInfo[] = [
     dir: 'ltr',
     FlagComponent: TurkeyFlag,
   },
+  {
+    code: 'zh',
+    name: 'Chinese',
+    nativeName: '中文',
+    country: '中国',
+    flagEmoji: '🇨🇳',
+    dir: 'ltr',
+    FlagComponent: ChinaFlag,
+  },
 ];
 
 export interface LanguageContextType {
@@ -72,11 +81,12 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem(STORAGE_KEY) as Language | null;
-      if (saved && (saved === 'fa' || saved === 'en' || saved === 'ar' || saved === 'tr')) {
+      if (saved && (saved === 'fa' || saved === 'en' || saved === 'ar' || saved === 'tr' || saved === 'zh')) {
         return saved;
       }
       // Check browser language
       const navLang = navigator.language?.toLowerCase() || '';
+      if (navLang.startsWith('zh')) return 'zh';
       if (navLang.startsWith('tr')) return 'tr';
       if (navLang.startsWith('ar')) return 'ar';
       if (navLang.startsWith('en')) return 'en';

@@ -21,6 +21,8 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       ? 'إيرسا سيمرغ جهان'
       : language === 'fa'
       ? 'ایرسا سیمرغ جهان'
+      : language === 'zh'
+      ? 'Airsa Simorgh (艾尔萨·西摩格)'
       : 'Airsa Simorgh Jahan';
 
   const brandSubtitle =
@@ -30,6 +32,8 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       ? 'گردشگری سلامت و خدمات بین‌المللی'
       : language === 'tr'
       ? 'Sağlık Turizmi ve Küresel Hizmetler'
+      : language === 'zh'
+      ? '医疗旅游与全球商贸服务'
       : 'Medical Tourism & Global Services';
 
   return (

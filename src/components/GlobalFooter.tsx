@@ -19,7 +19,7 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({ currentPath, onNavig
   const quickLinks = [
     { label: t.nav.home, href: '/' },
     { label: t.nav.aboutUs, href: '/about-us/' },
-    { label: t.nav.ceo || (language === 'fa' ? 'مدیر عامل' : language === 'ar' ? 'المدير التنفيذي' : language === 'tr' ? 'Genel Müdür' : 'Founder & CEO'), href: '/ceo/' },
+    { label: t.nav.ceo || (language === 'fa' ? 'مدیر عامل' : language === 'ar' ? 'المدير التنفيذي' : language === 'tr' ? 'Genel Müdür' : language === 'zh' ? '创始人兼CEO' : 'Founder & CEO'), href: '/ceo/' },
     { label: t.nav.journal, href: '/journal/' },
     { label: t.nav.contactUs, href: '/contact-us/' },
   ];

@@ -41,6 +41,14 @@ const CATEGORY_LABELS: Record<Language, Record<JournalCategory, string>> = {
     'ویزا': 'Vize',
     'خدمات بین‌المللی': 'Uluslararası Hizmetler',
   },
+  zh: {
+    'همه مقالات': '全部文章',
+    'گردشگری سلامت': '医疗旅游',
+    'سفر به ایران': '伊朗之旅',
+    'راهنمای سفر': '旅行指南',
+    'ویزا': '签证服务',
+    'خدمات بین‌المللی': '国际商务服务',
+  },
 };
 
 export const JournalCategoriesSection: React.FC<JournalCategoriesSectionProps> = ({

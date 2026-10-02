@@ -347,7 +347,7 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                     <div className="mt-2 pt-4 border-t border-white/[0.08]">
                       <div className="p-3.5 rounded-xl bg-black/40 border border-white/[0.05] text-[12px] text-slate-300 font-light leading-relaxed">
                         <span className="text-amber-300/90 font-semibold block mb-1">
-                          {language === 'fa' ? 'رویکرد اجرایی:' : language === 'ar' ? 'النهج التنفيذي:' : language === 'tr' ? 'Uygulama Odağı:' : 'Execution Focus:'}
+                          {language === 'fa' ? 'رویکرد اجرایی:' : language === 'ar' ? 'النهج التنفيذي:' : language === 'tr' ? 'Uygulama Odağı:' : language === 'zh' ? '落地实施重点:' : 'Execution Focus:'}
                         </span>
                         {path.targetAudience}
                       </div>
@@ -408,7 +408,7 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                   onClick={() => handleNav('/international-services/')}
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-white font-medium text-xs sm:text-sm transition-all"
                 >
-                  <span>{language === 'fa' ? 'بررسی خدمات بین‌المللی' : language === 'ar' ? 'استعراض الخدمات الدولية' : language === 'tr' ? 'Uluslararası Hizmetleri İnceleyin' : 'Explore International Services'}</span>
+                  <span>{language === 'fa' ? 'بررسی خدمات بین‌المللی' : language === 'ar' ? 'استعراض الخدمات الدولية' : language === 'tr' ? 'Uluslararası Hizmetleri İnceleyin' : language === 'zh' ? '了解国际商务与投资服务' : 'Explore International Services'}</span>
                   <ArrowIcon className="w-4 h-4 text-amber-400" />
                 </button>
               </div>
@@ -514,7 +514,7 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                   <div className={`absolute top-3.5 ${isRtl ? 'right-3.5' : 'left-3.5'} z-10`}>
                     <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950/85 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs font-semibold shadow-lg">
                       <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                      <span>{language === 'fa' ? 'سلامت • تجارت • فرصت‌های بین‌المللی' : language === 'ar' ? 'صحة • تجارة • فرص دولية' : language === 'tr' ? 'Sağlık • Ticaret • Küresel Fırsatlar' : 'Health • Trade • Global'}</span>
+                      <span>{language === 'fa' ? 'سلامت • تجارت • فرصت‌های بین‌المللی' : language === 'ar' ? 'صحة • تجارة • فرص دولية' : language === 'tr' ? 'Sağlık • Ticaret • Küresel Fırsatlar' : language === 'zh' ? '医疗健康 • 国际商贸 • 全球机遇' : 'Health • Trade • Global'}</span>
                     </div>
                   </div>
 
@@ -537,7 +537,7 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                   <div className="p-3 rounded-xl bg-white/[0.04] border border-cyan-400/20 hover:border-cyan-400/40 transition-colors">
                     <div className="flex items-center gap-1.5 text-cyan-300 font-semibold mb-1">
                       <HeartPulse className="w-3.5 h-3.5 shrink-0" />
-                      <span>{language === 'fa' ? 'سلامت بین‌الملل' : language === 'ar' ? 'الصحة الدولية' : language === 'tr' ? 'Uluslararası Sağlık' : 'Global Health'}</span>
+                      <span>{language === 'fa' ? 'سلامت بین‌الملل' : language === 'ar' ? 'الصحة الدولية' : language === 'tr' ? 'Uluslararası Sağlık' : language === 'zh' ? '国际医疗健康' : 'Global Health'}</span>
                     </div>
                     <p className="text-[11px] text-slate-400 font-light leading-relaxed">
                       {language === 'fa'
@@ -546,6 +546,8 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                         ? 'السياحة العلاجية وأرقى المستشفيات المعتمدة دولياً'
                         : language === 'tr'
                         ? 'Sağlık turizmi, IPD onaylı hastaneler ve klinik standartlar'
+                        : language === 'zh'
+                        ? '医疗旅游、国际患者专属资质医院与高品质临床标准'
                         : 'Accredited IPD hospitals & specialized clinical care'}
                     </p>
                   </div>
@@ -554,7 +556,7 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                   <div className="p-3 rounded-xl bg-white/[0.04] border border-amber-400/20 hover:border-amber-400/40 transition-colors">
                     <div className="flex items-center gap-1.5 text-amber-300 font-semibold mb-1">
                       <Briefcase className="w-3.5 h-3.5 shrink-0" />
-                      <span>{language === 'fa' ? 'تجارت بین‌المللی' : language === 'ar' ? 'التجارة الدولية' : language === 'tr' ? 'Uluslararası Ticaret' : 'Global Trade'}</span>
+                      <span>{language === 'fa' ? 'تجارت بین‌المللی' : language === 'ar' ? 'التجارة الدولية' : language === 'tr' ? 'Uluslararası Ticaret' : language === 'zh' ? '国际经贸合作' : 'Global Trade'}</span>
                     </div>
                     <p className="text-[11px] text-slate-400 font-light leading-relaxed">
                       {language === 'fa'
@@ -563,6 +565,8 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                         ? 'تأسيس الشركات، المفاوضات التجارية وتطوير الأسواق'
                         : language === 'tr'
                         ? 'Ticari müzakereler, şirket kuruluşu ve yeni pazar geliştirme'
+                        : language === 'zh'
+                        ? '国际商务谈判、跨境企业落地与目标出口市场开拓'
                         : 'Cross-border commerce, market entry & company formation'}
                     </p>
                   </div>
@@ -571,7 +575,7 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                   <div className="p-3 rounded-xl bg-white/[0.04] border border-blue-400/20 hover:border-blue-400/40 transition-colors">
                     <div className="flex items-center gap-1.5 text-blue-300 font-semibold mb-1">
                       <Globe2 className="w-3.5 h-3.5 shrink-0" />
-                      <span>{language === 'fa' ? 'فرصت‌های جهانی' : language === 'ar' ? 'الفرص العالمية' : language === 'tr' ? 'Küresel Fırsatlar' : 'World Horizons'}</span>
+                      <span>{language === 'fa' ? 'فرصت‌های جهانی' : language === 'ar' ? 'الفرص العالمية' : language === 'tr' ? 'Küresel Fırsatlar' : language === 'zh' ? '全球发展机遇' : 'World Horizons'}</span>
                     </div>
                     <p className="text-[11px] text-slate-400 font-light leading-relaxed">
                       {language === 'fa'
@@ -580,6 +584,8 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                         ? 'جسور التواصل بين الوفود والفرص الاستثمارية الكبرى'
                         : language === 'tr'
                         ? 'Heyetler, uluslararası yatırımcılar ve stratejik ortaklıklar köprüsü'
+                        : language === 'zh'
+                        ? '搭建国际商务考察团、投资者与优质战略项目的互通桥梁'
                         : 'Strategic partnerships, missions & global delegations'}
                     </p>
                   </div>
@@ -670,6 +676,8 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                 ? 'نحن هنا لبحث فرص التعاون ومسارات السفر المشتركة معكم'
                 : language === 'tr'
                 ? 'İş Birliği ve Seyahat Fırsatlarını Görüşmek İçin Yanınızdayız'
+                : language === 'zh'
+                ? '携手探讨战略合作与定制专属旅行路线'
                 : 'Connect with Us for Strategic Travel & Global Partnerships'}
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 font-light max-w-xl mx-auto">
@@ -679,6 +687,8 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                 ? 'فريق المستشارين ومكتب الإدارة في إيرسا سيمرغ جهان مستعد لتنظيم الجلسات الاستشارية واللقاءات التنسيقية.'
                 : language === 'tr'
                 ? 'Airsa Simorgh Jahan yönetim ofisi ve danışmanlık ekibi, yüz yüze veya çevrimiçi görüşmeler için her zaman hazırdır.'
+                : language === 'zh'
+                ? '艾尔萨·西摩格管理层办公室与专属顾问团队随时竭诚为您解答疑问，并可安排线下面对面洽谈或高清线上会议。'
                 : 'Our executive team and advisory office are readily accessible for consultations, corporate briefings, and customized travel itineraries.'}
             </p>
 
@@ -697,6 +707,8 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                     ? 'طلب استشارة'
                     : language === 'tr'
                     ? 'Danışmanlık Talebi Gönder'
+                    : language === 'zh'
+                    ? '发送咨询预约'
                     : 'Request Consultation'}
                 </span>
               </a>
@@ -714,6 +726,8 @@ export const CeoPage: React.FC<CeoPageProps> = ({ onNavigate }) => {
                     ? 'معلومات الاتصال المباشر'
                     : language === 'tr'
                     ? 'Doğrudan İletişim Bilgileri'
+                    : language === 'zh'
+                    ? '查看直接联络方式'
                     : 'Direct Contact Details'}
                 </span>
               </button>

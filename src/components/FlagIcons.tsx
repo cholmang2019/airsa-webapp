@@ -87,3 +87,52 @@ export const TurkeyFlag: React.FC<FlagProps> = ({ className = 'w-5 h-3.5 rounded
     />
   </svg>
 );
+
+/**
+ * High-definition vector SVG flag for China (中文)
+ */
+export const ChinaFlag: React.FC<FlagProps> = ({ className = 'w-5 h-3.5 rounded-[2px] shadow-sm', size }) => (
+  <svg
+    viewBox="0 0 900 600"
+    className={className}
+    style={size ? { width: size, height: (size * 2) / 3 } : undefined}
+    aria-hidden="true"
+  >
+    <rect width="900" height="600" fill="#DE2910" />
+    {/* Large Star */}
+    <g transform="translate(150, 150) scale(90)">
+      <polygon
+        fill="#FFDE00"
+        points="0,-1 0.588,0.809 -0.951,-0.309 0.951,-0.309 -0.588,0.809"
+      />
+    </g>
+    {/* Star 1 */}
+    <g transform="translate(300, 60) rotate(-52) scale(30)">
+      <polygon
+        fill="#FFDE00"
+        points="0,-1 0.588,0.809 -0.951,-0.309 0.951,-0.309 -0.588,0.809"
+      />
+    </g>
+    {/* Star 2 */}
+    <g transform="translate(360, 120) rotate(-30) scale(30)">
+      <polygon
+        fill="#FFDE00"
+        points="0,-1 0.588,0.809 -0.951,-0.309 0.951,-0.309 -0.588,0.809"
+      />
+    </g>
+    {/* Star 3 */}
+    <g transform="translate(360, 210) scale(30)">
+      <polygon
+        fill="#FFDE00"
+        points="0,-1 0.588,0.809 -0.951,-0.309 0.951,-0.309 -0.588,0.809"
+      />
+    </g>
+    {/* Star 4 */}
+    <g transform="translate(300, 270) rotate(19) scale(30)">
+      <polygon
+        fill="#FFDE00"
+        points="0,-1 0.588,0.809 -0.951,-0.309 0.951,-0.309 -0.588,0.809"
+      />
+    </g>
+  </svg>
+);
