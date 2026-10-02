@@ -45,7 +45,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
           <Globe className="w-3.5 h-3.5 text-amber-400" />
           <span>{isRtl ? 'انتخاب زبان / Language' : 'Language / اللغة'}</span>
         </div>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {availableLanguages.map((item) => {
             const isSelected = item.code === language;
             const Flag = item.FlagComponent;
@@ -107,22 +107,22 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   const CurrentFlag = currentLangInfo.FlagComponent;
 
   return (
-    <div className={`relative inline-block text-left ${className}`} ref={dropdownRef}>
+    <div className={`relative inline-block text-left shrink-0 ${className}`} ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-white/15 hover:border-amber-500/40 text-slate-200 hover:text-white text-xs sm:text-sm font-medium transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+        className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-white/15 hover:border-amber-500/40 text-slate-200 hover:text-white text-xs sm:text-sm font-medium transition-all shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap shrink-0"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
         aria-label="Change Language"
       >
-        <span className="flex items-center gap-1.5">
+        <span className="flex items-center gap-1.5 shrink-0">
           <CurrentFlag className="w-4 h-3 rounded-[2px]" />
           <span className="text-sm leading-none">{currentLangInfo.flagEmoji}</span>
         </span>
-        <span className="font-medium text-xs">{currentLangInfo.nativeName}</span>
+        <span className="font-medium text-xs whitespace-nowrap">{currentLangInfo.nativeName}</span>
         <ChevronDown
-          className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${
+          className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0 ${
             isOpen ? 'rotate-180 text-amber-400' : ''
           }`}
         />

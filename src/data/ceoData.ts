@@ -120,8 +120,8 @@ export const CEO_PAGE_DATA_BY_LANG: Record<Language, CeoPageData> = {
         'حدیثه دهقانی پوده با پیشینه تخصصی در حوزه سلامت و تجربه فعالیت در زمینه‌های آموزش، مشاوره، توسعه کسب‌وکار، تجارت و خدمات بین‌المللی، گردشگری، پوست و زیبایی، طب سوزنی و مربیگری ورزشی، مسیر حرفه‌ای خود را در حوزه‌های متنوعی دنبال کرده است.',
         'ترکیب این تجربیات، دیدگاهی متفاوت نسبت به صنعت سفر ایجاد کرده است؛ دیدگاهی که به شکل‌گیری ایرسا سیمرغ جهان و توسعه آن در حوزه‌های مختلف گردشگری منجر شده است.',
       ],
-      image: '/images/about/who-we-are-hospitality.webp',
-      imageAlt: 'میزبانی و استاندارد حرفه‌ای خدمات ایرسا سیمرغ جهان',
+      image: '/images/about/health-international-trade.webp',
+      imageAlt: 'همکاری‌های راهبردی در حوزه سلامت، تجارت و فرصت‌های بین‌المللی',
       expertises: [
         {
           id: 'health',
@@ -333,8 +333,8 @@ export const CEO_PAGE_DATA_BY_LANG: Record<Language, CeoPageData> = {
         'With a specialized background in healthcare and rich hands-on leadership across education, business consulting, enterprise development, international commerce, inbound tourism, dermatology & aesthetics, acupuncture, and athletic coaching, Hadiseh Dehghani Poudeh has forged an exceptionally diverse and impactful career path.',
         'The synthesis of these multifaceted domains has cultivated a transformative approach to the travel industry—an approach that catalysed the founding of Airsa Simorgh Jahan and its innovative expansion across specialized tourism sectors.',
       ],
-      image: '/images/about/who-we-are-hospitality.webp',
-      imageAlt: 'World-Class Hospitality Standards at Airsa Simorgh Jahan',
+      image: '/images/about/health-international-trade.webp',
+      imageAlt: 'Strategic Synergy in Healthcare & Global Commerce',
       expertises: [
         {
           id: 'health',
@@ -546,8 +546,8 @@ export const CEO_PAGE_DATA_BY_LANG: Record<Language, CeoPageData> = {
         'تمتلك حديثة دهقاني بوده خلفية تخصصية رفيعة في قطاع الصحة والرعاية، إلى جانب خبرتها العملية المتنوعة في مجالات التعليم، الاستشارات، تطوير الأعمال، التجارة والخدمات الدولية، السياحة، العناية بالبشرة والجمال، الوخز بالإبر الصينية والتدريب الرياضي.',
         'هذا المزيج الاستثنائي من الخبرات أنتج منظوراً متفرداً تجاه صناعة السفر؛ وهو المنظور الذي قاد إلى تأسيس إيرسا سيمرغ جهان وتطوير قطاعاتها السياحية المختلفة.',
       ],
-      image: '/images/about/who-we-are-hospitality.webp',
-      imageAlt: 'معايير الضيافة العالمية الرفيعة في إيرسا سيمرغ جهان',
+      image: '/images/about/health-international-trade.webp',
+      imageAlt: 'التعاون الاستراتيجي في قطاع الرعاية الصحية والتجارة الدولية',
       expertises: [
         {
           id: 'health',
@@ -759,8 +759,8 @@ export const CEO_PAGE_DATA_BY_LANG: Record<Language, CeoPageData> = {
         'Sağlık alanındaki uzmanlık geçmişi ve eğitim, iş danışmanlığı, girişim geliştirme, uluslararası ticaret, turizm, cilt ve estetik, akupunktur ve spor koçluğu alanlarındaki zengin birikimiyle Hadiseh Dehghani Poudeh, kariyerinde çok yönlü ve ilham verici bir yol izlemiştir.',
         'Bu çeşitli disiplinlerin bir araya gelmesi, seyahat sektörüne özgün ve dönüştürücü bir bakış açısı kazandırmış; bu anlayış Airsa Simorgh Jahan’ın kuruluşuna ve turizmin farklı uzmanlık alanlarında gelişmesine öncülük etmiştir.',
       ],
-      image: '/images/about/who-we-are-hospitality.webp',
-      imageAlt: 'Airsa Simorgh Jahan Hizmetlerinde Üst Düzey Misafirperverlik Standartları',
+      image: '/images/about/health-international-trade.webp',
+      imageAlt: 'Uluslararası Sağlık ve Ticarette Stratejik İş Birliği',
       expertises: [
         {
           id: 'health',

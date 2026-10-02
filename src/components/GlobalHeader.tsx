@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { PWAInstallButton } from './PWAInstallButton';
 import { LanguageSelector } from './LanguageSelector';
@@ -8,9 +8,10 @@ import { useLanguage } from '../context/LanguageContext';
 import {
   getMainNavItems,
   getServicesDropdownItems,
-  getSecondaryNavItems,
+  getAboutDropdownItems,
   getAllRoutes,
   normalizePath,
+  NAV_LABELS,
 } from '../navigation';
 
 interface GlobalHeaderProps {
@@ -23,12 +24,14 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const aboutDropdownRef = useRef<HTMLDivElement>(null);
   const normalizedCurrent = normalizePath(currentPath);
 
   const mainNavItems = getMainNavItems(language);
   const servicesDropdownItems = getServicesDropdownItems(language);
-  const secondaryNavItems = getSecondaryNavItems(language);
+  const aboutDropdownItems = getAboutDropdownItems(language);
   const allRoutes = getAllRoutes(language);
 
   // Detect scroll to toggle sticky solid glassmorphism
@@ -41,16 +44,20 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdown on outside click or escape
+  // Close dropdowns on outside click or escape
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(e.target as Node)) {
         setIsServicesDropdownOpen(false);
+      }
+      if (aboutDropdownRef.current && !aboutDropdownRef.current.contains(e.target as Node)) {
+        setIsAboutDropdownOpen(false);
       }
     };
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setIsServicesDropdownOpen(false);
+        setIsAboutDropdownOpen(false);
         setIsMobileMenuOpen(false);
       }
     };
@@ -77,12 +84,19 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
     setIsServicesDropdownOpen(false);
+    setIsAboutDropdownOpen(false);
     onNavigate(href);
   };
 
   const isServicesActive = servicesDropdownItems.some(
     (item) => normalizePath(item.href) === normalizedCurrent
   );
+
+  const isAboutActive = aboutDropdownItems.some(
+    (item) => normalizePath(item.href) === normalizedCurrent
+  );
+
+  const isTreatmentActive = normalizedCurrent === '/treatment-request/';
 
   return (
     <>
@@ -92,11 +106,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
         dir={dir}
         className={`sticky top-0 z-50 w-full transition-all duration-300 font-sans ${
           isScrolled
-            ? 'bg-[#070a12]/92 backdrop-blur-xl border-b border-white/[0.08] shadow-xl shadow-black/25 py-2.5 sm:py-3'
-            : 'bg-[#070a12]/70 backdrop-blur-md border-b border-white/[0.04] py-3.5 sm:py-4'
+            ? 'bg-[#070a12]/95 backdrop-blur-xl border-b border-white/[0.08] shadow-xl shadow-black/30 py-2.5 sm:py-3'
+            : 'bg-[#070a12]/80 backdrop-blur-md border-b border-white/[0.04] py-3 sm:py-3.5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-3">
+        <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 lg:gap-6">
           {/* Logo / Brand */}
           <div className="flex-shrink-0 flex items-center">
             <a
@@ -116,27 +130,29 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
           <nav
             role="navigation"
             aria-label={t.header.navAria}
-            className="hidden xl:flex items-center gap-1.5 2xl:gap-2 text-sm"
+            className="hidden xl:flex items-center gap-1 2xl:gap-2 text-xs 2xl:text-sm font-medium"
           >
-            {/* Direct Main Items */}
-            {mainNavItems.map((item) => {
-              const isActive = normalizePath(item.href) === normalizedCurrent;
+            {/* 1. Home */}
+            {(() => {
+              const homeItem = mainNavItems.find((i) => i.id === 'home');
+              if (!homeItem) return null;
+              const isActive = normalizePath(homeItem.href) === normalizedCurrent;
               return (
                 <a
-                  key={item.id}
-                  href={item.href}
+                  key="home"
+                  href={homeItem.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick(item.href);
+                    handleNavClick(homeItem.href);
                   }}
-                  className={`relative px-3 py-1.5 rounded-lg text-xs 2xl:text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 whitespace-nowrap ${
+                  className={`relative px-2.5 2xl:px-3 py-1.5 rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 whitespace-nowrap ${
                     isActive
-                      ? 'text-amber-300 bg-white/10 shadow-inner'
+                      ? 'text-amber-300 bg-white/10 shadow-inner font-semibold'
                       : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
                 >
-                  {item.label}
+                  {homeItem.label}
                   {isActive && (
                     <motion.div
                       layoutId="activeIndicator"
@@ -146,17 +162,52 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
                   )}
                 </a>
               );
-            })}
+            })()}
 
-            {/* "Services" Dropdown Menu */}
-            <div className="relative" ref={dropdownRef}>
+            {/* 2. Medical Tourism */}
+            {(() => {
+              const medItem = mainNavItems.find((i) => i.id === 'medical-tourism');
+              if (!medItem) return null;
+              const isActive = normalizePath(medItem.href) === normalizedCurrent;
+              return (
+                <a
+                  key="medical-tourism"
+                  href={medItem.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(medItem.href);
+                  }}
+                  className={`relative px-2.5 2xl:px-3 py-1.5 rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 whitespace-nowrap ${
+                    isActive
+                      ? 'text-amber-300 bg-white/10 shadow-inner font-semibold'
+                      : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {medItem.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeIndicator"
+                      className="absolute bottom-0 left-2 right-2 h-[2px] bg-amber-400 rounded-full"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </a>
+              );
+            })()}
+
+            {/* 3. Services Dropdown */}
+            <div className="relative" ref={servicesDropdownRef}>
               <button
                 id="header-services-dropdown-btn"
                 type="button"
-                onClick={() => setIsServicesDropdownOpen((prev) => !prev)}
-                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs 2xl:text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 ${
+                onClick={() => {
+                  setIsServicesDropdownOpen((prev) => !prev);
+                  setIsAboutDropdownOpen(false);
+                }}
+                className={`flex items-center gap-1 px-2.5 2xl:px-3 py-1.5 rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 whitespace-nowrap ${
                   isServicesActive
-                    ? 'text-amber-300 bg-white/10'
+                    ? 'text-amber-300 bg-white/10 font-semibold'
                     : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
                 }`}
                 aria-haspopup="true"
@@ -165,13 +216,12 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
               >
                 <span>{t.header.services}</span>
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
+                  className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
                     isServicesDropdownOpen ? 'rotate-180 text-amber-400' : 'text-slate-400'
                   }`}
                 />
               </button>
 
-              {/* Dropdown Panel */}
               <AnimatePresence>
                 {isServicesDropdownOpen && (
                   <motion.div
@@ -182,10 +232,13 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.98 }}
                     transition={{ duration: 0.18, ease: 'easeOut' }}
-                    className={`absolute top-full mt-2 w-72 rounded-2xl bg-[#090d19]/98 border border-white/10 backdrop-blur-2xl shadow-2xl shadow-black/60 p-2 z-50 ${
+                    className={`absolute top-full mt-2 w-80 rounded-2xl bg-[#090d19]/98 border border-white/10 backdrop-blur-2xl shadow-2xl shadow-black/70 p-2 z-50 ${
                       isRtl ? 'right-0 origin-top-right' : 'left-0 origin-top-left'
                     }`}
                   >
+                    <div className="px-3 py-1.5 text-[10px] font-semibold tracking-wider text-amber-400/80 border-b border-white/10 uppercase mb-1">
+                      {t.header.servicesMenu}
+                    </div>
                     <div className="space-y-1">
                       {servicesDropdownItems.map((item) => {
                         const isActive = normalizePath(item.href) === normalizedCurrent;
@@ -198,7 +251,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
                               e.preventDefault();
                               handleNavClick(item.href);
                             }}
-                            className={`flex items-start gap-3 p-2.5 rounded-xl text-xs transition-colors duration-150 ${
+                            className={`flex items-start gap-2.5 p-2.5 rounded-xl text-xs transition-colors duration-150 ${
                               isActive
                                 ? 'bg-amber-400/10 text-amber-300 font-bold border border-amber-400/20'
                                 : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
@@ -213,7 +266,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
                               )}
                             </div>
                             {isActive && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 self-center" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 self-center shrink-0" />
                             )}
                           </a>
                         );
@@ -224,41 +277,173 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
               </AnimatePresence>
             </div>
 
-            {/* Secondary Nav Items */}
-            {secondaryNavItems.map((item) => {
-              const isActive = normalizePath(item.href) === normalizedCurrent;
+            {/* 4. About Us Dropdown */}
+            <div className="relative" ref={aboutDropdownRef}>
+              <button
+                id="header-about-dropdown-btn"
+                type="button"
+                onClick={() => {
+                  setIsAboutDropdownOpen((prev) => !prev);
+                  setIsServicesDropdownOpen(false);
+                }}
+                className={`flex items-center gap-1 px-2.5 2xl:px-3 py-1.5 rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 whitespace-nowrap ${
+                  isAboutActive
+                    ? 'text-amber-300 bg-white/10 font-semibold'
+                    : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                }`}
+                aria-haspopup="true"
+                aria-expanded={isAboutDropdownOpen}
+                aria-controls="about-menu-dropdown"
+              >
+                <span>{t.header.about}</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
+                    isAboutDropdownOpen ? 'rotate-180 text-amber-400' : 'text-slate-400'
+                  }`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {isAboutDropdownOpen && (
+                  <motion.div
+                    id="about-menu-dropdown"
+                    role="menu"
+                    aria-label={t.header.aboutMenu}
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: 'easeOut' }}
+                    className={`absolute top-full mt-2 w-72 rounded-2xl bg-[#090d19]/98 border border-white/10 backdrop-blur-2xl shadow-2xl shadow-black/70 p-2 z-50 ${
+                      isRtl ? 'right-0 origin-top-right' : 'left-0 origin-top-left'
+                    }`}
+                  >
+                    <div className="px-3 py-1.5 text-[10px] font-semibold tracking-wider text-amber-400/80 border-b border-white/10 uppercase mb-1">
+                      {t.header.aboutMenu}
+                    </div>
+                    <div className="space-y-1">
+                      {aboutDropdownItems.map((item) => {
+                        const isActive = normalizePath(item.href) === normalizedCurrent;
+                        return (
+                          <a
+                            key={item.id}
+                            href={item.href}
+                            role="menuitem"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleNavClick(item.href);
+                            }}
+                            className={`flex items-start gap-2.5 p-2.5 rounded-xl text-xs transition-colors duration-150 ${
+                              isActive
+                                ? 'bg-amber-400/10 text-amber-300 font-bold border border-amber-400/20'
+                                : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                            }`}
+                          >
+                            <div className="flex-1">
+                              <div className="font-semibold">{item.label}</div>
+                              {item.description && (
+                                <p className="text-[11px] text-slate-400 font-normal mt-0.5 line-clamp-1">
+                                  {item.description}
+                                </p>
+                              )}
+                            </div>
+                            {isActive && (
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 self-center shrink-0" />
+                            )}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* 5. Journal */}
+            {(() => {
+              const journalItem = mainNavItems.find((i) => i.id === 'journal');
+              if (!journalItem) return null;
+              const isActive = normalizePath(journalItem.href) === normalizedCurrent;
               return (
                 <a
-                  key={item.id}
-                  href={item.href}
+                  key="journal"
+                  href={journalItem.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavClick(item.href);
+                    handleNavClick(journalItem.href);
                   }}
-                  className={`relative px-3 py-1.5 rounded-lg text-xs 2xl:text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 whitespace-nowrap ${
+                  className={`relative px-2.5 2xl:px-3 py-1.5 rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 whitespace-nowrap ${
                     isActive
-                      ? 'text-amber-300 bg-white/10 shadow-inner'
+                      ? 'text-amber-300 bg-white/10 shadow-inner font-semibold'
                       : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
                 >
-                  {item.label}
+                  {journalItem.label}
                   {isActive && (
                     <motion.div
-                      layoutId="activeIndicatorSecondary"
+                      layoutId="activeIndicator"
                       className="absolute bottom-0 left-2 right-2 h-[2px] bg-amber-400 rounded-full"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
                 </a>
               );
-            })}
+            })()}
+
+            {/* 6. Contact Us */}
+            {(() => {
+              const contactItem = mainNavItems.find((i) => i.id === 'contact-us');
+              if (!contactItem) return null;
+              const isActive = normalizePath(contactItem.href) === normalizedCurrent;
+              return (
+                <a
+                  key="contact-us"
+                  href={contactItem.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(contactItem.href);
+                  }}
+                  className={`relative px-2.5 2xl:px-3 py-1.5 rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 whitespace-nowrap ${
+                    isActive
+                      ? 'text-amber-300 bg-white/10 shadow-inner font-semibold'
+                      : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {contactItem.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeIndicator"
+                      className="absolute bottom-0 left-2 right-2 h-[2px] bg-amber-400 rounded-full"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </a>
+              );
+            })()}
+
+            {/* 7. Treatment Request (Prominent Action Link) */}
+            <a
+              href="/treatment-request/"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('/treatment-request/');
+              }}
+              className={`px-3 py-1.5 rounded-xl transition-all duration-200 border whitespace-nowrap shadow-sm text-xs font-semibold ${
+                isTreatmentActive
+                  ? 'bg-amber-400 text-slate-950 border-amber-300 font-bold shadow-amber-500/25'
+                  : 'bg-amber-400/10 text-amber-300 border-amber-400/30 hover:bg-amber-400/20 hover:border-amber-400/60'
+              }`}
+              aria-current={isTreatmentActive ? 'page' : undefined}
+            >
+              {NAV_LABELS[language]['treatment-request']}
+            </a>
           </nav>
 
           {/* ACTIONS: Language Selector with Country Flags + Install PWA + Mobile Hamburger */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Multi-language Selector Dropdown with Flags (Desktop & Tablet) */}
-            <div className="hidden sm:block">
+          <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 z-20">
+            {/* Multi-language Selector Dropdown with Flags (Always visible on desktop and tablet) */}
+            <div className="flex-shrink-0">
               <LanguageSelector variant="dropdown" />
             </div>
 
@@ -270,7 +455,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ currentPath, onNavig
               id="header-hamburger-btn"
               type="button"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-              className="xl:hidden inline-flex items-center justify-center p-2.5 rounded-xl bg-white/[0.06] hover:bg-white/10 text-white border border-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+              className="xl:hidden inline-flex items-center justify-center p-2 rounded-xl bg-white/[0.06] hover:bg-white/10 text-white border border-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 shrink-0"
               aria-label={isMobileMenuOpen ? t.header.closeMenu : t.header.openMenu}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-navigation-drawer"

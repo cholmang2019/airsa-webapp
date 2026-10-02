@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface BrandLogoProps {
   size?: 'sm' | 'md' | 'lg';
@@ -13,17 +14,35 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   onClick,
   className = '',
 }) => {
+  const { language, isRtl } = useLanguage();
+
+  const brandName =
+    language === 'ar'
+      ? 'إيرسا سيمرغ جهان'
+      : language === 'fa'
+      ? 'ایرسا سیمرغ جهان'
+      : 'Airsa Simorgh Jahan';
+
+  const brandSubtitle =
+    language === 'ar'
+      ? 'السياحة العلاجية والخدمات الدولية'
+      : language === 'fa'
+      ? 'گردشگری سلامت و خدمات بین‌المللی'
+      : language === 'tr'
+      ? 'Sağlık Turizmi ve Küresel Hizmetler'
+      : 'Medical Tourism & Global Services';
+
   return (
     <div
       onClick={onClick}
-      className={`inline-flex items-center gap-3 select-none cursor-pointer group ${className}`}
-      dir="rtl"
+      className={`inline-flex items-center gap-2.5 sm:gap-3 select-none cursor-pointer group ${className}`}
+      dir={isRtl ? 'rtl' : 'ltr'}
     >
       {/* Emblem: Stylized Golden Simorgh Crest */}
-      <div className="relative flex items-center justify-center">
+      <div className="relative flex-shrink-0 flex items-center justify-center">
         <div
           className={`relative rounded-xl bg-gradient-to-br from-amber-400/20 via-amber-500/10 to-slate-900 border border-amber-400/40 flex items-center justify-center shadow-lg shadow-amber-500/10 group-hover:border-amber-400/70 group-hover:shadow-amber-500/20 transition-all duration-300 ${
-            size === 'sm' ? 'w-9 h-9' : size === 'lg' ? 'w-12 h-12' : 'w-10 h-10'
+            size === 'sm' ? 'w-8 h-8' : size === 'lg' ? 'w-12 h-12' : 'w-9 h-9 sm:w-10 sm:h-10'
           }`}
         >
           {/* Geometric Wing/Simorgh Stylized SVG */}
@@ -32,7 +51,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={`text-amber-400 transform group-hover:scale-110 transition-transform duration-300 ${
-              size === 'sm' ? 'w-5 h-5' : size === 'lg' ? 'w-7 h-7' : 'w-6 h-6'
+              size === 'sm' ? 'w-4 h-4' : size === 'lg' ? 'w-7 h-7' : 'w-5 h-5 sm:w-6 sm:h-6'
             }`}
           >
             {/* Elegant Simorgh Wing Arc 1 */}
@@ -64,27 +83,19 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       </div>
 
       {/* Brand Text Typography */}
-      <div className="flex flex-col text-right">
-        <div className="flex items-center gap-2">
+      <div className={`flex flex-col ${isRtl ? 'text-right' : 'text-left'}`}>
+        <div className="flex items-center gap-1.5">
           <span
-            className={`font-black text-white group-hover:text-amber-300 transition-colors tracking-tight ${
-              size === 'sm' ? 'text-base' : size === 'lg' ? 'text-xl' : 'text-lg'
+            className={`font-black text-white group-hover:text-amber-300 transition-colors tracking-tight whitespace-nowrap ${
+              size === 'sm' ? 'text-sm sm:text-base' : size === 'lg' ? 'text-xl' : 'text-base sm:text-lg'
             }`}
           >
-            ایرسا سیمرغ جهان
-          </span>
-          <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-amber-400/60" />
-          <span
-            className={`hidden sm:inline-block font-medium tracking-wider text-slate-300 uppercase ${
-              size === 'sm' ? 'text-[11px]' : size === 'lg' ? 'text-xs' : 'text-[11px]'
-            }`}
-          >
-            Airsa Simorgh Jahan
+            {brandName}
           </span>
         </div>
         {showSubtitle && (
-          <span className="text-[10px] text-slate-400 font-light tracking-normal hidden md:inline-block">
-            گردشگری سلامت و خدمات بین‌المللی
+          <span className="text-[10px] text-slate-400 font-light tracking-normal hidden md:inline-block line-clamp-1 whitespace-nowrap">
+            {brandSubtitle}
           </span>
         )}
       </div>

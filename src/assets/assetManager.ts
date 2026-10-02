@@ -112,8 +112,8 @@ export const ASSETS = {
 
     whoWeAreHospitality: {
       id: 'who-we-are-hospitality',
-      src: assetPath('/images/about/who-we-are-hospitality.webp'),
-      alt: 'تیم مهمان‌نوازی و میزبانی بین‌المللی ایرسا سیمرغ جهان',
+      src: assetPath('/images/about/health-international-trade.webp'),
+      alt: 'همکاری‌های راهبردی در حوزه سلامت، تجارت و فرصت‌های بین‌المللی',
       fallback: LOCAL_PLACEHOLDERS.about,
     },
 

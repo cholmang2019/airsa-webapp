@@ -27,6 +27,8 @@ export interface TranslationDictionary {
     navAria: string;
     services: string;
     servicesMenu: string;
+    about: string;
+    aboutMenu: string;
     closeMenu: string;
     openMenu: string;
     chooseLanguage: string;
@@ -236,6 +238,8 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       navAria: 'منوی ناوبری اصلی',
       services: 'خدمات تخصصی',
       servicesMenu: 'منوی خدمات سفر، VIP و بین‌المللی',
+      about: 'درباره ما',
+      aboutMenu: 'معرفی شرکت و پیام مدیرعامل',
       closeMenu: 'بستن منوی ناوبری',
       openMenu: 'باز کردن منوی ناوبری',
       chooseLanguage: 'انتخاب زبان',
@@ -445,7 +449,9 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       homeAria: 'Airsa Simorgh Jahan Home',
       navAria: 'Main Navigation Menu',
       services: 'Services',
-      servicesMenu: 'Travel, VIP and International Services Menu',
+      servicesMenu: 'Specialized Services Menu',
+      about: 'About Us',
+      aboutMenu: 'About Company & Leadership',
       closeMenu: 'Close navigation menu',
       openMenu: 'Open navigation menu',
       chooseLanguage: 'Choose Language',
@@ -655,7 +661,9 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       homeAria: 'الصفحة الرئيسية لإيرسا سيمرغ جهان',
       navAria: 'قائمة التصفح الرئيسية',
       services: 'الخدمات التخصصية',
-      servicesMenu: 'قائمة خدمات السفر، تشريفات كبار الشخصيات والخدمات الدولية',
+      servicesMenu: 'قائمة الخدمات التخصصية',
+      about: 'من نحن',
+      aboutMenu: 'من نحن والقيادة التنفيذية',
       closeMenu: 'إغلاق القائمة',
       openMenu: 'فتح القائمة',
       chooseLanguage: 'اختر اللغة',
@@ -864,7 +872,9 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       homeAria: 'Ana Sayfaya Git',
       navAria: 'Ana Gezinti Menüsü',
       services: 'Hizmetler',
-      servicesMenu: 'Hizmet Menüsü',
+      servicesMenu: 'Uzmanlık Hizmetleri Menüsü',
+      about: 'Hakkımızda',
+      aboutMenu: 'Kurumsal Bilgiler ve Genel Müdür',
       closeMenu: 'Menüyü Kapat',
       openMenu: 'Menüyü Aç',
       chooseLanguage: 'Dil Seçiniz',

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Download, Smartphone, X, Share, PlusSquare } from 'lucide-react';
 import { usePWAInstall } from '../hooks/usePWAInstall';
+import { useLanguage } from '../context/LanguageContext';
 
 interface PWAInstallButtonProps {
   variant?: 'header' | 'banner' | 'footer';
@@ -11,6 +12,7 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = ({
   variant = 'header',
   className = '',
 }) => {
+  const { t, isRtl } = useLanguage();
   const { isInstallable, isInstalled, isIOS, install } = usePWAInstall();
   const [showIOSGuide, setShowIOSGuide] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
@@ -39,13 +41,12 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = ({
       <>
         <button
           onClick={handleInstallClick}
-          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-400/50 text-xs font-semibold transition-all duration-200 cursor-pointer shadow-sm shadow-amber-500/5 whitespace-nowrap ${className}`}
-          title="نصب اپلیکیشن ایرسا سیمرغ جهان روی گوشی"
-          aria-label="نصب اپلیکیشن"
+          className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:border-amber-400/50 text-xs font-semibold transition-all duration-200 cursor-pointer shadow-sm shadow-amber-500/5 whitespace-nowrap shrink-0 ${className}`}
+          title={t.pwa?.installBannerTitle || 'Install App'}
+          aria-label={t.pwa?.installApp || 'Install App'}
         >
-          <Smartphone className="w-3.5 h-3.5 text-amber-400" />
-          <span className="hidden sm:inline">نصب اپلیکیشن</span>
-          <span className="sm:hidden">نصب</span>
+          <Smartphone className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+          <span className="hidden xl:inline">{t.pwa?.installApp || 'Install App'}</span>
         </button>
 
         {/* iOS installation guidance modal */}
